@@ -18,7 +18,7 @@ The ALDE Graphical User Interface is a component of the European Project TANGO (
 
 ### Description
 
-This web component offer a Graphical User Interface to the Application Lifecycle Deployment Engine (ALDE).
+This web component offers a Graphical User Interface to the [Application Lifecycle Deployment Engine](https://github.com/TANGO-Project/alde) (ALDE).
 
 
 -----------------------
@@ -33,20 +33,20 @@ This web component offer a Graphical User Interface to the Application Lifecycle
 
 - Download this repository
 
-- Go to project directory and execute the following commands:
+- Go to project directory and execute the following command:
 
 ```bash
 lein start
 ```
 
-- In order to create a runnable _.jar_ and use it to launch the GUI application:
+- In order to create a runnable _.jar_ and use it to launch the GUI application, execute the following:
 
 ```bash
 lein gen-jar
 java -jar target/alde-gui.jar
 ```
 
-- By default, the GUI can be accessed in port 3001. But this can be modified by launching the jar file with an extra parameter:
+- By default, the GUI can be accessed in port 3001. But this can be modified by launching the _.jar_ file with an extra parameter:
 
 ```bash
 lein gen-jar
