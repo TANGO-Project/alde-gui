@@ -4,6 +4,8 @@
 
 The ALDE Graphical User Interface is a component of the European Project TANGO (http://tango-project.eu ).
 
+ALDE-GUI is distributed under a Apache License, version 2.0.
+
 -----------------------
 
 [Description](#description)
@@ -65,8 +67,6 @@ java -jar target/alde-gui.jar 8080
     ;; GUI properties
     :name "ALDE-GUI"
     :version "0.1.1-SNAPSHOT"
-    ;; REST API - ALDE - default url:
-    ;;    "https://private-d69ab-applicationlifecycledeploymentengine.apiary-mock.com/api/v1/"
     :alde-rest-api-url "http://xxx.xxx.xxx.xxx:xxx/api/v1/"
     :user "user"
     :pwd "user"
@@ -78,4 +78,4 @@ java -jar target/alde-gui.jar 8080
 
 ### Relation to other TANGO components
 
-This component connects to the **ALDE** REST interface in order to execute the operations.
+This component connects to the **ALDE** REST API interface in order to execute the operations.
