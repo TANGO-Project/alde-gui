@@ -23,9 +23,12 @@
 ;; GRAPH OPTIONS:
 ;; Testbeds graph
 (def GRAPH-OPTIONS (js-obj  "interaction"   (js-obj "hover" true)
-                            "nodes"         (js-obj "font"  (js-obj "bold"          (js-obj "color" "#0077aa")
-                                                                    "strokeWidth"   1
-                                                                    "strokeColor"   "teal"))
+                            "nodes"         (js-obj "font"  (js-obj "bold"          (js-obj   "color" "#ffffff")
+                                                                    "size" 14
+                                                                    "color"          "white" ;(js-obj  "border" "#222222"
+                                                                                              ;"background" "#666666")
+                                                                    "strokeWidth"   0
+                                                                    "strokeColor"   "white"))
                             "physics"       (js-obj "enabled"     true
                                                     "barnesHut"   (js-obj "gravitationalConstant"   -12000
                                                                           "centralGravity"          0.7))
@@ -39,8 +42,10 @@
 ;; Testbed's nodes graph
 (def GRAPH-OPTIONS-NODES (js-obj  "interaction"   (js-obj "hover" true
                                                           "navigationButtons" true)
-                                  "nodes"         (js-obj "font"  (js-obj "bold"          (js-obj "color" "#0077aa")
-                                                                          "strokeWidth"   2
+                                  "nodes"         (js-obj "font"  (js-obj "bold"          (js-obj "color" "#ffff99")
+                                                                          "size"      13
+                                                                          "strokeWidth"   0
+                                                                          "color"         "white"
                                                                           "strokeColor"   "#FFFFCC"))
                                   "physics"       (js-obj "enabled"     true
                                                           "barnesHut"   (js-obj "gravitationalConstant"   -1600
@@ -52,9 +57,9 @@
 ;; Node graph
 (def GRAPH-OPTIONS-1NODE (js-obj  "interaction"   (js-obj "hover" true
                                                           "navigationButtons" true)
-                                  "nodes"         (js-obj "font"  (js-obj "bold"          (js-obj "color" "#0077aa")
-                                                                          "strokeWidth"   2
-                                                                          "strokeColor"   "#FFFFCC"))
+                                  "nodes"         (js-obj "font"  (js-obj "bold"      (js-obj "color" "#ffffbb")
+                                                                          "size"      12
+                                                                          "color"     "#bbbbbb"))
                                   "physics"       (js-obj "enabled"     true
                                                           "barnesHut"   (js-obj "gravitationalConstant"   -1600
                                                                                 "centralGravity"          0.5
@@ -70,18 +75,18 @@
 (defn- show-1node-element-info ""
   [n]
   (reset! modal/TXT_NODE_ELEM n)
-  (logs/debug (n :ntype))
-  (case (n :ntype)
-    "cpu" (re-frame/dispatch [:modal {:show? true
-                                :child [modal/node_elem_cpu]
-                                :size :large}])
-    "gpu" (re-frame/dispatch [:modal {:show? true
-                                :child [modal/node_elem_gpu]
-                                :size :large}])
-    "mem" (re-frame/dispatch [:modal {:show? true
-                                :child [modal/node_elem_mem]
-                                :size :large}])
-    "default"))
+  (when-not (nil? n)
+    (case (n :ntype)
+      "cpu" (re-frame/dispatch [:modal {:show? true
+                                  :child [modal/node_elem_cpu]
+                                  :size :large}])
+      "gpu" (re-frame/dispatch [:modal {:show? true
+                                  :child [modal/node_elem_gpu]
+                                  :size :large}])
+      "mem" (re-frame/dispatch [:modal {:show? true
+                                  :child [modal/node_elem_mem]
+                                  :size :large}])
+      "default" (logs/debug (n :ntype)))))
 
 
 ;; FUNCTION: gen-nodes-1node
@@ -98,7 +103,13 @@
                                 "label"   (str "<b>" (x :name) "</b>")
                                 "title"   (str "<div><b>NODE:</b> " (x :name) "</div>")
                                 "image"   "images/node.png"
-                                "shape"   "image"))
+                                "color"   (js-obj "background" "white"
+                                                  "border" "black"
+                                                  "highlight" (js-obj "background" "#F3F781"
+                                                                      "border" "black")
+                                                  "hover" (js-obj "background" "#ffffcc"
+                                                                  "border" "black"))
+                                "shape"   "circularImage")) ; image
               "cpu"     (.push n (js-obj  "id"      (str (x :id))
                                 "font"    (js-obj "multi" true)
                                 "label"   (str "<b>" (x :name) "</b>\n"
@@ -107,7 +118,13 @@
                                             (x :vendor_id))
                                 "title"   (str "<div><b>CPU:</b> " (x :name) "</div>")
                                 "image"   "images/cpu.png"
-                                "shape"   "image"))
+                                "color"   (js-obj "background" "white"
+                                                  "border" "black"
+                                                  "highlight" (js-obj "background" "#F3F781"
+                                                                      "border" "black")
+                                                  "hover" (js-obj "background" "#ffffcc"
+                                                                  "border" "black"))
+                                "shape"   "circularImage"))
               "gpu"     (.push n (js-obj  "id"      (str (x :id))
                                 "font"    (js-obj "multi" true)
                                 "label"   (str "<b>" (x :name) "</b>\n"
@@ -115,7 +132,13 @@
                                             (x :vendor_id))
                                 "title"   (str "<div><b>GPU:</b> " (x :name) "</div>")
                                 "image"   "images/gpu.png"
-                                "shape"   "image"))
+                                "color"   (js-obj "background" "white"
+                                                  "border" "black"
+                                                  "highlight" (js-obj "background" "#F3F781"
+                                                                      "border" "black")
+                                                  "hover" (js-obj "background" "#ffffcc"
+                                                                  "border" "black"))
+                                "shape"   "circularImage"))
               "mem"     (.push n (js-obj  "id"      (str (x :id))
                                 "font"    (js-obj "multi" true)
                                 "label"   (str "<b>" (x :name) "</b>\n"
@@ -123,18 +146,24 @@
                                             (x :units))
                                 "title"   (str "<div><b>MEMORY:</b> " (x :name) "</div>")
                                 "image"   "images/mem.png"
-                                "shape"   "image"))
+                                "color"   (js-obj "background" "white"
+                                                  "border" "black"
+                                                  "highlight" (js-obj "background" "#F3F781"
+                                                                      "border" "black")
+                                                  "hover" (js-obj "background" "#ffffcc"
+                                                                  "border" "black"))
+                                "shape"   "circularImage"))
               (.push n (js-obj  "id"      (str (x :id))
                                 "label"   (str (x :name) " (default)")
                                 "title"   (str "<div><h6>ID: " (str (x :id)) "</h6><h6>DEFAULT: " (x :name) "</h6></div>")
                                 "image"   "images/cluster.png"
-                                "shape"   "image")))
+                                "shape"   "circularImage")))
             ; if nil
             (.push n (js-obj  "id"      (str (x :id))
                               "label"   (str (x :name) " (default)")
                               "title"   (str "<div><h6>ID: " (str (x :id)) "</h6><h6>DEFAULT: " (x :name) "</h6></div>")
                               "image"   "images/cluster.png"
-                              "shape"   "image")))
+                              "shape"   "circularImage")))
           (catch js/Error e
             (.push n (js-obj  "id"      (str (x :id))
                               "label"   (x :name)
@@ -153,7 +182,7 @@
       (.push n (js-obj  "from"    (str (x :from))
                         "to"      (x :to)
                         "dashes"  "true"
-                        "color"   "#000000")))
+                        "color"   "#eeeeee")))
     n))
 
 
@@ -208,18 +237,34 @@
                               :child [modal/node]
                               :size :large}]))
 
+
+;; FUNCTION: show-selected-node-info
+(defn show-selected-node-info ""
+  []
+  (when-not (nil? @SELECTED-NODE)
+    (let [n (get-node-info @SELECTED-NODE)]
+      (reset! modal/TXT_NODE n)
+      (re-frame/dispatch [:modal {:show? true
+                                  :child [modal/node]
+                                  :size :large}]))))
+
+
 ;; FUNCTION: on-click-node
 (defn- on-click-node "click event for nodes"
   [params]
   (try
     (let [node-sel  (first (goog.object/getValueByKeys params #js ["nodes"]))
           node-info (get-node-info node-sel)]
-      (when-not (or (nil? node-info) (= node-sel "0"))
+      (if-not (or (nil? node-info) (= node-sel "0"))
         (do
           (re-frame/dispatch [::events/set-selected-cluster-node node-info])
+          (re-frame/dispatch [::events/set-selected-node-name (node-info :name)])
           (reset! SELECTED-NODE node-sel)
           ; refresh / load cluster
-          (gen-data-1node node-sel))))
+          (gen-data-1node node-sel))
+        (do
+          (reset! SELECTED-NODE nil)
+          (re-frame/dispatch [::events/set-selected-node-name nil]))))
     (catch js/Error e
       (logs/error e))))
 
@@ -230,16 +275,10 @@
   (try
     (let [node-sel  (first (goog.object/getValueByKeys params #js ["nodes"]))
           node-info (get-node-info node-sel)]
-      (if (= node-sel "0")
-        (show-testbed-info)
-        (if-not (nil? node-info)
-          (do
-            (re-frame/dispatch [::events/set-selected-cluster-node node-info])
-            (reset! SELECTED-NODE node-sel)
-            (show-node-info node-info))
-          (show-testbed-info))))
+      (when (= node-sel "0")
+        (show-testbed-info)))
     (catch js/Error e
-      (show-testbed-info))))
+      (logs/error e))))
 
 
 ;; FUNCTION: gen-nodes
@@ -255,7 +294,13 @@
                               "label"   (str (x :name) " (testbed)")
                               "title"   (str "<div><b>TESTBED:</b> " (x :name) "</div>")
                               "image"   "images/cluster.png"
-                              "shape"   "image"))
+                              "color"  (js-obj  "background" "white"
+                                                "border" "black"
+                                                "highlight" (js-obj "background" "#F3F781"
+                                                                    "border" "black")
+                                                "hover" (js-obj "background" "#ffffcc"
+                                                                "border" "black"))
+                              "shape"   "circularImage"))
             ;; NODE
             (let [node-info (get-node-info  (x :id))]
               (.push n (js-obj  "id"      (str (x :id))
@@ -263,15 +308,21 @@
                                 "label"   (str "<b>" (x :name) "</b>\n"
                                             "cpus:" (count (node-info :cpus)) "\n"
                                             "gpus:" (count (node-info :gpus)))
-                                "title"   (str "<div><b>NODE - ID:</b> " (str (x :id)) ", <b>NAME:</b> " (x :name) "</div>")
+                                "title"   (str "<div><b>NODE ID:</b> " (str (x :id)) "<br/> <b>NAME:</b> " (x :name) "</div>")
                                 "image"   "images/node.png"
-                                "shape"   "image"))))
+                                "color"  (js-obj  "background" "white"
+                                                  "border" "black"
+                                                  "highlight" (js-obj "background" "#F3F781"
+                                                                      "border" "black")
+                                                  "hover" (js-obj "background" "#ffffcc"
+                                                                  "border" "black"))
+                                "shape"   "circularImage"))))
           (catch js/Error e
             (.push n (js-obj  "id"      (str (x :id))
                               "label"   (x :name)
                               "title"   (str "<div><h6>ID: " (str (x :id)) "</h6><h6>NAME: " (x :name) "</h6></div>")
                               "image"   "images/node.png"
-                              "shape"   "image")))))
+                              "shape"   "circularImage")))))
       n)
       (array)))
 
@@ -285,7 +336,7 @@
         (.push n (js-obj  "from"    (str (x :from))
                           "to"      (x :to)
                           "dashes"  true
-                          "color"   "#000000")))
+                          "color"   "#eeeeee")))
       n)
     (array)))
 
@@ -315,9 +366,6 @@
         (array))
       ;; 1 cluster selected:
       (do
-        (logs/info " xx1->" @VARS/ALDE_TESTBEDS)
-        (logs/info " xx2->" @cluster-sel)
-        (logs/info " xx3->" (filter #(= (% :id) @cluster-sel) @VARS/ALDE_TESTBEDS))
         (let [v (first (filter #(= (% :id) @cluster-sel) @VARS/ALDE_TESTBEDS))]
           (gen-nodes v))))))
 
@@ -361,7 +409,13 @@
                         "font"    (js-obj "multi" true)
                         "title"   (str "<div><b>TESTBED:</b> " (v :name) "</div>")
                         "image"   "images/cluster.png"
-                        "shape"   "image")))
+                        "color"  (js-obj  "background" "white"
+                                          "border" "black"
+                                          "highlight" (js-obj "background" "#F3F781"
+                                                              "border" "black")
+                                          "hover" (js-obj "background" "#ffffcc"
+                                                          "border" "black"))
+                        "shape"   "circularImage")))
     n))
 
 
@@ -386,3 +440,13 @@
                                  (js-obj "nodes" nodes "edges" edges)
                                  GRAPH-OPTIONS)]
     (.on grph "click" #(on-click-testbed %)))) ;; on-click event:
+
+
+;function removeNode() {
+;    try {
+;        nodes.remove({id: document.getElementById('node-id').value});
+;    }
+;    catch (err) {
+;        alert(err);
+;    }
+;}

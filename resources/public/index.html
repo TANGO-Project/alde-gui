@@ -11,14 +11,30 @@
     <title>ALDE GUI</title>
     <!-- -->
     <!-- Custom fonts for this template-->
-    <link href="js/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <!-- <link href="js/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"
+        integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
     <!-- Bootstrap core CSS-->
-    <link href="js/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- <link href="js/bootstrap/css/bootstrap.min.css" rel="stylesheet"> -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
     <!-- Custom styles for this template-->
     <link href="css/vis-network.min.css" rel="stylesheet">
     <link href="css/sb-admin.css" rel="stylesheet">
     <link href="css/site.css" rel="stylesheet">
+
+    <!-- JAVASCRIPT -->
+    <!-- Bootstrap core JavaScript-->
+    <!-- <script src="js/jquery/jquery.min.js"></script> -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <!-- <script src="js/bootstrap/js/bootstrap.bundle.min.js"></script> -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.bundle.min.js"
+        integrity="sha384-pjaaA8dDz/5BgdFUPX6M/9SUZv4d12SUPF0axWc+VRZkx5xU3daN+lYb49+Ax+Tl" crossorigin="anonymous"></script>
+    <!-- Core plugin JavaScript-->
+    <!-- <script src="js/jquery-easing/jquery.easing.min.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
   </head>
 
   <body class="fixed-nav sticky-footer bg-dark sidenav-toggled" id="page-top">
@@ -26,7 +42,10 @@
     <!-- NAVIGATION BAR: TOP & LEFT MENU -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
       <image class="navbar-brand" src="images/atos.png" title="ALDE GUI" style="width:70px; height=25px; margin-left=15px; margin-right=15px;"></image>
-      <a class="navbar-brand" href="/#">Application Lifecycle Deployment Engine - GUI</a>
+      <a class="navbar-brand" href="/#" style="margin-left=15px; margin-right=15px;">
+        <font color="#E3E9FA" size="4">Application Lifecycle Deployment Engine - GUI</font>
+        <font color="#96B1F9" size="2">[0.1.1]</font>
+      </a>
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -55,11 +74,6 @@
     </a>
 
     <!-- JAVASCRIPT -->
-    <!-- Bootstrap core JavaScript-->
-    <script src="js/jquery/jquery.min.js"></script>
-    <script src="js/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <!-- Core plugin JavaScript-->
-    <script src="js/jquery-easing/jquery.easing.min.js"></script>
     <!-- Custom scripts for all pages-->
     <script src="js/sb-admin.min.js"></script>
 
@@ -71,8 +85,7 @@
 
       $(function () {
         $('[data-toggle="tooltip"]').tooltip()
-      })
+      });
     </script>
-
   </body>
 </html>

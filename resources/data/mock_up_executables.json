@@ -1,0 +1,163 @@
+{                                                                                                             
+  "num_results": 8,                                                                                           
+  "objects": [                                                                                                
+    {                                                                                                         
+      "application": null,                                                                                    
+      "application_id": null,                                                                                 
+      "compilation_script": "compss_build_app Matmul",                                                        
+      "compilation_type": "SINGULARIY:PM",                                                                    
+      "executable_file": null,                                                                                
+      "id": 1,                                                                                                
+      "singularity_app_folder": "",                                                                           
+      "singularity_image_file": "/home_nfs/home_ejarquej/matmul-cuda8-y3.img",                                
+      "source_code_file": "/home_nfs/home_ejarquej/matmul.zip/",                                              
+      "status": "COMPILED"                                                                                    
+    },                                                                                                        
+    {                                                                                                         
+      "application": null,                                                                                    
+      "application_id": null,                                                                                 
+      "compilation_script": "compss_build_app Matmul",                                                        
+      "compilation_type": "SINGULARIY:PM",                                                                    
+      "executable_file": null,                                                                                
+      "id": 2,                                                                                                
+      "singularity_app_folder": "/apps/matmul_files_gpu/",                                                    
+      "singularity_image_file": "/home_nfs/home_ejarquej/matmul-cuda8-y3.img",                                
+      "source_code_file": "/home_nfs/home_ejarquej/matmul.zip/",                                              
+      "status": "COMPILED"                                                                                    
+    },                                                                                                        
+    {                                                                                                         
+      "application": null,                                                                                    
+      "application_id": null,                                                                                 
+      "compilation_script": "compss_build_app Matmul",                                                        
+      "compilation_type": "SINGULARIY:PM",                                                                    
+      "executable_file": null,                                                                                
+      "id": 3,                                                                                                
+      "singularity_app_folder": "/apps/matmul_files_gpu/",                                                    
+      "singularity_image_file": "/home_nfs/home_ejarquej/matmul-cuda8-y3.img",                                
+      "source_code_file": "/home_nfs/home_ejarquej/matmul.zip/",                                              
+      "status": "COMPILED"                                                                                    
+    },                                                                                                        
+    {                                                                                                         
+      "application": {                                                                                        
+        "application_type": null,                                                                             
+        "deadline": null,                                                                                     
+        "id": 3,                                                                                              
+        "max_energy": null,                                                                                   
+        "max_energy_units": null,                                                                             
+        "max_power": null,                                                                                    
+        "max_power_units": null,                                                                              
+        "name": "cloverleaf_sbatch",                                                                          
+        "priority": null,                                                                                     
+        "scaling_lower_bound": null,                                                                          
+        "scaling_upper_bound": null                                                                           
+      },                                                                                                      
+      "application_id": 3,                                                                                    
+      "compilation_script": "none",                                                                           
+      "compilation_type": "SLURM:SBATCH",                                                                     
+      "executable_file": "/home_nfs/home_dineshkr/CloverLeafMpi/sbatch_bare_MPI.sh",                          
+      "id": 4,                                                                                                
+      "singularity_app_folder": null,                                                                         
+      "singularity_image_file": null,                                                                         
+      "source_code_file": null,                                                                               
+      "status": "COMPILED"                                                                                    
+    },                                                                                                        
+    {                                                                                                         
+      "application": {                                                                                        
+        "application_type": null,                                                                             
+        "deadline": null,                                                                                     
+        "id": 3,                                                                                              
+        "max_energy": null,                                                                                   
+        "max_energy_units": null,                                                                             
+        "max_power": null,                                                                                    
+        "max_power_units": null,                                                                              
+        "name": "cloverleaf_sbatch",                                                                          
+        "priority": null,                                                                                     
+        "scaling_lower_bound": null,                                                                          
+        "scaling_upper_bound": null                                                                           
+      },                                                                                                      
+      "application_id": 3,                                                                                    
+      "compilation_script": "none",                                                                           
+      "compilation_type": "SLURM:SBATCH",                                                                     
+      "executable_file": "/home_nfs/home_dineshkr/CloverLeafMpi/sbatch_bare_Cuda.sh",                         
+      "id": 5,                                                                                                
+      "singularity_app_folder": null,                                                                         
+      "singularity_image_file": null,                                                                         
+      "source_code_file": null,                                                                               
+      "status": "COMPILED"                                                                                    
+    },                                                                                                        
+    {                                                                                                         
+      "application": {                                                                                        
+        "application_type": null,                                                                             
+        "deadline": null,                                                                                     
+        "id": 4,                                                                                              
+        "max_energy": null,                                                                                   
+        "max_energy_units": null,                                                                             
+        "max_power": null,                                                                                    
+        "max_power_units": null,                                                                              
+        "name": "cloverleaf_sbatch",                                                                          
+        "priority": null,                                                                                     
+        "scaling_lower_bound": null,                                                                          
+        "scaling_upper_bound": null                                                                           
+      },                                                                                                      
+      "application_id": 4,                                                                                    
+      "compilation_script": "none",                                                                           
+      "compilation_type": "SLURM:SBATCH",                                                                     
+      "executable_file": "/home_nfs/home_dineshkr/CloverLeafMpi/sbatch_bare_MPI.sh",                          
+      "id": 6,                                                                                                
+      "singularity_app_folder": null,                                                                         
+      "singularity_image_file": null,                                                                         
+      "source_code_file": null,                                                                               
+      "status": "COMPILED"                                                                                    
+    },                                                                                                        
+    {                                                                                                         
+      "application": {                                                                                        
+        "application_type": null,                                                                             
+        "deadline": null,                                                                                     
+        "id": 4,                                                                                              
+        "max_energy": null,                                                                                   
+        "max_energy_units": null,                                                                             
+        "max_power": null,                                                                                    
+        "max_power_units": null,                                                                              
+        "name": "cloverleaf_sbatch",                                                                          
+        "priority": null,                                                                                     
+        "scaling_lower_bound": null,                                                                          
+        "scaling_upper_bound": null                                                                           
+      },                                                                                                      
+      "application_id": 4,                                                                                    
+      "compilation_script": "none",                                                                           
+      "compilation_type": "SLURM:SBATCH",                                                                     
+      "executable_file": "/home_nfs/home_dineshkr/CloverLeafMpi/sbatch_bare_Cuda.sh",                         
+      "id": 7,                                                                                                
+      "singularity_app_folder": null,                                                                         
+      "singularity_image_file": null,                                                                         
+      "source_code_file": null,                                                                               
+      "status": "COMPILED"                                                                                    
+    },                                                                                                        
+    {                                                                                                         
+      "application": {                                                                                        
+        "application_type": null,                                                                             
+        "deadline": null,                                                                                     
+        "id": 2,                                                                                              
+        "max_energy": null,                                                                                   
+        "max_energy_units": null,                                                                             
+        "max_power": null,                                                                                    
+        "max_power_units": null,                                                                              
+        "name": "Matmul",                                                                                     
+        "priority": null,                                                                                     
+        "scaling_lower_bound": null,                                                                          
+        "scaling_upper_bound": null                                                                           
+      },                                                                                                      
+      "application_id": 2,                                                                                    
+      "compilation_script": "compss_build_app Matmul",                                                        
+      "compilation_type": "SINGULARIY:PM",                                                                    
+      "executable_file": null,                                                                                
+      "id": 8,                                                                                                
+      "singularity_app_folder": "/apps/application/",                                                         
+      "singularity_image_file": "/home_nfs/home_ejarquej/matmul-cuda8-y3-cpus.img",                           
+      "source_code_file": "/home_nfs/home_ejarquej/matmul.zip/",                                              
+      "status": "COMPILED"                                                                                    
+    }                                                                                                         
+  ],                                                                                                          
+  "page": 1,                                                                                                  
+  "total_pages": 1                                                                                            
+}                                                                                                             

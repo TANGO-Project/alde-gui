@@ -24,8 +24,7 @@
           [:a {:href "#" :title "ALDE GUI - Home"} "ALDE-GUI"]]
           (case @active-panel
             :home-panel         [:li.breadcrumb-item.active "Home - Dashboard"]
-            :testbeds-panel     [:li.breadcrumb-item.active "Testbeds"]
-            :apps-panel         [:li.breadcrumb-item.active "Applications"]
+            :testbeds-panel     [:li.breadcrumb-item.active "Testbeds & Nodes"]
+            :apps-panel         [:li.breadcrumb-item.active "Applications & Executions"]
             :config-panel       [:li.breadcrumb-item.active "Configuration"]
-            :monitoring-panel   [:li.breadcrumb-item.active "Monitoring"]
             [:li.breadcrumb-item.active (str "not-defined" @active-panel)])]]))

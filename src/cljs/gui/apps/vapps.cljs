@@ -24,47 +24,27 @@
 
 (def TAB_APPS (r/atom true))
 (def TAB_EXECUTIONS (r/atom false))
-(def TAB_TESTBEDS (r/atom false))
-
-;; testbeds-tab
-(defn- do-func1 ""
-  []
-  (dom/remove-class! (sel1 :#tab-apps) :active)
-  (dom/remove-class! (sel1 :#tab-apps) :show)
-  (dom/remove-class! (sel1 :#tab-execs) :active)
-  (dom/remove-class! (sel1 :#tab-execs) :show)
-  (dom/add-class! (sel1 :#tab-testbeds) :show)
-  (dom/add-class! (sel1 :#tab-testbeds) :active)
-  (reset! TAB_APPS false)
-  (reset! TAB_EXECUTIONS false)
-  (reset! TAB_TESTBEDS true))
 
 ;; apps-tab
 (defn- do-func2 ""
   []
-  (dom/remove-class! (sel1 :#tab-testbeds) :active)
-  (dom/remove-class! (sel1 :#tab-testbeds) :show)
   (dom/remove-class! (sel1 :#tab-execs) :active)
   (dom/remove-class! (sel1 :#tab-execs) :show)
   (dom/add-class! (sel1 :#tab-apps) :show)
   (dom/add-class! (sel1 :#tab-apps) :active)
   (reset! TAB_APPS true)
-  (reset! TAB_EXECUTIONS false)
-  (reset! TAB_TESTBEDS false))
+  (reset! TAB_EXECUTIONS false))
 
 ;; execs-tab
 (defn- do-func3 ""
   []
-  (reset! GLOBALS/TAB_LOADING true)
-  (dom/remove-class! (sel1 :#tab-testbeds) :active)
-  (dom/remove-class! (sel1 :#tab-testbeds) :show)
+  ;(reset! GLOBALS/TAB_LOADING true)
   (dom/remove-class! (sel1 :#tab-apps) :active)
   (dom/remove-class! (sel1 :#tab-apps) :show)
   (dom/add-class! (sel1 :#tab-execs) :show)
   (dom/add-class! (sel1 :#tab-execs) :active)
   (reset! TAB_APPS false)
-  (reset! TAB_EXECUTIONS true)
-  (reset! TAB_TESTBEDS false))
+  (reset! TAB_EXECUTIONS true))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:;;;;;;;;;;;;;;;;;;;;
@@ -88,11 +68,7 @@
         [:li.nav-item
           [:a.nav-link {:id "execs-tab" :data-toggle "tab" :href "" :role "tab"
            :on-click #(do-func3)
-           :aria-controls "execs" :aria-selected "true"} "Executions"]]
-        [:li.nav-item
-          [:a.nav-link {:id "testbeds-tab" :data-toggle "tab" :href "" :role "tab"
-           :on-click #(do-func1)
-           :aria-controls "testbeds" :aria-selected "true"} "Testbeds"]]]
+           :aria-controls "execs" :aria-selected "true"} "Executions"]]]
 
       ;; CONTENT
       [:div.rowtab-content {:style {:margin-top "5px"}}
@@ -101,10 +77,7 @@
           [tabs-applications/panel-component]]
         ;; EXECUTIONS
         [:div.tab-pane.fade {:id "tab-execs" :role "tabpanel" :aria-labelledby "execs-tab"}
-          (when @TAB_EXECUTIONS [tabs-executions/panel-component])]
-        ;; TESTBEDS
-        [:div.tab-pane.fade {:id "tab-testbeds" :role "tabpanel" :aria-labelledby "testbeds-tab"}
-          ]]]))
+          (when @TAB_EXECUTIONS [tabs-executions/panel-component])]]]))
 
 
 ;; FUNCTION:

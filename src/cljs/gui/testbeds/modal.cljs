@@ -57,48 +57,42 @@
       [:div.col-sm-10
         [:h5 {:style {:margin-top "-5px" :text-align "left"}}
           [:span.badge.badge-pill.badge-primary " Node "]
-          [:span.badge.badge-pill.badge-secondary {:style {:color "#ffff99"}} (@TXT_NODE :name)]]]
-      [:div.col-sm-2
-        [:h5 {:style {:margin-top "-5px" :text-align "left"}}
-          ;; save node TODO
-          [:button.badge.badge-pill.btn-sm.btn-success {:style {:margin-right "5px" :text-align "right"}
-            :data-toggle "tooltip" :data-placement "right" :title "add a new node to the testbed"
-            } "save"]]]]
+          [:span.badge.badge-pill.badge-secondary {:style {:color "#ffff99"}} (@TXT_NODE :name)]]]]
     ;; content
     [:div.row {:style {:margin-top "5px"}}
       [:label.col-sm-2.control-label.text-right [:b "Id:"]]
       [:div.col-sm-2
-        [:input.form-control.input-sm.text-left {:type "text" :style {:background-color "#FFFFCC"} :placeholder "Id"
+        [:input.form-control.input-sm.text-left {:type "text" :style {:background-color "#FFFFCC"} :placeholder "---" :read-only true
           :defaultValue (@TXT_NODE :id)}]]]
     [:div.row {:style {:margin-top "5px"}}
       [:label.col-sm-2.control-label.text-right [:b "Name:"]]
-      [:div.col-sm-8
-        [:input.form-control.input-sm.text-left {:type "text" :style {:background-color "#FFFFFF"} :placeholder "Name"
+      [:div.col-sm-4
+        [:input.form-control.input-sm.text-left {:type "text" :style {:background-color "#FFFFFF"} :placeholder "---" :read-only true
           :defaultValue (@TXT_NODE :name)}]]]
     [:div.row {:style {:margin-top "5px"}}
       [:label.col-sm-2.control-label.text-right [:b "Information retrieved?"]]
-      [:div.col-sm-4
-        [:input.form-control.input-sm.text-left {:type "text" :style {:background-color "#FFFFFF"} :placeholder "Information retrieved?"
+      [:div.col-sm-2
+        [:input.form-control.input-sm.text-left {:type "text" :style {:background-color "#FFFFFF"} :placeholder "---" :read-only true
           :defaultValue (@TXT_NODE :information_retrieved)}]]]
     [:div.row {:style {:margin-top "5px"}}
       [:label.col-sm-2.control-label.text-right [:b "Testbed Id:"]]
-      [:div.col-sm-4
-        [:input.form-control.input-sm.text-left {:type "text" :style {:background-color "#FFFFFF"} :placeholder "Testbed Id"
+      [:div.col-sm-2
+        [:input.form-control.input-sm.text-left {:type "text" :style {:background-color "#FFFFCC"} :placeholder "---" :read-only true
           :defaultValue (@TXT_NODE :testbed_id)}]]]
     [:div.row {:style {:margin-top "5px"}}
       [:label.col-sm-2.control-label.text-right [:b "cpus:"]]
       [:div.col-sm-2
-        [:input.form-control.input-sm.text-left {:type "text" :style {:background-color "#FFFFFF"}
+        [:input.form-control.input-sm.text-left {:type "text" :style {:background-color "#FFFFFF"} :read-only true
           :defaultValue (str (count (@TXT_NODE :cpus)))}]]]
     [:div.row {:style {:margin-top "5px"}}
       [:label.col-sm-2.control-label.text-right [:b "gpus:"]]
       [:div.col-sm-2
-        [:input.form-control.input-sm.text-left {:type "text" :style {:background-color "#FFFFFF"}
+        [:input.form-control.input-sm.text-left {:type "text" :style {:background-color "#FFFFFF"} :read-only true
           :defaultValue (str (count (@TXT_NODE :gpus)))}]]]
     [:div.row {:style {:margin-top "5px"}}
       [:label.col-sm-2.control-label.text-right [:b "memories:"]]
       [:div.col-sm-2
-        [:input.form-control.input-sm.text-left {:type "text" :style {:background-color "#FFFFFF"}
+        [:input.form-control.input-sm.text-left {:type "text" :style {:background-color "#FFFFFF"} :read-only true
           :defaultValue (str (count (@TXT_NODE :memories)))}]]]
     [:button {:type "button" :title "Cancel" :class "close" :on-click #(close-modal)
               :style {:margin-bottom "35px" :margin-top "-15px"}} "Close"]])
@@ -108,61 +102,55 @@
   [:div.modal_testbed {:style {:padding "16px" :border-radius "6px" :text-align "center"}}
     ;; header
     [:div.row
-      [:div.col-sm-10
+      [:div.col-sm-12
         [:h5 {:style {:margin-top "-5px" :text-align "left"}}
           [:span.badge.badge-pill.badge-primary " Testbed "]
-          [:span.badge.badge-pill.badge-secondary {:style {:color "#ffff99"}} (@TXT :name)]]]
-      [:div.col-sm-2
-        [:h5 {:style {:margin-top "-5px" :text-align "left"}}
-          ;; save node TODO
-          [:button.badge.badge-pill.btn-sm.btn-success {:style {:margin-right "5px" :text-align "right"}
-            :data-toggle "tooltip" :data-placement "right" :title "add a new testbed"
-            } "save"]]]]
+          [:span.badge.badge-pill.badge-secondary {:style {:color "#ffff99"}} (@TXT :name)]]]]
     ;; content
     [:div.row {:style {:margin-top "5px"}}
       [:label.col-sm-2.control-label.text-right [:b "Id:"]]
       [:div.col-sm-2
-        [:input.form-control.input-sm.text-left {:type "text" :style {:background-color "#FFFFCC"} :placeholder "Id"
+        [:input.form-control.input-sm.text-left {:type "text" :style {:background-color "#FFFFCC"} :placeholder "---" :read-only true
           :defaultValue (@TXT :id)}]]]
     [:div.row {:style {:margin-top "5px"}}
       [:label.col-sm-2.control-label.text-right [:b "Name:"]]
-      [:div.col-sm-8
-        [:input.form-control.input-sm.text-left {:type "text" :style {:background-color "#FFFFFF"} :placeholder "Name"
+      [:div.col-sm-4
+        [:input.form-control.input-sm.text-left {:type "text" :style {:background-color "#FFFFFF"} :placeholder "---" :read-only true
           :defaultValue (@TXT :name)}]]]
     [:div.row {:style {:margin-top "5px"}}
       [:label.col-sm-2.control-label.text-right [:b "Category:"]]
       [:div.col-sm-4
-        [:input.form-control.input-sm.text-left {:type "text" :style {:background-color "#FFFFFF"} :placeholder "Category"
+        [:input.form-control.input-sm.text-left {:type "text" :style {:background-color "#FFFFFF"} :placeholder "---" :read-only true
           :defaultValue (@TXT :category)}]]]
     [:div.row {:style {:margin-top "5px"}}
       [:label.col-sm-2.control-label.text-right [:b "Endpoint:"]]
       [:div.col-sm-6
-        [:input.form-control.input-sm.text-left {:type "text" :style {:background-color "#FFFFFF"} :placeholder "Endpoint"
+        [:input.form-control.input-sm.text-left {:type "text" :style {:background-color "#FFFFFF"} :placeholder "---" :read-only true
           :defaultValue (@TXT :endpoint)}]]]
     [:div.row {:style {:margin-top "5px"}}
       [:label.col-sm-2.control-label.text-right [:b "Protocol:"]]
       [:div.col-sm-4
-        [:input.form-control.input-sm.text-left {:type "text" :style {:background-color "#FFFFFF"} :placeholder "Protocol"
+        [:input.form-control.input-sm.text-left {:type "text" :style {:background-color "#FFFFFF"} :placeholder "---" :read-only true
           :defaultValue (@TXT :protocol)}]]]
     [:div.row {:style {:margin-top "5px"}}
       [:label.col-sm-2.control-label.text-right [:b "Nodes:"]]
       [:div.col-sm-2
-        [:input.form-control.input-sm.text-left {:type "text" :style {:background-color "#FFFFFF"}
+        [:input.form-control.input-sm.text-left {:type "text" :style {:background-color "#FFFFFF"} :read-only true
           :defaultValue (str (count (@TXT :nodes)))}]]]
     [:div.row {:style {:margin-top "5px"}}
       [:label.col-sm-2.control-label.text-right [:b "Package Formats:"]]
       [:div.col-sm-8
-        [:input.form-control.input-sm.text-left {:type "text" :style {:background-color "#FFFFFF"} :placeholder "[]"
+        [:input.form-control.input-sm.text-left {:type "text" :style {:background-color "#FFFFFF"} :placeholder "---" :read-only true
           :defaultValue (str (@TXT :package_formats))}]]]
     [:div.row {:style {:margin-top "5px"}}
       [:label.col-sm-2.control-label.text-right [:b "Extra Configuration:"]]
       [:div.col-sm-10
-        [:textarea.form-control.input-sm.text-left {:rows "2" :style {:background-color "#FFFFFF"} :placeholder "{}"
+        [:textarea.form-control.input-sm.text-left {:rows "2" :style {:background-color "#FFFFFF"} :placeholder "---" :read-only true
           :defaultValue (str (@TXT :extra_config))}]]]
     [:div.row {:style {:margin-top "5px"}}
       [:label.col-sm-2.control-label.text-right [:b "Online?"]]
-      [:div.col-sm-4
-        [:input.form-control.input-sm.text-left {:type "text" :style {:background-color "#FFFFFF"} :placeholder "True"
+      [:div.col-sm-2
+        [:input.form-control.input-sm.text-left {:type "text" :style {:background-color "#FFFFFF"} :placeholder "---" :read-only true
           :defaultValue (@TXT :online)}]]]
 
     [:button {:type "button" :title "Cancel" :class "close" :on-click #(close-modal)
@@ -182,52 +170,52 @@
     [:div.row {:style {:margin-top "5px"}}
       [:label.col-sm-2.control-label.text-right [:b "Id:"]]
       [:div.col-sm-2
-        [:input.form-control.input-sm.text-left {:type "text" :style {:background-color "#FFFFCC"} :placeholder "Id"
+        [:input.form-control.input-sm.text-left {:type "text" :style {:background-color "#FFFFCC"} :placeholder "---" :read-only true
           :defaultValue (@TXT_NODE_ELEM :id)}]]]
     [:div.row {:style {:margin-top "5px"}}
       [:label.col-sm-2.control-label.text-right [:b "Model Name:"]]
       [:div.col-sm-10
-        [:input.form-control.input-sm.text-left {:type "text" :style {:background-color "#FFFFFF"} :placeholder "Model Name"
+        [:input.form-control.input-sm.text-left {:type "text" :style {:background-color "#FFFFFF"} :placeholder "---" :read-only true
           :defaultValue (@TXT_NODE_ELEM :model_name)}]]]
     [:div.row {:style {:margin-top "5px"}}
       [:label.col-sm-2.control-label.text-right [:b "Vendor Id:"]]
       [:div.col-sm-6
-        [:input.form-control.input-sm.text-left {:type "text" :style {:background-color "#FFFFFF"} :placeholder "Vendor Id"
+        [:input.form-control.input-sm.text-left {:type "text" :style {:background-color "#FFFFFF"} :placeholder "---" :read-only true
           :defaultValue (@TXT_NODE_ELEM :vendor_id)}]]]
     [:div.row {:style {:margin-top "5px"}}
       [:label.col-sm-2.control-label.text-right [:b "Model:"]]
       [:div.col-sm-4
-        [:input.form-control.input-sm.text-left {:type "text" :style {:background-color "#FFFFFF"} :placeholder "Model"
+        [:input.form-control.input-sm.text-left {:type "text" :style {:background-color "#FFFFFF"} :placeholder "---" :read-only true
           :defaultValue (@TXT_NODE_ELEM :model)}]]]
     [:div.row {:style {:margin-top "5px"}}
       [:label.col-sm-2.control-label.text-right [:b "Architecture"]]
       [:div.col-sm-4
-        [:input.form-control.input-sm.text-left {:type "text" :style {:background-color "#FFFFFF"} :placeholder "Architecture"
+        [:input.form-control.input-sm.text-left {:type "text" :style {:background-color "#FFFFFF"} :placeholder "---" :read-only true
           :defaultValue (@TXT_NODE_ELEM :arch)}]]]
     [:div.row {:style {:margin-top "5px"}}
       [:label.col-sm-2.control-label.text-right [:b "Cores:"]]
       [:div.col-sm-2
-        [:input.form-control.input-sm.text-left {:type "text" :style {:background-color "#FFFFFF"} :placeholder "Cores"
+        [:input.form-control.input-sm.text-left {:type "text" :style {:background-color "#FFFFFF"} :placeholder "---" :read-only true
           :defaultValue (str (@TXT_NODE_ELEM :cores))}]]]
     [:div.row {:style {:margin-top "5px"}}
       [:label.col-sm-2.control-label.text-right [:b "Speed:"]]
       [:div.col-sm-2
-        [:input.form-control.input-sm.text-left {:type "text" :style {:background-color "#FFFFFF"} :placeholder "Speed"
+        [:input.form-control.input-sm.text-left {:type "text" :style {:background-color "#FFFFFF"} :placeholder "---" :read-only true
           :defaultValue (str (@TXT_NODE_ELEM :speed))}]]]
     [:div.row {:style {:margin-top "5px"}}
       [:label.col-sm-2.control-label.text-right [:b "Flags:"]]
       [:div.col-sm-10
-        [:textarea.form-control.input-sm.text-left {:rows "2" :style {:background-color "#FFFFFF"}
+        [:textarea.form-control.input-sm.text-left {:rows "2" :style {:background-color "#FFFFFF"} :read-only true
           :defaultValue (@TXT_NODE_ELEM :flags)}]]]
     [:div.row {:style {:margin-top "5px"}}
       [:label.col-sm-2.control-label.text-right [:b "Bogomips:"]]
       [:div.col-sm-2
-        [:input.form-control.input-sm.text-left {:type "text" :style {:background-color "#FFFFFF"} :placeholder "bogomips"
+        [:input.form-control.input-sm.text-left {:type "text" :style {:background-color "#FFFFFF"} :placeholder "---" :read-only true
           :defaultValue (str (@TXT_NODE_ELEM :bogomips))}]]]
     [:div.row {:style {:margin-top "5px"}}
       [:label.col-sm-2.control-label.text-right [:b "Cache:"]]
       [:div.col-sm-2
-        [:input.form-control.input-sm.text-left {:type "text" :style {:background-color "#FFFFFF"} :placeholder "cache"
+        [:input.form-control.input-sm.text-left {:type "text" :style {:background-color "#FFFFFF"} :placeholder "---" :read-only true
           :defaultValue (str (@TXT_NODE_ELEM :cache))}]]]
     [:button {:type "button" :title "Cancel" :class "close" :on-click #(close-modal)
               :style {:margin-bottom "35px" :margin-top "-15px"}} "Close"]])
@@ -246,22 +234,22 @@
     [:div.row {:style {:margin-top "5px"}}
       [:label.col-sm-2.control-label.text-right [:b "Id:"]]
       [:div.col-sm-2
-        [:input.form-control.input-sm.text-left {:type "text" :style {:background-color "#FFFFCC"} :placeholder "Id"
+        [:input.form-control.input-sm.text-left {:type "text" :style {:background-color "#FFFFCC"} :placeholder "---" :read-only true
           :defaultValue (@TXT_NODE_ELEM :id)}]]]
     [:div.row {:style {:margin-top "5px"}}
       [:label.col-sm-2.control-label.text-right [:b "Model Name:"]]
       [:div.col-sm-10
-        [:input.form-control.input-sm.text-left {:type "text" :style {:background-color "#FFFFFF"} :placeholder "Model Name"
+        [:input.form-control.input-sm.text-left {:type "text" :style {:background-color "#FFFFFF"} :placeholder "---" :read-only true
           :defaultValue (@TXT_NODE_ELEM :model_name)}]]]
     [:div.row {:style {:margin-top "5px"}}
       [:label.col-sm-2.control-label.text-right [:b "Vendor Id:"]]
       [:div.col-sm-6
-        [:input.form-control.input-sm.text-left {:type "text" :style {:background-color "#FFFFFF"} :placeholder "Vendor Id"
+        [:input.form-control.input-sm.text-left {:type "text" :style {:background-color "#FFFFFF"} :placeholder "---" :read-only true
           :defaultValue (@TXT_NODE_ELEM :vendor_id)}]]]
     [:div.row {:style {:margin-top "5px"}}
       [:label.col-sm-2.control-label.text-right [:b "Node Id:"]]
       [:div.col-sm-2
-        [:input.form-control.input-sm.text-left {:type "text" :style {:background-color "#FFFFCC"} :placeholder "node_id"
+        [:input.form-control.input-sm.text-left {:type "text" :style {:background-color "#FFFFCC"} :placeholder "---" :read-only true
           :defaultValue (@TXT_NODE_ELEM :node_id)}]]]
     [:button {:type "button" :title "Cancel" :class "close" :on-click #(close-modal)
               :style {:margin-bottom "35px" :margin-top "-15px"}} "Close"]])
@@ -279,27 +267,27 @@
     [:div.row {:style {:margin-top "5px"}}
       [:label.col-sm-2.control-label.text-right [:b "Id:"]]
       [:div.col-sm-2
-        [:input.form-control.input-sm.text-left {:type "text" :style {:background-color "#FFFFCC"} :placeholder "Id"
+        [:input.form-control.input-sm.text-left {:type "text" :style {:background-color "#FFFFCC"} :placeholder "---" :read-only true
           :defaultValue (@TXT_NODE_ELEM :id)}]]]
     [:div.row {:style {:margin-top "5px"}}
       [:label.col-sm-2.control-label.text-right [:b "Memory Type:"]]
       [:div.col-sm-10
-        [:input.form-control.input-sm.text-left {:type "text" :style {:background-color "#FFFFFF"} :placeholder "memory type"
+        [:input.form-control.input-sm.text-left {:type "text" :style {:background-color "#FFFFFF"} :placeholder "---" :read-only true
           :defaultValue (str (@TXT_NODE_ELEM :memory_type))}]]]
     [:div.row {:style {:margin-top "5px"}}
       [:label.col-sm-2.control-label.text-right [:b "Size:"]]
       [:div.col-sm-6
-        [:input.form-control.input-sm.text-left {:type "text" :style {:background-color "#FFFFFF"} :placeholder "size"
+        [:input.form-control.input-sm.text-left {:type "text" :style {:background-color "#FFFFFF"} :placeholder "---" :read-only true
           :defaultValue (str (@TXT_NODE_ELEM :size))}]]]
     [:div.row {:style {:margin-top "5px"}}
       [:label.col-sm-2.control-label.text-right [:b "Units:"]]
       [:div.col-sm-2
-        [:input.form-control.input-sm.text-left {:type "text" :style {:background-color "#FFFFFF"} :placeholder "units"
+        [:input.form-control.input-sm.text-left {:type "text" :style {:background-color "#FFFFFF"} :placeholder "---" :read-only true
           :defaultValue (@TXT_NODE_ELEM :units)}]]]
     [:div.row {:style {:margin-top "5px"}}
       [:label.col-sm-2.control-label.text-right [:b "Node Id:"]]
       [:div.col-sm-2
-        [:input.form-control.input-sm.text-left {:type "text" :style {:background-color "#FFFFCC"} :placeholder "node_id"
+        [:input.form-control.input-sm.text-left {:type "text" :style {:background-color "#FFFFCC"} :placeholder "---" :read-only true
           :defaultValue (@TXT_NODE_ELEM :node_id)}]]]
     [:button {:type "button" :title "Cancel" :class "close" :on-click #(close-modal)
               :style {:margin-bottom "35px" :margin-top "-15px"}} "Close"]])

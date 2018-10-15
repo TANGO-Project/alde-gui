@@ -25,9 +25,9 @@
 ;; Cluster's nodes graph
 (def GRAPH-OPTIONS-APPS (js-obj  "interaction"    (js-obj "hover" true
                                                           "navigationButtons" true)
-                                  "nodes"         (js-obj "font"  (js-obj "bold"          (js-obj "color" "#0077aa")
-                                                                          "strokeWidth"   2
-                                                                          "strokeColor"   "#FFFFCC"))
+                                  "nodes"         (js-obj "font"  (js-obj "color" "#ffffff"
+                                                                          "size"  18)
+                                                          "size"  25)
                                   "physics"       (js-obj "enabled"     true
                                                           "barnesHut"   (js-obj "gravitationalConstant"   -2000
                                                                                 "centralGravity"          0.5))
@@ -214,19 +214,37 @@
                                           "label"   (str "<b>" (x :name) "</b>")
                                           "title"   (str "<div><b>" (x :name) "</b> <i>(application)</i></div>")
                                           "image"   "images/apps_mini.png"
-                                          "shape"   "image"))
+                                          "color"   (js-obj "background" "white"
+                                                            "border" "black"
+                                                            "highlight" (js-obj "background" "#F3F781"
+                                                                                "border" "black")
+                                                            "hover" (js-obj "background" "#ffffcc"
+                                                                            "border" "black"))
+                                          "shape"   "circularImage"))
                 "exec"  (.push n (js-obj  "id"      (str (x :id))
                                           "font"    (js-obj "multi" true)
                                           "label"   (str "<b>" (x :name) "</b>")
                                           "title"   (str "<div>Executable: <b>" (x :name) "</b></div>")
                                           "image"   "images/executable.png"
-                                          "shape"   "image"))
+                                          "color"   (js-obj "background" "white"
+                                                            "border" "black"
+                                                            "highlight" (js-obj "background" "#F3F781"
+                                                                                "border" "black")
+                                                            "hover" (js-obj "background" "#ffffcc"
+                                                                            "border" "black"))
+                                          "shape"   "circularImage"))
                 "conf"  (.push n (js-obj  "id"      (str (x :id))
                                           "font"    (js-obj "multi" true)
                                           "label"   (str "<b>" (x :name) "</b>")
                                           "title"   (str "<div>Execution configuration: <b>" (x :name) "</b></div>")
                                           "image"   "images/configuration.png"
-                                          "shape"   "image")))
+                                          "color"   (js-obj "background" "white"
+                                                            "border" "black"
+                                                            "highlight" (js-obj "background" "#F3F781"
+                                                                                "border" "black")
+                                                            "hover" (js-obj "background" "#ffffcc"
+                                                                            "border" "black"))
+                                          "shape"   "circularImage")))
                 (.push n (js-obj  "id"      (str (x :id))
                                   "label"   (str (x :name) " (default)")
                                   "title"   (str "<div><h6>ID: " (str (x :id)) "</h6><h6>DEFAULT: " (x :name) "</h6></div>")
@@ -252,12 +270,12 @@
         (.push n (js-obj  "from"    (str (x :from))
                           "to"      (x :to)
                           "dashes"  false
-                          "color"   "#000000"))
+                          "color"   "#336BFF"))
         (.push n (js-obj  "from"    (str (x :from))
                           "to"      (x :to)
                           "dashes"  true
                           "title"   "no executable found!"
-                          "color"   "#9CA8BF"))))
+                          "color"   "#FF5733"))))
     n))
 
 

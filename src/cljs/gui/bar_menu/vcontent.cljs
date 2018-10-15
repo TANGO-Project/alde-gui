@@ -18,12 +18,12 @@
       [:ul.navbar-nav.navbar-sidenav {:id "accordion"}
         [:li.nav-item {:data-toggle "tooltip" :data-placement "right" :title "Dashboard"}
           [:a.nav-link {:href "#/home"}
-            [:i.fa.fa-fw.fa-dashboard {:style {:color "#ffff99"}}]
+            [:i.fa.fa-fw.fa-home {:style {:color "#ffff99"}}]
             [:span.nav-link-text "Dashboard"]]]
 
         [:li.nav-item {:data-toggle "tooltip" :data-placement "right" :title "Testbeds and Nodes"}
           [:a.nav-link {:href "#/testbeds"}
-            [:i.fa.fa-fw.fa-tasks {:style {:color "#ccff99"}}]
+            [:i.fa.fa-fw.fa-server {:style {:color "#ccff99"}}]
             [:span.nav-link-text "Testbeds"]]]
 
         [:li.nav-item {:data-toggle "tooltip" :data-placement "right" :title "Applications"}
@@ -34,14 +34,10 @@
         [:li.nav-item {:data-toggle "tooltip" :data-placement "right" :title "Configuration"}
           [:a.nav-link {:href "#/config"}
             [:i.fa.fa-fw.fa-wrench {:style {:color "#cc99ff"}}]
-            [:span.nav-link-text "Configuration"]]]
-
-        [:li.nav-item {:data-toggle "tooltip" :data-placement "right" :title "Monitoring"}
-          [:a.nav-link {:href "#/monitoring"}
-            [:i.fa.fa-fw.fa-eye {:style {:color "#F1948A"}}]
-            [:span.nav-link-text "Monitoring"]]]]
+            [:span.nav-link-text "Configuration"]]]]
 
       ;; Messages
+      (comment
       [:ul.navbar-nav {:style {:margin-left "250px" }}
         [:li.nav-item.dropdown
           [:a.nav-link.dropdown-toggle.mr-lg-2 {:id "messagesDropdown" :href "#"
@@ -99,4 +95,6 @@
                 "This is an automated server response message ... the sides!"]]
 
             [:div.dropdown-divider]
-            [:a.dropdown-item.small {:href "#"} "View all messages"]]]]]])
+            [:a.dropdown-item.small {:href "#"} "View all messages"]]]]
+        )
+]])

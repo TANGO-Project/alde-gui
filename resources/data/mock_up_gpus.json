@@ -1,0 +1,119 @@
+{
+  "num_results": 8,
+  "objects": [
+    {
+      "id": 361857,
+      "model_name": "K20 GPU Accelerator",
+      "node": {
+        "disabled": false,
+        "id": 2,
+        "information_retrieved": true,
+        "name": "ns50",
+        "state": "IDLE",
+        "testbed_id": 1
+      },
+      "node_id": 2,
+      "vendor_id": "Nvidia"
+    },
+    {
+      "id": 361858,
+      "model_name": "K20 GPU Accelerator",
+      "node": {
+        "disabled": false,
+        "id": 2,
+        "information_retrieved": true,
+        "name": "ns50",
+        "state": "IDLE",
+        "testbed_id": 1
+      },
+      "node_id": 2,
+      "vendor_id": "Nvidia"
+    },
+    {
+      "id": 361859,
+      "model_name": "K20 GPU Accelerator",
+      "node": {
+        "disabled": false,
+        "id": 1,
+        "information_retrieved": true,
+        "name": "ns51",
+        "state": "IDLE",
+        "testbed_id": 1
+      },
+      "node_id": 1,
+      "vendor_id": "Nvidia"
+    },
+    {
+      "id": 361860,
+      "model_name": "K20 GPU Accelerator",
+      "node": {
+        "disabled": false,
+        "id": 1,
+        "information_retrieved": true,
+        "name": "ns51",
+        "state": "IDLE",
+        "testbed_id": 1
+      },
+      "node_id": 1,
+      "vendor_id": "Nvidia"
+    },
+    {
+      "id": 361861,
+      "model_name": "K20 GPU Accelerator",
+      "node": {
+        "disabled": false,
+        "id": 14,
+        "information_retrieved": true,
+        "name": "ns50",
+        "state": "IDLE",
+        "testbed_id": 2
+      },
+      "node_id": 14,
+      "vendor_id": "Nvidia"
+    },
+    {
+      "id": 361862,
+      "model_name": "K20 GPU Accelerator",
+      "node": {
+        "disabled": false,
+        "id": 14,
+        "information_retrieved": true,
+        "name": "ns50",
+        "state": "IDLE",
+        "testbed_id": 2
+      },
+      "node_id": 14,
+      "vendor_id": "Nvidia"
+    },
+    {
+      "id": 361863,
+      "model_name": "K20 GPU Accelerator",
+      "node": {
+        "disabled": false,
+        "id": 9,
+        "information_retrieved": true,
+        "name": "ns51",
+        "state": "IDLE",
+        "testbed_id": 2
+      },
+      "node_id": 9,
+      "vendor_id": "Nvidia"
+    },
+    {
+      "id": 361864,
+      "model_name": "K20 GPU Accelerator",
+      "node": {
+        "disabled": false,
+        "id": 9,
+        "information_retrieved": true,
+        "name": "ns51",
+        "state": "IDLE",
+        "testbed_id": 2
+      },
+      "node_id": 9,
+      "vendor_id": "Nvidia"
+    }
+  ],
+  "page": 1,
+  "total_pages": 1
+}

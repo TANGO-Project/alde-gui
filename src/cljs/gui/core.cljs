@@ -12,7 +12,9 @@
             [gui.events :as events]
             [gui.routes :as routes]
             [gui.views :as views]
-            [utils.logs :as logs]))
+            [gui.globals :as VARS]
+            [utils.logs :as logs]
+            [restapi.testbeds :as restapi]))
 
 
 ;; DEBUG?
@@ -46,3 +48,20 @@
   (dev-setup)
   (mount-root)
   (logs/info "gui.core ... ok"))
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; INIT
+(do
+  (logs/info "- INIT")
+  (logs/info " Getting testbeds from ALDE ...")
+
+  (js/setTimeout #(do (logs/info "DELAYED TASK (1): ") (restapi/get-testbeds VARS/update-testbeds)) 1000)
+  (js/setTimeout #(do (logs/info "DELAYED TASK (2): ") (restapi/get-nodes VARS/update-nodes)) 1000)
+  (js/setTimeout #(do (logs/info "DELAYED TASK (3): ") (restapi/get-apps VARS/update-apps)) 1000)
+
+  (restapi/execute-periodic-task #(do (logs/info "PERIODIC TASK (1): ") (restapi/get-testbeds VARS/update-testbeds)) 90)
+  (restapi/execute-periodic-task #(do (logs/info "PERIODIC TASK (2): ") (restapi/get-nodes VARS/update-nodes)) 95)
+  (restapi/execute-periodic-task #(do (logs/info "PERIODIC TASK (3): ") (restapi/get-apps VARS/update-apps)) 30)
+
+)

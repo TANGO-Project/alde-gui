@@ -11,11 +11,13 @@
 ;; DB with default values
 (def default-db
   {:name                            "re-frame"
+   ;:active-panel                    :home-panel
    :is-rest-api-online?             false
    :external-apis                   {}
    :clusters                        {}
    :selected-cluster                {}
    :selected-cluster-node           {}
+   :selected-node-name              nil
    :selected-cluster-name           "-"
    :selected-app-id                 "-"
    :selected-app                    {}
@@ -23,4 +25,7 @@
    :selected-option-panel-clusters  :view-clusters
    :loading                         false
    :executions                      [:tr]
-   :testbeds                        [:li.list-group-item "-empty-"]})
+   :testbeds                        [:li.list-group-item "-empty-"]
+   :total-testbeds                  0
+   :total-nodes                     0
+   :total-apps                      0})

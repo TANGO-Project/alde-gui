@@ -1,0 +1,3182 @@
+{
+  "num_results": 26,
+  "objects": [
+    {
+      "application": {
+        "application_type": null,
+        "deadline": null,
+        "id": 2,
+        "max_energy": null,
+        "max_energy_units": null,
+        "max_power": null,
+        "max_power_units": null,
+        "name": "Matmul",
+        "priority": null,
+        "scaling_lower_bound": null,
+        "scaling_upper_bound": null
+      },
+      "application_id": 2,
+      "command": "/apps/application/master/Matmul 2 1024 12.34 /home_nfs/home_ejarquej/pm_test/cpu_gpu_run_data",
+      "compss_config": "--worker_in_master_cpus=12 --worker_in_master_memory=24000 --worker_working_dir=/home_nfs/home_ejarquej --lang=c --monitoring=1000 -d",
+      "exec_time": 10,
+      "executable": {
+        "application_id": null,
+        "compilation_script": "compss_build_app Matmul",
+        "compilation_type": "SINGULARIY:PM",
+        "executable_file": null,
+        "id": 3,
+        "singularity_app_folder": "/apps/matmul_files_gpu/",
+        "singularity_image_file": "/home_nfs/home_ejarquej/matmul-cuda8-y3.img",
+        "source_code_file": "/home_nfs/home_ejarquej/matmul.zip/",
+        "status": "COMPILED"
+      },
+      "executable_id": 3,
+      "execution_type": "SINGULARITY:PM",
+      "executions": [
+        {
+          "execution_configuration_id": 1,
+          "execution_type": "SINGULARITY:PM",
+          "id": 7,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 6910,
+          "status": "FAILED"
+        },
+        {
+          "execution_configuration_id": 1,
+          "execution_type": "SINGULARITY:PM",
+          "id": 9,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 6911,
+          "status": "FAILED"
+        },
+        {
+          "execution_configuration_id": 1,
+          "execution_type": "SINGULARITY:PM",
+          "id": 17,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 6919,
+          "status": "FAILED"
+        },
+        {
+          "execution_configuration_id": 1,
+          "execution_type": "SINGULARITY:PM",
+          "id": 198,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 7085,
+          "status": "FAILED"
+        }
+      ],
+      "id": 1,
+      "num_cpus_per_node": 12,
+      "num_gpus_per_node": 2,
+      "num_nodes": 1,
+      "profile_file": "/home_nfs/home_garciad/alde/profiles/8e8d7ffc-4016-42d5-bbc4-7bc36deaba05.profile",
+      "srun_config": null,
+      "testbed": {
+        "category": "SLURM",
+        "endpoint": "",
+        "extra_config": {
+          "enqueue_compss_sc_cfg": "nova.cfg",
+          "enqueue_env_file": "/home_nfs/home_ejarquej/installations/2.2.6/COMPSs/compssenv"
+        },
+        "id": 1,
+        "name": "nova2",
+        "on_line": true,
+        "package_formats": [
+          "SINGULARITY"
+        ],
+        "protocol": "LOCAL"
+      },
+      "testbed_id": 1
+    },
+    {
+      "application": {
+        "application_type": null,
+        "deadline": null,
+        "id": 2,
+        "max_energy": null,
+        "max_energy_units": null,
+        "max_power": null,
+        "max_power_units": null,
+        "name": "Matmul",
+        "priority": null,
+        "scaling_lower_bound": null,
+        "scaling_upper_bound": null
+      },
+      "application_id": 2,
+      "command": "/apps/application/master/Matmul 2 1024 12.34 /fslustre/tango/matmul/data/run/cpu_gpu",
+      "compss_config": "--worker_in_master_cpus=12 --worker_in_master_memory=24000 --worker_working_dir=/fslustre/tango/matmul/working_dir/ --master_working_dir=/fslustre/tango/matmul/log_dir/ --base_log_dir=/fslustre/tango/matmul/log_dir/.COMPSs --elasticity=1 --enable_external_adaptation=true --monitoring=1000 -d",
+      "exec_time": 10,
+      "executable": {
+        "application_id": null,
+        "compilation_script": "compss_build_app Matmul",
+        "compilation_type": "SINGULARIY:PM",
+        "executable_file": null,
+        "id": 3,
+        "singularity_app_folder": "/apps/matmul_files_gpu/",
+        "singularity_image_file": "/home_nfs/home_ejarquej/matmul-cuda8-y3.img",
+        "source_code_file": "/home_nfs/home_ejarquej/matmul.zip/",
+        "status": "COMPILED"
+      },
+      "executable_id": 3,
+      "execution_type": "SINGULARITY:PM",
+      "executions": [
+        {
+          "execution_configuration_id": 2,
+          "execution_type": "SINGULARITY:PM",
+          "id": 11,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 6913,
+          "status": "FAILED"
+        },
+        {
+          "execution_configuration_id": 2,
+          "execution_type": "SINGULARITY:PM",
+          "id": 13,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 6914,
+          "status": "FAILED"
+        },
+        {
+          "execution_configuration_id": 2,
+          "execution_type": "SINGULARITY:PM",
+          "id": 15,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 6915,
+          "status": "FAILED"
+        },
+        {
+          "execution_configuration_id": 2,
+          "execution_type": "SINGULARITY:PM",
+          "id": 19,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 6921,
+          "status": "FAILED"
+        },
+        {
+          "execution_configuration_id": 2,
+          "execution_type": "SINGULARITY:PM",
+          "id": 21,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 6923,
+          "status": "FAILED"
+        },
+        {
+          "execution_configuration_id": 2,
+          "execution_type": "SINGULARITY:PM",
+          "id": 196,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 7084,
+          "status": "FAILED"
+        }
+      ],
+      "id": 2,
+      "num_cpus_per_node": 12,
+      "num_gpus_per_node": 2,
+      "num_nodes": 1,
+      "profile_file": "/home_nfs/home_garciad/alde/profiles/981e2c89-6c38-4868-863d-e019c2867ccb.profile",
+      "srun_config": null,
+      "testbed": {
+        "category": "SLURM",
+        "endpoint": "",
+        "extra_config": {
+          "enqueue_compss_sc_cfg": "nova.cfg",
+          "enqueue_env_file": "/home_nfs/home_ejarquej/installations/2.2.6/COMPSs/compssenv"
+        },
+        "id": 1,
+        "name": "nova2",
+        "on_line": true,
+        "package_formats": [
+          "SINGULARITY"
+        ],
+        "protocol": "LOCAL"
+      },
+      "testbed_id": 1
+    },
+    {
+      "application": {
+        "application_type": null,
+        "deadline": null,
+        "id": 2,
+        "max_energy": null,
+        "max_energy_units": null,
+        "max_power": null,
+        "max_power_units": null,
+        "name": "Matmul",
+        "priority": null,
+        "scaling_lower_bound": null,
+        "scaling_upper_bound": null
+      },
+      "application_id": 2,
+      "command": "/apps/application/master/Matmul 2 1024 12.34 /fslustre/tango/matmul/data/run/cpu_gpu",
+      "compss_config": "--worker_in_master_cpus=12 --worker_in_master_memory=24000 --worker_working_dir=/fslustre/tango/matmul/working_dir/ --master_working_dir=/fslustre/tango/matmul/log_dir/ --base_log_dir=/fslustre/tango/matmul/log_dir/.COMPSs --elasticity=1 --enable_external_adaptation=true --monitoring=1000 -d --container_opts=\"-B/fslustre:/fslustre\"",
+      "exec_time": 10,
+      "executable": {
+        "application_id": null,
+        "compilation_script": "compss_build_app Matmul",
+        "compilation_type": "SINGULARIY:PM",
+        "executable_file": null,
+        "id": 3,
+        "singularity_app_folder": "/apps/matmul_files_gpu/",
+        "singularity_image_file": "/home_nfs/home_ejarquej/matmul-cuda8-y3.img",
+        "source_code_file": "/home_nfs/home_ejarquej/matmul.zip/",
+        "status": "COMPILED"
+      },
+      "executable_id": 3,
+      "execution_type": "SINGULARITY:PM",
+      "executions": [
+        {
+          "execution_configuration_id": 3,
+          "execution_type": "SINGULARITY:PM",
+          "id": 23,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 6926,
+          "status": "FAILED"
+        }
+      ],
+      "id": 3,
+      "num_cpus_per_node": 12,
+      "num_gpus_per_node": 2,
+      "num_nodes": 1,
+      "profile_file": "/home_nfs/home_garciad/alde/profiles/9ac4d701-0334-4f17-a9e8-89fc7f8625c2.profile",
+      "srun_config": null,
+      "testbed": {
+        "category": "SLURM",
+        "endpoint": "",
+        "extra_config": {
+          "enqueue_compss_sc_cfg": "nova.cfg",
+          "enqueue_env_file": "/home_nfs/home_ejarquej/installations/2.2.6/COMPSs/compssenv"
+        },
+        "id": 1,
+        "name": "nova2",
+        "on_line": true,
+        "package_formats": [
+          "SINGULARITY"
+        ],
+        "protocol": "LOCAL"
+      },
+      "testbed_id": 1
+    },
+    {
+      "application": {
+        "application_type": null,
+        "deadline": null,
+        "id": 2,
+        "max_energy": null,
+        "max_energy_units": null,
+        "max_power": null,
+        "max_power_units": null,
+        "name": "Matmul",
+        "priority": null,
+        "scaling_lower_bound": null,
+        "scaling_upper_bound": null
+      },
+      "application_id": 2,
+      "command": "/apps/application/master/Matmul 2 1024 12.34 /fslustre/tango/matmul/data/run/cpu_gpu",
+      "compss_config": "--worker_in_master_cpus=12 --worker_in_master_memory=24000 --worker_working_dir=/fslustre/tango/matmul/working_dir/ --master_working_dir=/fslustre/tango/matmul/log_dir/ --base_log_dir=/fslustre/tango/matmul/log_dir/.COMPSs --elasticity=1 --enable_external_adaptation=true --monitoring=1000 -d --container_opts=\"-B /fslustre:/fslustre\"",
+      "exec_time": 10,
+      "executable": {
+        "application_id": null,
+        "compilation_script": "compss_build_app Matmul",
+        "compilation_type": "SINGULARIY:PM",
+        "executable_file": null,
+        "id": 3,
+        "singularity_app_folder": "/apps/matmul_files_gpu/",
+        "singularity_image_file": "/home_nfs/home_ejarquej/matmul-cuda8-y3.img",
+        "source_code_file": "/home_nfs/home_ejarquej/matmul.zip/",
+        "status": "COMPILED"
+      },
+      "executable_id": 3,
+      "execution_type": "SINGULARITY:PM",
+      "executions": [
+        {
+          "execution_configuration_id": 4,
+          "execution_type": "SINGULARITY:PM",
+          "id": 25,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 6927,
+          "status": "FAILED"
+        },
+        {
+          "execution_configuration_id": 4,
+          "execution_type": "SINGULARITY:PM",
+          "id": 75,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 6957,
+          "status": "FAILED"
+        },
+        {
+          "execution_configuration_id": 4,
+          "execution_type": "SINGULARITY:PM",
+          "id": 79,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 6959,
+          "status": "FAILED"
+        },
+        {
+          "execution_configuration_id": 4,
+          "execution_type": "SINGULARITY:PM",
+          "id": 97,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 6996,
+          "status": "FAILED"
+        }
+      ],
+      "id": 4,
+      "num_cpus_per_node": 12,
+      "num_gpus_per_node": 2,
+      "num_nodes": 1,
+      "profile_file": "/home_nfs/home_garciad/alde/profiles/18036530-492f-4e3d-b232-3a05355c2f2f.profile",
+      "srun_config": null,
+      "testbed": {
+        "category": "SLURM",
+        "endpoint": "",
+        "extra_config": {
+          "enqueue_compss_sc_cfg": "nova.cfg",
+          "enqueue_env_file": "/home_nfs/home_ejarquej/installations/2.2.6/COMPSs/compssenv"
+        },
+        "id": 1,
+        "name": "nova2",
+        "on_line": true,
+        "package_formats": [
+          "SINGULARITY"
+        ],
+        "protocol": "LOCAL"
+      },
+      "testbed_id": 1
+    },
+    {
+      "application": {
+        "application_type": null,
+        "deadline": null,
+        "id": 2,
+        "max_energy": null,
+        "max_energy_units": null,
+        "max_power": null,
+        "max_power_units": null,
+        "name": "Matmul",
+        "priority": null,
+        "scaling_lower_bound": null,
+        "scaling_upper_bound": null
+      },
+      "application_id": 2,
+      "command": "/apps/application/master/Matmul 2 1024 12.34 /fslustre/tango/matmul/data/run/cpu_gpu",
+      "compss_config": "--worker_in_master_cpus=12 --worker_in_master_memory=24000 --worker_working_dir=/fslustre/tango/matmul/working_dir/ --master_working_dir=/fslustre/tango/matmul/log_dir/ --base_log_dir=/fslustre/tango/matmul/log_dir/.COMPSs --elasticity=1 --enable_external_adaptation=true --monitoring=1000 -d ",
+      "exec_time": 10,
+      "executable": {
+        "application_id": null,
+        "compilation_script": "compss_build_app Matmul",
+        "compilation_type": "SINGULARIY:PM",
+        "executable_file": null,
+        "id": 3,
+        "singularity_app_folder": "/apps/matmul_files_gpu/",
+        "singularity_image_file": "/home_nfs/home_ejarquej/matmul-cuda8-y3.img",
+        "source_code_file": "/home_nfs/home_ejarquej/matmul.zip/",
+        "status": "COMPILED"
+      },
+      "executable_id": 3,
+      "execution_type": "SINGULARITY:PM",
+      "executions": [
+        {
+          "execution_configuration_id": 5,
+          "execution_type": "SINGULARITY:PM",
+          "id": 27,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 6928,
+          "status": "FAILED"
+        },
+        {
+          "execution_configuration_id": 5,
+          "execution_type": "SINGULARITY:PM",
+          "id": 29,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 6929,
+          "status": "FAILED"
+        },
+        {
+          "execution_configuration_id": 5,
+          "execution_type": "SINGULARITY:PM",
+          "id": 77,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 6958,
+          "status": "FAILED"
+        }
+      ],
+      "id": 5,
+      "num_cpus_per_node": 12,
+      "num_gpus_per_node": 2,
+      "num_nodes": 1,
+      "profile_file": "/home_nfs/home_garciad/alde/profiles/d2c5d6d7-03e8-4fd0-98d1-65e514dc1a5c.profile",
+      "srun_config": null,
+      "testbed": {
+        "category": "SLURM",
+        "endpoint": "",
+        "extra_config": {
+          "enqueue_compss_sc_cfg": "nova.cfg",
+          "enqueue_env_file": "/home_nfs/home_ejarquej/installations/2.2.6/COMPSs/compssenv"
+        },
+        "id": 1,
+        "name": "nova2",
+        "on_line": true,
+        "package_formats": [
+          "SINGULARITY"
+        ],
+        "protocol": "LOCAL"
+      },
+      "testbed_id": 1
+    },
+    {
+      "application": {
+        "application_type": null,
+        "deadline": null,
+        "id": 2,
+        "max_energy": null,
+        "max_energy_units": null,
+        "max_power": null,
+        "max_power_units": null,
+        "name": "Matmul",
+        "priority": null,
+        "scaling_lower_bound": null,
+        "scaling_upper_bound": null
+      },
+      "application_id": 2,
+      "command": "/apps/application/master/Matmul 2 1024 12.34 /fslustre/tango/matmul/data/run/cpu_gpu",
+      "compss_config": "--worker_in_master_cpus=12 --worker_in_master_memory=24000 --worker_working_dir=/fslustre/tango/matmul/working_dir/ --master_working_dir=/fslustre/tango/matmul/log_dir/ --base_log_dir=/fslustre/tango/matmul/log_dir/ --elasticity=1 --enable_external_adaptation=true --monitoring=1000 -d ",
+      "exec_time": 10,
+      "executable": {
+        "application_id": null,
+        "compilation_script": "compss_build_app Matmul",
+        "compilation_type": "SINGULARIY:PM",
+        "executable_file": null,
+        "id": 3,
+        "singularity_app_folder": "/apps/matmul_files_gpu/",
+        "singularity_image_file": "/home_nfs/home_ejarquej/matmul-cuda8-y3.img",
+        "source_code_file": "/home_nfs/home_ejarquej/matmul.zip/",
+        "status": "COMPILED"
+      },
+      "executable_id": 3,
+      "execution_type": "SINGULARITY:PM",
+      "executions": [
+        {
+          "execution_configuration_id": 6,
+          "execution_type": "SINGULARITY:PM",
+          "id": 31,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 6930,
+          "status": "FAILED"
+        },
+        {
+          "execution_configuration_id": 6,
+          "execution_type": "SINGULARITY:PM",
+          "id": 33,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 6931,
+          "status": "FAILED"
+        },
+        {
+          "execution_configuration_id": 6,
+          "execution_type": "SINGULARITY:PM",
+          "id": 35,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 6932,
+          "status": "FAILED"
+        },
+        {
+          "execution_configuration_id": 6,
+          "execution_type": "SINGULARITY:PM",
+          "id": 37,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 6933,
+          "status": "FAILED"
+        },
+        {
+          "execution_configuration_id": 6,
+          "execution_type": "SINGULARITY:PM",
+          "id": 39,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 6934,
+          "status": "FAILED"
+        },
+        {
+          "execution_configuration_id": 6,
+          "execution_type": "SINGULARITY:PM",
+          "id": 41,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 6935,
+          "status": "FAILED"
+        },
+        {
+          "execution_configuration_id": 6,
+          "execution_type": "SINGULARITY:PM",
+          "id": 43,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 6936,
+          "status": "FAILED"
+        },
+        {
+          "execution_configuration_id": 6,
+          "execution_type": "SINGULARITY:PM",
+          "id": 204,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 7088,
+          "status": "FAILED"
+        },
+        {
+          "execution_configuration_id": 6,
+          "execution_type": "SINGULARITY:PM",
+          "id": 206,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 7089,
+          "status": "FAILED"
+        }
+      ],
+      "id": 6,
+      "num_cpus_per_node": 12,
+      "num_gpus_per_node": 2,
+      "num_nodes": 1,
+      "profile_file": "/home_nfs/home_garciad/alde/profiles/b4bc2b2c-7b4c-46e6-bbd6-b787b955c2c4.profile",
+      "srun_config": null,
+      "testbed": {
+        "category": "SLURM",
+        "endpoint": "",
+        "extra_config": {
+          "enqueue_compss_sc_cfg": "nova.cfg",
+          "enqueue_env_file": "/home_nfs/home_ejarquej/installations/2.2.6/COMPSs/compssenv"
+        },
+        "id": 1,
+        "name": "nova2",
+        "on_line": true,
+        "package_formats": [
+          "SINGULARITY"
+        ],
+        "protocol": "LOCAL"
+      },
+      "testbed_id": 1
+    },
+    {
+      "application": {
+        "application_type": null,
+        "deadline": null,
+        "id": 2,
+        "max_energy": null,
+        "max_energy_units": null,
+        "max_power": null,
+        "max_power_units": null,
+        "name": "Matmul",
+        "priority": null,
+        "scaling_lower_bound": null,
+        "scaling_upper_bound": null
+      },
+      "application_id": 2,
+      "command": "/apps/application/master/Matmul 2 1024 12.34 /fslustre/tango/matmul/data/run/cpu_gpu",
+      "compss_config": "--worker_in_master_cpus=12 --worker_in_master_memory=24000 --worker_working_dir=/fslustre/tango/matmul/working_dir/ --master_working_dir=/fslustre/tango/matmul/log_dir/ --base_log_dir=/fslustre/tango/matmul/log_dir/ --elasticity=1 --enable_external_adaptation=true --monitoring=1000 -d --lang=c",
+      "exec_time": 10,
+      "executable": {
+        "application_id": null,
+        "compilation_script": "compss_build_app Matmul",
+        "compilation_type": "SINGULARIY:PM",
+        "executable_file": null,
+        "id": 3,
+        "singularity_app_folder": "/apps/matmul_files_gpu/",
+        "singularity_image_file": "/home_nfs/home_ejarquej/matmul-cuda8-y3.img",
+        "source_code_file": "/home_nfs/home_ejarquej/matmul.zip/",
+        "status": "COMPILED"
+      },
+      "executable_id": 3,
+      "execution_type": "SINGULARITY:PM",
+      "executions": [
+        {
+          "execution_configuration_id": 7,
+          "execution_type": "SINGULARITY:PM",
+          "id": 45,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 6937,
+          "status": "FAILED"
+        },
+        {
+          "execution_configuration_id": 7,
+          "execution_type": "SINGULARITY:PM",
+          "id": 47,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 6938,
+          "status": "FAILED"
+        },
+        {
+          "execution_configuration_id": 7,
+          "execution_type": "SINGULARITY:PM",
+          "id": 49,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 6939,
+          "status": "FAILED"
+        },
+        {
+          "execution_configuration_id": 7,
+          "execution_type": "SINGULARITY:PM",
+          "id": 51,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 6940,
+          "status": "FAILED"
+        },
+        {
+          "execution_configuration_id": 7,
+          "execution_type": "SINGULARITY:PM",
+          "id": 53,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 6941,
+          "status": "FAILED"
+        },
+        {
+          "execution_configuration_id": 7,
+          "execution_type": "SINGULARITY:PM",
+          "id": 55,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 6942,
+          "status": "FAILED"
+        },
+        {
+          "execution_configuration_id": 7,
+          "execution_type": "SINGULARITY:PM",
+          "id": 57,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 6943,
+          "status": "FAILED"
+        },
+        {
+          "execution_configuration_id": 7,
+          "execution_type": "SINGULARITY:PM",
+          "id": 59,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 6944,
+          "status": "FAILED"
+        },
+        {
+          "execution_configuration_id": 7,
+          "execution_type": "SINGULARITY:PM",
+          "id": 208,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 7090,
+          "status": "FAILED"
+        },
+        {
+          "execution_configuration_id": 7,
+          "execution_type": "SINGULARITY:PM",
+          "id": 222,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 7097,
+          "status": "FAILED"
+        }
+      ],
+      "id": 7,
+      "num_cpus_per_node": 12,
+      "num_gpus_per_node": 2,
+      "num_nodes": 1,
+      "profile_file": "/home_nfs/home_garciad/alde/profiles/90915ae7-ff9e-42a8-b5f6-fdec382a7526.profile",
+      "srun_config": null,
+      "testbed": {
+        "category": "SLURM",
+        "endpoint": "",
+        "extra_config": {
+          "enqueue_compss_sc_cfg": "nova.cfg",
+          "enqueue_env_file": "/home_nfs/home_ejarquej/installations/2.2.6/COMPSs/compssenv"
+        },
+        "id": 1,
+        "name": "nova2",
+        "on_line": true,
+        "package_formats": [
+          "SINGULARITY"
+        ],
+        "protocol": "LOCAL"
+      },
+      "testbed_id": 1
+    },
+    {
+      "application": {
+        "application_type": null,
+        "deadline": null,
+        "id": 2,
+        "max_energy": null,
+        "max_energy_units": null,
+        "max_power": null,
+        "max_power_units": null,
+        "name": "Matmul",
+        "priority": null,
+        "scaling_lower_bound": null,
+        "scaling_upper_bound": null
+      },
+      "application_id": 2,
+      "command": "/apps/application/master/Matmul 2 1024 12.34 /fslustre/tango/matmul/data/run/cpu_gpu",
+      "compss_config": "--worker_in_master_cpus=12 --worker_in_master_memory=24000 --worker_working_dir=/fslustre/tango/matmul/working_dir/ --master_working_dir=/fslustre/tango/matmul/log_dir/ --base_log_dir=/fslustre/tango/matmul/log_dir/ --elasticity=1 --enable_external_adaptation=true --cpu_affinity=\"0-11\" --monitoring=1000 -d --lang=c",
+      "exec_time": 10,
+      "executable": {
+        "application_id": null,
+        "compilation_script": "compss_build_app Matmul",
+        "compilation_type": "SINGULARIY:PM",
+        "executable_file": null,
+        "id": 3,
+        "singularity_app_folder": "/apps/matmul_files_gpu/",
+        "singularity_image_file": "/home_nfs/home_ejarquej/matmul-cuda8-y3.img",
+        "source_code_file": "/home_nfs/home_ejarquej/matmul.zip/",
+        "status": "COMPILED"
+      },
+      "executable_id": 3,
+      "execution_type": "SINGULARITY:PM",
+      "executions": [
+        {
+          "execution_configuration_id": 8,
+          "execution_type": "SINGULARITY:PM",
+          "id": 61,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 6945,
+          "status": "UNKNOWN"
+        },
+        {
+          "execution_configuration_id": 8,
+          "execution_type": "SINGULARITY:PM",
+          "id": 63,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 6946,
+          "status": "UNKNOWN"
+        },
+        {
+          "execution_configuration_id": 8,
+          "execution_type": "SINGULARITY:PM",
+          "id": 65,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 6947,
+          "status": "UNKNOWN"
+        },
+        {
+          "execution_configuration_id": 8,
+          "execution_type": "SINGULARITY:PM",
+          "id": 67,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 6948,
+          "status": "COMPLETED"
+        },
+        {
+          "execution_configuration_id": 8,
+          "execution_type": "SINGULARITY:PM",
+          "id": 69,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 6949,
+          "status": "COMPLETED"
+        },
+        {
+          "execution_configuration_id": 8,
+          "execution_type": "SINGULARITY:PM",
+          "id": 71,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 6950,
+          "status": "COMPLETED"
+        },
+        {
+          "execution_configuration_id": 8,
+          "execution_type": "SINGULARITY:PM",
+          "id": 73,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 6953,
+          "status": "COMPLETED"
+        },
+        {
+          "execution_configuration_id": 8,
+          "execution_type": "SINGULARITY:PM",
+          "id": 127,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 7035,
+          "status": "COMPLETED"
+        },
+        {
+          "execution_configuration_id": 8,
+          "execution_type": "SINGULARITY:PM",
+          "id": 142,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 7050,
+          "status": "COMPLETED"
+        },
+        {
+          "execution_configuration_id": 8,
+          "execution_type": "SINGULARITY:PM",
+          "id": 144,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 7051,
+          "status": "COMPLETED"
+        }
+      ],
+      "id": 8,
+      "num_cpus_per_node": 12,
+      "num_gpus_per_node": 2,
+      "num_nodes": 1,
+      "profile_file": "/home_nfs/home_garciad/alde/profiles/3e69d3b5-8b73-4ed0-bea8-a6a5a70b2b38.profile",
+      "srun_config": null,
+      "testbed": {
+        "category": "SLURM",
+        "endpoint": "",
+        "extra_config": {
+          "enqueue_compss_sc_cfg": "nova.cfg",
+          "enqueue_env_file": "/home_nfs/home_ejarquej/installations/2.2.6/COMPSs/compssenv"
+        },
+        "id": 1,
+        "name": "nova2",
+        "on_line": true,
+        "package_formats": [
+          "SINGULARITY"
+        ],
+        "protocol": "LOCAL"
+      },
+      "testbed_id": 1
+    },
+    {
+      "application": {
+        "application_type": null,
+        "deadline": null,
+        "id": 3,
+        "max_energy": null,
+        "max_energy_units": null,
+        "max_power": null,
+        "max_power_units": null,
+        "name": "cloverleaf_sbatch",
+        "priority": null,
+        "scaling_lower_bound": null,
+        "scaling_upper_bound": null
+      },
+      "application_id": 3,
+      "command": null,
+      "compss_config": null,
+      "exec_time": null,
+      "executable": {
+        "application_id": 3,
+        "compilation_script": "none",
+        "compilation_type": "SLURM:SBATCH",
+        "executable_file": "/home_nfs/home_dineshkr/CloverLeafMpi/sbatch_bare_MPI.sh",
+        "id": 4,
+        "singularity_app_folder": null,
+        "singularity_image_file": null,
+        "source_code_file": null,
+        "status": "COMPILED"
+      },
+      "executable_id": 4,
+      "execution_type": "SLURM:SBATCH",
+      "executions": [
+        {
+          "execution_configuration_id": 9,
+          "execution_type": "SLURM:SBATCH",
+          "id": 81,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 6960,
+          "status": "COMPLETED"
+        },
+        {
+          "execution_configuration_id": 9,
+          "execution_type": "SLURM:SBATCH",
+          "id": 85,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 6962,
+          "status": "COMPLETED"
+        },
+        {
+          "execution_configuration_id": 9,
+          "execution_type": "SLURM:SBATCH",
+          "id": 91,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 6965,
+          "status": "COMPLETED"
+        },
+        {
+          "execution_configuration_id": 9,
+          "execution_type": "SLURM:SBATCH",
+          "id": 93,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 6968,
+          "status": "COMPLETED"
+        },
+        {
+          "execution_configuration_id": 9,
+          "execution_type": "SLURM:SBATCH",
+          "id": 99,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 6997,
+          "status": "COMPLETED"
+        },
+        {
+          "execution_configuration_id": 9,
+          "execution_type": "SLURM:SBATCH",
+          "id": 101,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 6998,
+          "status": "COMPLETED"
+        },
+        {
+          "execution_configuration_id": 9,
+          "execution_type": "SLURM:SBATCH",
+          "id": 103,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 6999,
+          "status": "COMPLETED"
+        },
+        {
+          "execution_configuration_id": 9,
+          "execution_type": "SLURM:SBATCH",
+          "id": 107,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 7015,
+          "status": "COMPLETED"
+        },
+        {
+          "execution_configuration_id": 9,
+          "execution_type": "SLURM:SBATCH",
+          "id": 111,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 7017,
+          "status": "FAILED"
+        },
+        {
+          "execution_configuration_id": 9,
+          "execution_type": "SLURM:SBATCH",
+          "id": 119,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 7026,
+          "status": "COMPLETED"
+        },
+        {
+          "execution_configuration_id": 9,
+          "execution_type": "SLURM:SBATCH",
+          "id": 121,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 7028,
+          "status": "COMPLETED"
+        },
+        {
+          "execution_configuration_id": 9,
+          "execution_type": "SLURM:SBATCH",
+          "id": 131,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 7037,
+          "status": "COMPLETED"
+        },
+        {
+          "execution_configuration_id": 9,
+          "execution_type": "SLURM:SBATCH",
+          "id": 133,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 7038,
+          "status": "COMPLETED"
+        },
+        {
+          "execution_configuration_id": 9,
+          "execution_type": "SLURM:SBATCH",
+          "id": 135,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 7039,
+          "status": "COMPLETED"
+        },
+        {
+          "execution_configuration_id": 9,
+          "execution_type": "SLURM:SBATCH",
+          "id": 202,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 7087,
+          "status": "COMPLETED"
+        }
+      ],
+      "id": 9,
+      "num_cpus_per_node": null,
+      "num_gpus_per_node": null,
+      "num_nodes": null,
+      "profile_file": null,
+      "srun_config": null,
+      "testbed": {
+        "category": "SLURM",
+        "endpoint": "",
+        "extra_config": {
+          "enqueue_compss_sc_cfg": "nova.cfg",
+          "enqueue_env_file": "/home_nfs/home_ejarquej/installations/2.2.6/COMPSs/compssenv"
+        },
+        "id": 1,
+        "name": "nova2",
+        "on_line": true,
+        "package_formats": [
+          "SINGULARITY"
+        ],
+        "protocol": "LOCAL"
+      },
+      "testbed_id": 1
+    },
+    {
+      "application": {
+        "application_type": null,
+        "deadline": null,
+        "id": 3,
+        "max_energy": null,
+        "max_energy_units": null,
+        "max_power": null,
+        "max_power_units": null,
+        "name": "cloverleaf_sbatch",
+        "priority": null,
+        "scaling_lower_bound": null,
+        "scaling_upper_bound": null
+      },
+      "application_id": 3,
+      "command": null,
+      "compss_config": null,
+      "exec_time": null,
+      "executable": {
+        "application_id": 3,
+        "compilation_script": "none",
+        "compilation_type": "SLURM:SBATCH",
+        "executable_file": "/home_nfs/home_dineshkr/CloverLeafMpi/sbatch_bare_Cuda.sh",
+        "id": 5,
+        "singularity_app_folder": null,
+        "singularity_image_file": null,
+        "source_code_file": null,
+        "status": "COMPILED"
+      },
+      "executable_id": 5,
+      "execution_type": "SLURM:SBATCH",
+      "executions": [
+        {
+          "execution_configuration_id": 10,
+          "execution_type": "SLURM:SBATCH",
+          "id": 83,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 6961,
+          "status": "FAILED"
+        },
+        {
+          "execution_configuration_id": 10,
+          "execution_type": "SLURM:SBATCH",
+          "id": 87,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 6963,
+          "status": "FAILED"
+        },
+        {
+          "execution_configuration_id": 10,
+          "execution_type": "SLURM:SBATCH",
+          "id": 89,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 6964,
+          "status": "FAILED"
+        },
+        {
+          "execution_configuration_id": 10,
+          "execution_type": "SLURM:SBATCH",
+          "id": 95,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 6969,
+          "status": "FAILED"
+        },
+        {
+          "execution_configuration_id": 10,
+          "execution_type": "SLURM:SBATCH",
+          "id": 105,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 7003,
+          "status": "FAILED"
+        },
+        {
+          "execution_configuration_id": 10,
+          "execution_type": "SLURM:SBATCH",
+          "id": 109,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 7016,
+          "status": "COMPLETED"
+        },
+        {
+          "execution_configuration_id": 10,
+          "execution_type": "SLURM:SBATCH",
+          "id": 113,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 7018,
+          "status": "COMPLETED"
+        },
+        {
+          "execution_configuration_id": 10,
+          "execution_type": "SLURM:SBATCH",
+          "id": 115,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 7019,
+          "status": "UNKNOWN"
+        },
+        {
+          "execution_configuration_id": 10,
+          "execution_type": "SLURM:SBATCH",
+          "id": 117,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 7020,
+          "status": "UNKNOWN"
+        },
+        {
+          "execution_configuration_id": 10,
+          "execution_type": "SLURM:SBATCH",
+          "id": 123,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 7029,
+          "status": "COMPLETED"
+        },
+        {
+          "execution_configuration_id": 10,
+          "execution_type": "SLURM:SBATCH",
+          "id": 125,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 7033,
+          "status": "COMPLETED"
+        },
+        {
+          "execution_configuration_id": 10,
+          "execution_type": "SLURM:SBATCH",
+          "id": 129,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 7036,
+          "status": "COMPLETED"
+        },
+        {
+          "execution_configuration_id": 10,
+          "execution_type": "SLURM:SBATCH",
+          "id": 224,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 7098,
+          "status": "FAILED"
+        },
+        {
+          "execution_configuration_id": 10,
+          "execution_type": "SLURM:SBATCH",
+          "id": 282,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 7177,
+          "status": "COMPLETED"
+        }
+      ],
+      "id": 10,
+      "num_cpus_per_node": null,
+      "num_gpus_per_node": null,
+      "num_nodes": null,
+      "profile_file": null,
+      "srun_config": null,
+      "testbed": {
+        "category": "SLURM",
+        "endpoint": "",
+        "extra_config": {
+          "enqueue_compss_sc_cfg": "nova.cfg",
+          "enqueue_env_file": "/home_nfs/home_ejarquej/installations/2.2.6/COMPSs/compssenv"
+        },
+        "id": 1,
+        "name": "nova2",
+        "on_line": true,
+        "package_formats": [
+          "SINGULARITY"
+        ],
+        "protocol": "LOCAL"
+      },
+      "testbed_id": 1
+    },
+    {
+      "application": {
+        "application_type": null,
+        "deadline": null,
+        "id": 2,
+        "max_energy": null,
+        "max_energy_units": null,
+        "max_power": null,
+        "max_power_units": null,
+        "name": "Matmul",
+        "priority": null,
+        "scaling_lower_bound": null,
+        "scaling_upper_bound": null
+      },
+      "application_id": 2,
+      "command": "/apps/application/master/Matmul 2 1024 12.34 /fslustre/tango/matmul/data/run/cpu_gpu",
+      "compss_config": "--worker_in_master_cpus=12 --worker_in_master_memory=24000 --worker_working_dir=/fslustre/tango/matmul/working_dir/ --master_working_dir=/fslustre/tango/matmul/log_dir/ --base_log_dir=/fslustre/tango/matmul/log_dir/ --elasticity=2 --enable_external_adaptation=true --cpu_affinity=\"0-11\" --monitoring=1000 -d --lang=c --library_path=/usr/local/cuda-8.0/lib64/",
+      "exec_time": 10,
+      "executable": {
+        "application_id": null,
+        "compilation_script": "compss_build_app Matmul",
+        "compilation_type": "SINGULARIY:PM",
+        "executable_file": null,
+        "id": 3,
+        "singularity_app_folder": "/apps/matmul_files_gpu/",
+        "singularity_image_file": "/home_nfs/home_ejarquej/matmul-cuda8-y3.img",
+        "source_code_file": "/home_nfs/home_ejarquej/matmul.zip/",
+        "status": "COMPILED"
+      },
+      "executable_id": 3,
+      "execution_type": "SINGULARITY:PM",
+      "executions": [
+        {
+          "execution_configuration_id": 11,
+          "execution_type": "SINGULARITY:PM",
+          "id": 146,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 7054,
+          "status": "COMPLETED"
+        },
+        {
+          "execution_configuration_id": 11,
+          "execution_type": "SINGULARITY:PM",
+          "id": 148,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 7055,
+          "status": "COMPLETED"
+        }
+      ],
+      "id": 11,
+      "num_cpus_per_node": 12,
+      "num_gpus_per_node": 2,
+      "num_nodes": 1,
+      "profile_file": "/home_nfs/home_garciad/alde/profiles/2f360bdc-101b-4cce-b1c7-f7afa19c6e48.profile",
+      "srun_config": null,
+      "testbed": {
+        "category": "SLURM",
+        "endpoint": "",
+        "extra_config": {
+          "enqueue_compss_sc_cfg": "nova.cfg",
+          "enqueue_env_file": "/home_nfs/home_ejarquej/installations/2.2.6/COMPSs/compssenv"
+        },
+        "id": 1,
+        "name": "nova2",
+        "on_line": true,
+        "package_formats": [
+          "SINGULARITY"
+        ],
+        "protocol": "LOCAL"
+      },
+      "testbed_id": 1
+    },
+    {
+      "application": {
+        "application_type": null,
+        "deadline": null,
+        "id": 2,
+        "max_energy": null,
+        "max_energy_units": null,
+        "max_power": null,
+        "max_power_units": null,
+        "name": "Matmul",
+        "priority": null,
+        "scaling_lower_bound": null,
+        "scaling_upper_bound": null
+      },
+      "application_id": 2,
+      "command": "/apps/application/master/Matmul 4 2048 12.34 /fslustre/tango/matmul/data/run/cpu_gpu",
+      "compss_config": "--worker_in_master_cpus=12 --worker_in_master_memory=24000 --worker_working_dir=/fslustre/tango/matmul/working_dir/ --master_working_dir=/fslustre/tango/matmul/log_dir/ --base_log_dir=/fslustre/tango/matmul/log_dir/ --elasticity=2 --enable_external_adaptation=true --cpu_affinity=\"0-11\" --monitoring=1000 -d --lang=c --library_path=/usr/local/cuda-8.0/lib64/",
+      "exec_time": 10,
+      "executable": {
+        "application_id": null,
+        "compilation_script": "compss_build_app Matmul",
+        "compilation_type": "SINGULARIY:PM",
+        "executable_file": null,
+        "id": 3,
+        "singularity_app_folder": "/apps/matmul_files_gpu/",
+        "singularity_image_file": "/home_nfs/home_ejarquej/matmul-cuda8-y3.img",
+        "source_code_file": "/home_nfs/home_ejarquej/matmul.zip/",
+        "status": "COMPILED"
+      },
+      "executable_id": 3,
+      "execution_type": "SINGULARITY:PM",
+      "executions": [
+        {
+          "execution_configuration_id": 12,
+          "execution_type": "SINGULARITY:PM",
+          "id": 150,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 7056,
+          "status": "COMPLETED"
+        },
+        {
+          "execution_configuration_id": 12,
+          "execution_type": "SINGULARITY:PM",
+          "id": 152,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 7057,
+          "status": "COMPLETED"
+        }
+      ],
+      "id": 12,
+      "num_cpus_per_node": 12,
+      "num_gpus_per_node": 2,
+      "num_nodes": 1,
+      "profile_file": "/home_nfs/home_garciad/alde/profiles/0447cab0-c8fb-4852-822b-1c531ad471c1.profile",
+      "srun_config": null,
+      "testbed": {
+        "category": "SLURM",
+        "endpoint": "",
+        "extra_config": {
+          "enqueue_compss_sc_cfg": "nova.cfg",
+          "enqueue_env_file": "/home_nfs/home_ejarquej/installations/2.2.6/COMPSs/compssenv"
+        },
+        "id": 1,
+        "name": "nova2",
+        "on_line": true,
+        "package_formats": [
+          "SINGULARITY"
+        ],
+        "protocol": "LOCAL"
+      },
+      "testbed_id": 1
+    },
+    {
+      "application": {
+        "application_type": null,
+        "deadline": null,
+        "id": 2,
+        "max_energy": null,
+        "max_energy_units": null,
+        "max_power": null,
+        "max_power_units": null,
+        "name": "Matmul",
+        "priority": null,
+        "scaling_lower_bound": null,
+        "scaling_upper_bound": null
+      },
+      "application_id": 2,
+      "command": "/apps/application/master/Matmul 8 1024 12.34 /fslustre/tango/matmul/data/run/cpu_gpu",
+      "compss_config": "--worker_in_master_cpus=12 --worker_in_master_memory=24000 --worker_working_dir=/fslustre/tango/matmul/working_dir/ --master_working_dir=/fslustre/tango/matmul/log_dir/ --base_log_dir=/fslustre/tango/matmul/log_dir/ --elasticity=2 --enable_external_adaptation=true --cpu_affinity=\"0-11\" --monitoring=1000 -d --lang=c --library_path=/usr/local/cuda-8.0/lib64/",
+      "exec_time": 10,
+      "executable": {
+        "application_id": null,
+        "compilation_script": "compss_build_app Matmul",
+        "compilation_type": "SINGULARIY:PM",
+        "executable_file": null,
+        "id": 3,
+        "singularity_app_folder": "/apps/matmul_files_gpu/",
+        "singularity_image_file": "/home_nfs/home_ejarquej/matmul-cuda8-y3.img",
+        "source_code_file": "/home_nfs/home_ejarquej/matmul.zip/",
+        "status": "COMPILED"
+      },
+      "executable_id": 3,
+      "execution_type": "SINGULARITY:PM",
+      "executions": [
+        {
+          "execution_configuration_id": 13,
+          "execution_type": "SINGULARITY:PM",
+          "id": 154,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 7058,
+          "status": "COMPLETED"
+        }
+      ],
+      "id": 13,
+      "num_cpus_per_node": 12,
+      "num_gpus_per_node": 2,
+      "num_nodes": 1,
+      "profile_file": "/home_nfs/home_garciad/alde/profiles/8d91cc22-e68d-4d55-ad2e-a197c89623cb.profile",
+      "srun_config": null,
+      "testbed": {
+        "category": "SLURM",
+        "endpoint": "",
+        "extra_config": {
+          "enqueue_compss_sc_cfg": "nova.cfg",
+          "enqueue_env_file": "/home_nfs/home_ejarquej/installations/2.2.6/COMPSs/compssenv"
+        },
+        "id": 1,
+        "name": "nova2",
+        "on_line": true,
+        "package_formats": [
+          "SINGULARITY"
+        ],
+        "protocol": "LOCAL"
+      },
+      "testbed_id": 1
+    },
+    {
+      "application": {
+        "application_type": null,
+        "deadline": null,
+        "id": 2,
+        "max_energy": null,
+        "max_energy_units": null,
+        "max_power": null,
+        "max_power_units": null,
+        "name": "Matmul",
+        "priority": null,
+        "scaling_lower_bound": null,
+        "scaling_upper_bound": null
+      },
+      "application_id": 2,
+      "command": "/apps/application/master/Matmul 8 1024 12.34 /fslustre/tango/matmul/data/run/cpu_gpu",
+      "compss_config": "--worker_in_master_cpus=12 --worker_in_master_memory=24000 --worker_working_dir=/fslustre/tango/matmul/working_dir/ --master_working_dir=/fslustre/tango/matmul/log_dir/ --base_log_dir=/fslustre/tango/matmul/log_dir/ --elasticity= --enable_external_adaptation=true --cpu_affinity=\"0-11\" --monitoring=1000 -d --lang=c --library_path=/usr/local/cuda-8.0/lib64/",
+      "exec_time": 60,
+      "executable": {
+        "application_id": null,
+        "compilation_script": "compss_build_app Matmul",
+        "compilation_type": "SINGULARIY:PM",
+        "executable_file": null,
+        "id": 3,
+        "singularity_app_folder": "/apps/matmul_files_gpu/",
+        "singularity_image_file": "/home_nfs/home_ejarquej/matmul-cuda8-y3.img",
+        "source_code_file": "/home_nfs/home_ejarquej/matmul.zip/",
+        "status": "COMPILED"
+      },
+      "executable_id": 3,
+      "execution_type": "SINGULARITY:PM",
+      "executions": [
+        {
+          "execution_configuration_id": 14,
+          "execution_type": "SINGULARITY:PM",
+          "id": 156,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 7059,
+          "status": "COMPLETED"
+        },
+        {
+          "execution_configuration_id": 14,
+          "execution_type": "SINGULARITY:PM",
+          "id": 158,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 7060,
+          "status": "COMPLETED"
+        },
+        {
+          "execution_configuration_id": 14,
+          "execution_type": "SINGULARITY:PM",
+          "id": 160,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 7061,
+          "status": "COMPLETED"
+        },
+        {
+          "execution_configuration_id": 14,
+          "execution_type": "SINGULARITY:PM",
+          "id": 254,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 7116,
+          "status": "FAILED"
+        }
+      ],
+      "id": 14,
+      "num_cpus_per_node": 12,
+      "num_gpus_per_node": 2,
+      "num_nodes": 1,
+      "profile_file": "/home_nfs/home_garciad/alde/profiles/6655109f-9912-41ba-891c-99c17a459918.profile",
+      "srun_config": null,
+      "testbed": {
+        "category": "SLURM",
+        "endpoint": "",
+        "extra_config": {
+          "enqueue_compss_sc_cfg": "nova.cfg",
+          "enqueue_env_file": "/home_nfs/home_ejarquej/installations/2.2.6/COMPSs/compssenv"
+        },
+        "id": 1,
+        "name": "nova2",
+        "on_line": true,
+        "package_formats": [
+          "SINGULARITY"
+        ],
+        "protocol": "LOCAL"
+      },
+      "testbed_id": 1
+    },
+    {
+      "application": {
+        "application_type": null,
+        "deadline": null,
+        "id": 2,
+        "max_energy": null,
+        "max_energy_units": null,
+        "max_power": null,
+        "max_power_units": null,
+        "name": "Matmul",
+        "priority": null,
+        "scaling_lower_bound": null,
+        "scaling_upper_bound": null
+      },
+      "application_id": 2,
+      "command": "/apps/application/master/Matmul 8 1024 12.34 /fslustre/tango/matmul/data/run/cpu_gpu",
+      "compss_config": "--worker_in_master_cpus=12 --worker_in_master_memory=24000 --worker_working_dir=/fslustre/tango/matmul/working_dir/ --master_working_dir=/fslustre/tango/matmul/log_dir/ --base_log_dir=/fslustre/tango/matmul/log_dir/ --elasticity= --enable_external_adaptation=true --cpu_affinity=\"0-11\" --monitoring=1000 -d --lang=c --library_path=/usr/local/cuda-8.0/lib64/",
+      "exec_time": 60,
+      "executable": {
+        "application_id": null,
+        "compilation_script": "compss_build_app Matmul",
+        "compilation_type": "SINGULARIY:PM",
+        "executable_file": null,
+        "id": 3,
+        "singularity_app_folder": "/apps/matmul_files_gpu/",
+        "singularity_image_file": "/home_nfs/home_ejarquej/matmul-cuda8-y3.img",
+        "source_code_file": "/home_nfs/home_ejarquej/matmul.zip/",
+        "status": "COMPILED"
+      },
+      "executable_id": 3,
+      "execution_type": "SINGULARITY:PM",
+      "executions": [
+        {
+          "execution_configuration_id": 15,
+          "execution_type": "SINGULARITY:PM",
+          "id": 200,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 7086,
+          "status": "FAILED"
+        }
+      ],
+      "id": 15,
+      "num_cpus_per_node": 12,
+      "num_gpus_per_node": 2,
+      "num_nodes": 1,
+      "profile_file": null,
+      "srun_config": null,
+      "testbed": {
+        "category": "SLURM",
+        "endpoint": "",
+        "extra_config": {
+          "enqueue_compss_sc_cfg": "nova.cfg",
+          "enqueue_env_file": "/home_nfs/home_ejarquej/installations/2.2.6/COMPSs/compssenv"
+        },
+        "id": 1,
+        "name": "nova2",
+        "on_line": true,
+        "package_formats": [
+          "SINGULARITY"
+        ],
+        "protocol": "LOCAL"
+      },
+      "testbed_id": 1
+    },
+    {
+      "application": {
+        "application_type": null,
+        "deadline": null,
+        "id": 2,
+        "max_energy": null,
+        "max_energy_units": null,
+        "max_power": null,
+        "max_power_units": null,
+        "name": "Matmul",
+        "priority": null,
+        "scaling_lower_bound": null,
+        "scaling_upper_bound": null
+      },
+      "application_id": 2,
+      "command": "/apps/application/master/Matmul 8 1024 12.34 /fslustre/tango/matmul/data/run/cpu_gpu",
+      "compss_config": "--worker_in_master_cpus=12 --worker_in_master_memory=24000 --worker_working_dir=/fslustre/tango/matmul/working_dir/ --master_working_dir=/fslustre/tango/matmul/log_dir/ --base_log_dir=/fslustre/tango/matmul/log_dir/ --elasticity=2 --enable_external_adaptation=true --cpu_affinity=\"0-11\" --monitoring=1000 -d --lang=c --library_path=/usr/local/cuda-8.0/lib64/",
+      "exec_time": 60,
+      "executable": {
+        "application_id": null,
+        "compilation_script": "compss_build_app Matmul",
+        "compilation_type": "SINGULARIY:PM",
+        "executable_file": null,
+        "id": 3,
+        "singularity_app_folder": "/apps/matmul_files_gpu/",
+        "singularity_image_file": "/home_nfs/home_ejarquej/matmul-cuda8-y3.img",
+        "source_code_file": "/home_nfs/home_ejarquej/matmul.zip/",
+        "status": "COMPILED"
+      },
+      "executable_id": 3,
+      "execution_type": "SINGULARITY:PM",
+      "executions": [
+        {
+          "execution_configuration_id": 16,
+          "execution_type": "SINGULARITY:PM",
+          "id": 162,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 7062,
+          "status": "COMPLETED"
+        },
+        {
+          "execution_configuration_id": 16,
+          "execution_type": "SINGULARITY:PM",
+          "id": 164,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 7063,
+          "status": "COMPLETED"
+        },
+        {
+          "execution_configuration_id": 16,
+          "execution_type": "SINGULARITY:PM",
+          "id": 166,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 7065,
+          "status": "COMPLETED"
+        },
+        {
+          "execution_configuration_id": 16,
+          "execution_type": "SINGULARITY:PM",
+          "id": 168,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 7067,
+          "status": "COMPLETED"
+        },
+        {
+          "execution_configuration_id": 16,
+          "execution_type": "SINGULARITY:PM",
+          "id": 194,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 7083,
+          "status": "FAILED"
+        },
+        {
+          "execution_configuration_id": 16,
+          "execution_type": "SINGULARITY:PM",
+          "id": 242,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 7110,
+          "status": "FAILED"
+        },
+        {
+          "execution_configuration_id": 16,
+          "execution_type": "SINGULARITY:PM",
+          "id": 260,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 7119,
+          "status": "FAILED"
+        }
+      ],
+      "id": 16,
+      "num_cpus_per_node": 12,
+      "num_gpus_per_node": 2,
+      "num_nodes": 1,
+      "profile_file": "/home_nfs/home_garciad/alde/profiles/fd9bdc3d-3035-4afa-9f96-ed2e81a4e4a4.profile",
+      "srun_config": null,
+      "testbed": {
+        "category": "SLURM",
+        "endpoint": "",
+        "extra_config": {
+          "enqueue_compss_sc_cfg": "nova.cfg",
+          "enqueue_env_file": "/home_nfs/home_ejarquej/installations/2.2.6/COMPSs/compssenv"
+        },
+        "id": 1,
+        "name": "nova2",
+        "on_line": true,
+        "package_formats": [
+          "SINGULARITY"
+        ],
+        "protocol": "LOCAL"
+      },
+      "testbed_id": 1
+    },
+    {
+      "application": {
+        "application_type": null,
+        "deadline": null,
+        "id": 2,
+        "max_energy": null,
+        "max_energy_units": null,
+        "max_power": null,
+        "max_power_units": null,
+        "name": "Matmul",
+        "priority": null,
+        "scaling_lower_bound": null,
+        "scaling_upper_bound": null
+      },
+      "application_id": 2,
+      "command": "/apps/application/master/Matmul 8 1024 12.34 /fslustre/tango/matmul/data/run/cpu_gpu",
+      "compss_config": "--worker_in_master_cpus=12 --worker_in_master_memory=24000 --worker_working_dir=/fslustre/tango/matmul/working_dir/ --master_working_dir=/fslustre/tango/matmul/log_dir/ --base_log_dir=/fslustre/tango/matmul/log_dir/ --elasticity=2 --enable_external_adaptation=true --cpu_affinity=\"0-11\" --container_opts=\"-B/fslustre:/fslustre -B /usr/local/cuda-8.0:/usr/local/cuda-8.0/ -B /usr/lib64/nvidia:/usr/lib64/nvidia\" --monitoring=1000 -d --lang=c --library_path=/usr/local/cuda-8.0/lib64/",
+      "exec_time": 60,
+      "executable": {
+        "application_id": null,
+        "compilation_script": "compss_build_app Matmul",
+        "compilation_type": "SINGULARIY:PM",
+        "executable_file": null,
+        "id": 3,
+        "singularity_app_folder": "/apps/matmul_files_gpu/",
+        "singularity_image_file": "/home_nfs/home_ejarquej/matmul-cuda8-y3.img",
+        "source_code_file": "/home_nfs/home_ejarquej/matmul.zip/",
+        "status": "COMPILED"
+      },
+      "executable_id": 3,
+      "execution_type": "SINGULARITY:PM",
+      "executions": [
+        {
+          "execution_configuration_id": 17,
+          "execution_type": "SINGULARITY:PM",
+          "id": 170,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 7069,
+          "status": "FAILED"
+        },
+        {
+          "execution_configuration_id": 17,
+          "execution_type": "SINGULARITY:PM",
+          "id": 172,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 7070,
+          "status": "FAILED"
+        },
+        {
+          "execution_configuration_id": 17,
+          "execution_type": "SINGULARITY:PM",
+          "id": 174,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 7071,
+          "status": "FAILED"
+        }
+      ],
+      "id": 17,
+      "num_cpus_per_node": 12,
+      "num_gpus_per_node": 2,
+      "num_nodes": 1,
+      "profile_file": "/home_nfs/home_garciad/alde/profiles/385e76cc-fe22-4b89-b7b2-90e62b205c84.profile",
+      "srun_config": null,
+      "testbed": {
+        "category": "SLURM",
+        "endpoint": "",
+        "extra_config": {
+          "enqueue_compss_sc_cfg": "nova.cfg",
+          "enqueue_env_file": "/home_nfs/home_ejarquej/installations/2.2.6/COMPSs/compssenv"
+        },
+        "id": 1,
+        "name": "nova2",
+        "on_line": true,
+        "package_formats": [
+          "SINGULARITY"
+        ],
+        "protocol": "LOCAL"
+      },
+      "testbed_id": 1
+    },
+    {
+      "application": {
+        "application_type": null,
+        "deadline": null,
+        "id": 2,
+        "max_energy": null,
+        "max_energy_units": null,
+        "max_power": null,
+        "max_power_units": null,
+        "name": "Matmul",
+        "priority": null,
+        "scaling_lower_bound": null,
+        "scaling_upper_bound": null
+      },
+      "application_id": 2,
+      "command": "/apps/application/master/Matmul 8 1024 12.34 /fslustre/tango/matmul/data/run/cpu_gpu",
+      "compss_config": "--worker_in_master_cpus=12 --worker_in_master_memory=24000 --worker_working_dir=/fslustre/tango/matmul/working_dir/ --master_working_dir=/fslustre/tango/matmul/log_dir/ --base_log_dir=/fslustre/tango/matmul/log_dir/ --elasticity=2 --enable_external_adaptation=true --cpu_affinity=\"0-11\" --container_opts=\"\"-B/fslustre:/fslustre -B /usr/local/cuda-8.0:/usr/local/cuda-8.0/ -B /usr/lib64/nvidia:/usr/lib64/nvidia\"\" --monitoring=1000 -d --lang=c --library_path=/usr/local/cuda-8.0/lib64/",
+      "exec_time": 60,
+      "executable": {
+        "application_id": null,
+        "compilation_script": "compss_build_app Matmul",
+        "compilation_type": "SINGULARIY:PM",
+        "executable_file": null,
+        "id": 3,
+        "singularity_app_folder": "/apps/matmul_files_gpu/",
+        "singularity_image_file": "/home_nfs/home_ejarquej/matmul-cuda8-y3.img",
+        "source_code_file": "/home_nfs/home_ejarquej/matmul.zip/",
+        "status": "COMPILED"
+      },
+      "executable_id": 3,
+      "execution_type": "SINGULARITY:PM",
+      "executions": [
+        {
+          "execution_configuration_id": 18,
+          "execution_type": "SINGULARITY:PM",
+          "id": 176,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 7072,
+          "status": "FAILED"
+        }
+      ],
+      "id": 18,
+      "num_cpus_per_node": 12,
+      "num_gpus_per_node": 2,
+      "num_nodes": 1,
+      "profile_file": "/home_nfs/home_garciad/alde/profiles/2cbc53fc-5dc4-4d6b-9330-2d11609bde44.profile",
+      "srun_config": null,
+      "testbed": {
+        "category": "SLURM",
+        "endpoint": "",
+        "extra_config": {
+          "enqueue_compss_sc_cfg": "nova.cfg",
+          "enqueue_env_file": "/home_nfs/home_ejarquej/installations/2.2.6/COMPSs/compssenv"
+        },
+        "id": 1,
+        "name": "nova2",
+        "on_line": true,
+        "package_formats": [
+          "SINGULARITY"
+        ],
+        "protocol": "LOCAL"
+      },
+      "testbed_id": 1
+    },
+    {
+      "application": {
+        "application_type": null,
+        "deadline": null,
+        "id": 2,
+        "max_energy": null,
+        "max_energy_units": null,
+        "max_power": null,
+        "max_power_units": null,
+        "name": "Matmul",
+        "priority": null,
+        "scaling_lower_bound": null,
+        "scaling_upper_bound": null
+      },
+      "application_id": 2,
+      "command": "/apps/application/master/Matmul 8 1024 12.34 /fslustre/tango/matmul/data/run/cpu_gpu",
+      "compss_config": "--worker_in_master_cpus=12 --worker_in_master_memory=24000 --worker_working_dir=/fslustre/tango/matmul/working_dir/ --master_working_dir=/fslustre/tango/matmul/log_dir/ --base_log_dir=/fslustre/tango/matmul/log_dir/ --elasticity=2 --enable_external_adaptation=true --cpu_affinity=\"0-11\" --container_opts=\\\"-B/fslustre:/fslustre -B /usr/local/cuda-8.0:/usr/local/cuda-8.0/ -B /usr/lib64/nvidia:/usr/lib64/nvidia\\\" --monitoring=1000 -d --lang=c --library_path=/usr/local/cuda-8.0/lib64/",
+      "exec_time": 60,
+      "executable": {
+        "application_id": null,
+        "compilation_script": "compss_build_app Matmul",
+        "compilation_type": "SINGULARIY:PM",
+        "executable_file": null,
+        "id": 3,
+        "singularity_app_folder": "/apps/matmul_files_gpu/",
+        "singularity_image_file": "/home_nfs/home_ejarquej/matmul-cuda8-y3.img",
+        "source_code_file": "/home_nfs/home_ejarquej/matmul.zip/",
+        "status": "COMPILED"
+      },
+      "executable_id": 3,
+      "execution_type": "SINGULARITY:PM",
+      "executions": [
+        {
+          "execution_configuration_id": 19,
+          "execution_type": "SINGULARITY:PM",
+          "id": 178,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 7073,
+          "status": "FAILED"
+        }
+      ],
+      "id": 19,
+      "num_cpus_per_node": 12,
+      "num_gpus_per_node": 2,
+      "num_nodes": 1,
+      "profile_file": "/home_nfs/home_garciad/alde/profiles/1e876b40-dd62-4e72-8065-1c966d8e1c44.profile",
+      "srun_config": null,
+      "testbed": {
+        "category": "SLURM",
+        "endpoint": "",
+        "extra_config": {
+          "enqueue_compss_sc_cfg": "nova.cfg",
+          "enqueue_env_file": "/home_nfs/home_ejarquej/installations/2.2.6/COMPSs/compssenv"
+        },
+        "id": 1,
+        "name": "nova2",
+        "on_line": true,
+        "package_formats": [
+          "SINGULARITY"
+        ],
+        "protocol": "LOCAL"
+      },
+      "testbed_id": 1
+    },
+    {
+      "application": {
+        "application_type": null,
+        "deadline": null,
+        "id": 2,
+        "max_energy": null,
+        "max_energy_units": null,
+        "max_power": null,
+        "max_power_units": null,
+        "name": "Matmul",
+        "priority": null,
+        "scaling_lower_bound": null,
+        "scaling_upper_bound": null
+      },
+      "application_id": 2,
+      "command": "/apps/application/master/Matmul 8 1024 12.34 /fslustre/tango/matmul/data/run/cpu_gpu",
+      "compss_config": "--worker_in_master_cpus=12 --worker_in_master_memory=24000 --worker_working_dir=/fslustre/tango/matmul/working_dir/ --master_working_dir=/fslustre/tango/matmul/log_dir/ --base_log_dir=/fslustre/tango/matmul/log_dir/ --elasticity=2 --enable_external_adaptation=true --cpu_affinity=\"0-11\" --container_opts=\\\"-B /fslustre:/fslustre -B /usr/local/cuda-8.0:/usr/local/cuda-8.0/ -B /usr/lib64/nvidia:/usr/lib64/nvidia\\\" --monitoring=1000 -d --lang=c --library_path=/usr/local/cuda-8.0/lib64/",
+      "exec_time": 60,
+      "executable": {
+        "application_id": null,
+        "compilation_script": "compss_build_app Matmul",
+        "compilation_type": "SINGULARIY:PM",
+        "executable_file": null,
+        "id": 3,
+        "singularity_app_folder": "/apps/matmul_files_gpu/",
+        "singularity_image_file": "/home_nfs/home_ejarquej/matmul-cuda8-y3.img",
+        "source_code_file": "/home_nfs/home_ejarquej/matmul.zip/",
+        "status": "COMPILED"
+      },
+      "executable_id": 3,
+      "execution_type": "SINGULARITY:PM",
+      "executions": [
+        {
+          "execution_configuration_id": 20,
+          "execution_type": "SINGULARITY:PM",
+          "id": 180,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 7074,
+          "status": "COMPLETED"
+        },
+        {
+          "execution_configuration_id": 20,
+          "execution_type": "SINGULARITY:PM",
+          "id": 182,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 7076,
+          "status": "COMPLETED"
+        },
+        {
+          "execution_configuration_id": 20,
+          "execution_type": "SINGULARITY:PM",
+          "id": 184,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 7077,
+          "status": "COMPLETED"
+        },
+        {
+          "execution_configuration_id": 20,
+          "execution_type": "SINGULARITY:PM",
+          "id": 256,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 7117,
+          "status": "COMPLETED"
+        },
+        {
+          "execution_configuration_id": 20,
+          "execution_type": "SINGULARITY:PM",
+          "id": 274,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 7134,
+          "status": "COMPLETED"
+        },
+        {
+          "execution_configuration_id": 20,
+          "execution_type": "SINGULARITY:PM",
+          "id": 276,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 7136,
+          "status": "COMPLETED"
+        },
+        {
+          "execution_configuration_id": 20,
+          "execution_type": "SINGULARITY:PM",
+          "id": 278,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 7138,
+          "status": "COMPLETED"
+        },
+        {
+          "execution_configuration_id": 20,
+          "execution_type": "SINGULARITY:PM",
+          "id": 280,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 7139,
+          "status": "COMPLETED"
+        },
+        {
+          "execution_configuration_id": 20,
+          "execution_type": "SINGULARITY:PM",
+          "id": 288,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 7180,
+          "status": "COMPLETED"
+        },
+        {
+          "execution_configuration_id": 20,
+          "execution_type": "SINGULARITY:PM",
+          "id": 290,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 7181,
+          "status": "COMPLETED"
+        },
+        {
+          "execution_configuration_id": 20,
+          "execution_type": "SINGULARITY:PM",
+          "id": 292,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 7182,
+          "status": "COMPLETED"
+        },
+        {
+          "execution_configuration_id": 20,
+          "execution_type": "SINGULARITY:PM",
+          "id": 294,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 7183,
+          "status": "COMPLETED"
+        },
+        {
+          "execution_configuration_id": 20,
+          "execution_type": "SINGULARITY:PM",
+          "id": 296,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 7184,
+          "status": "COMPLETED"
+        },
+        {
+          "execution_configuration_id": 20,
+          "execution_type": "SINGULARITY:PM",
+          "id": 298,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 7190,
+          "status": "COMPLETED"
+        },
+        {
+          "execution_configuration_id": 20,
+          "execution_type": "SINGULARITY:PM",
+          "id": 306,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 7214,
+          "status": "COMPLETED"
+        },
+        {
+          "execution_configuration_id": 20,
+          "execution_type": "SINGULARITY:PM",
+          "id": 310,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 7215,
+          "status": "UNKNOWN"
+        },
+        {
+          "execution_configuration_id": 20,
+          "execution_type": "SINGULARITY:PM",
+          "id": 314,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 7217,
+          "status": "FAILED"
+        },
+        {
+          "execution_configuration_id": 20,
+          "execution_type": "SINGULARITY:PM",
+          "id": 316,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 7218,
+          "status": "FAILED"
+        },
+        {
+          "execution_configuration_id": 20,
+          "execution_type": "SINGULARITY:PM",
+          "id": 318,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 7219,
+          "status": "FAILED"
+        },
+        {
+          "execution_configuration_id": 20,
+          "execution_type": "SINGULARITY:PM",
+          "id": 322,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 7222,
+          "status": "COMPLETED"
+        },
+        {
+          "execution_configuration_id": 20,
+          "execution_type": "SINGULARITY:PM",
+          "id": 324,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 7224,
+          "status": "COMPLETED"
+        },
+        {
+          "execution_configuration_id": 20,
+          "execution_type": "SINGULARITY:PM",
+          "id": 326,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 7227,
+          "status": "COMPLETED"
+        },
+        {
+          "execution_configuration_id": 20,
+          "execution_type": "SINGULARITY:PM",
+          "id": 328,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 7229,
+          "status": "COMPLETED"
+        },
+        {
+          "execution_configuration_id": 20,
+          "execution_type": "SINGULARITY:PM",
+          "id": 330,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 7232,
+          "status": "COMPLETED"
+        },
+        {
+          "execution_configuration_id": 20,
+          "execution_type": "SINGULARITY:PM",
+          "id": 332,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 7234,
+          "status": "COMPLETED"
+        },
+        {
+          "execution_configuration_id": 20,
+          "execution_type": "SINGULARITY:PM",
+          "id": 334,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 7240,
+          "status": "COMPLETED"
+        },
+        {
+          "execution_configuration_id": 20,
+          "execution_type": "SINGULARITY:PM",
+          "id": 336,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 7254,
+          "status": "COMPLETED"
+        },
+        {
+          "execution_configuration_id": 20,
+          "execution_type": "SINGULARITY:PM",
+          "id": 338,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 7256,
+          "status": "COMPLETED"
+        },
+        {
+          "execution_configuration_id": 20,
+          "execution_type": "SINGULARITY:PM",
+          "id": 340,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 7258,
+          "status": "COMPLETED"
+        },
+        {
+          "execution_configuration_id": 20,
+          "execution_type": "SINGULARITY:PM",
+          "id": 342,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 7260,
+          "status": "COMPLETED"
+        },
+        {
+          "execution_configuration_id": 20,
+          "execution_type": "SINGULARITY:PM",
+          "id": 344,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 7262,
+          "status": "COMPLETED"
+        },
+        {
+          "execution_configuration_id": 20,
+          "execution_type": "SINGULARITY:PM",
+          "id": 346,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 7264,
+          "status": "COMPLETED"
+        },
+        {
+          "execution_configuration_id": 20,
+          "execution_type": "SINGULARITY:PM",
+          "id": 348,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 7266,
+          "status": "COMPLETED"
+        },
+        {
+          "execution_configuration_id": 20,
+          "execution_type": "SINGULARITY:PM",
+          "id": 350,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 7268,
+          "status": "COMPLETED"
+        },
+        {
+          "execution_configuration_id": 20,
+          "execution_type": "SINGULARITY:PM",
+          "id": 352,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 7270,
+          "status": "COMPLETED"
+        },
+        {
+          "execution_configuration_id": 20,
+          "execution_type": "SINGULARITY:PM",
+          "id": 354,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 7272,
+          "status": "COMPLETED"
+        },
+        {
+          "execution_configuration_id": 20,
+          "execution_type": "SINGULARITY:PM",
+          "id": 356,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 7273,
+          "status": "COMPLETED"
+        },
+        {
+          "execution_configuration_id": 20,
+          "execution_type": "SINGULARITY:PM",
+          "id": 358,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 7275,
+          "status": "COMPLETED"
+        },
+        {
+          "execution_configuration_id": 20,
+          "execution_type": "SINGULARITY:PM",
+          "id": 360,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 7277,
+          "status": "COMPLETED"
+        },
+        {
+          "execution_configuration_id": 20,
+          "execution_type": "SINGULARITY:PM",
+          "id": 362,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 7279,
+          "status": "COMPLETED"
+        },
+        {
+          "execution_configuration_id": 20,
+          "execution_type": "SINGULARITY:PM",
+          "id": 364,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 7281,
+          "status": "COMPLETED"
+        },
+        {
+          "execution_configuration_id": 20,
+          "execution_type": "SINGULARITY:PM",
+          "id": 366,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 7285,
+          "status": "COMPLETED"
+        },
+        {
+          "execution_configuration_id": 20,
+          "execution_type": "SINGULARITY:PM",
+          "id": 368,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 7286,
+          "status": "COMPLETED"
+        },
+        {
+          "execution_configuration_id": 20,
+          "execution_type": "SINGULARITY:PM",
+          "id": 374,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 7319,
+          "status": "COMPLETED"
+        },
+        {
+          "execution_configuration_id": 20,
+          "execution_type": "SINGULARITY:PM",
+          "id": 385,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 7323,
+          "status": "COMPLETED"
+        },
+        {
+          "execution_configuration_id": 20,
+          "execution_type": "SINGULARITY:PM",
+          "id": 387,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 7324,
+          "status": "COMPLETED"
+        },
+        {
+          "execution_configuration_id": 20,
+          "execution_type": "SINGULARITY:PM",
+          "id": 390,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 7326,
+          "status": "COMPLETED"
+        },
+        {
+          "execution_configuration_id": 20,
+          "execution_type": "SINGULARITY:PM",
+          "id": 393,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 7328,
+          "status": "COMPLETED"
+        },
+        {
+          "execution_configuration_id": 20,
+          "execution_type": "SINGULARITY:PM",
+          "id": 396,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 7330,
+          "status": "COMPLETED"
+        },
+        {
+          "execution_configuration_id": 20,
+          "execution_type": "SINGULARITY:PM",
+          "id": 398,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 7331,
+          "status": "COMPLETED"
+        },
+        {
+          "execution_configuration_id": 20,
+          "execution_type": "SINGULARITY:PM",
+          "id": 400,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 7332,
+          "status": "COMPLETED"
+        }
+      ],
+      "id": 20,
+      "num_cpus_per_node": 12,
+      "num_gpus_per_node": 2,
+      "num_nodes": 1,
+      "profile_file": "/home_nfs/home_garciad/alde/profiles/9697ebe4-6ce4-4084-85de-854f9cb85777.profile",
+      "srun_config": null,
+      "testbed": {
+        "category": "SLURM",
+        "endpoint": "",
+        "extra_config": {
+          "enqueue_compss_sc_cfg": "nova.cfg",
+          "enqueue_env_file": "/home_nfs/home_ejarquej/installations/2.2.6/COMPSs/compssenv"
+        },
+        "id": 1,
+        "name": "nova2",
+        "on_line": true,
+        "package_formats": [
+          "SINGULARITY"
+        ],
+        "protocol": "LOCAL"
+      },
+      "testbed_id": 1
+    },
+    {
+      "application": {
+        "application_type": null,
+        "deadline": null,
+        "id": 4,
+        "max_energy": null,
+        "max_energy_units": null,
+        "max_power": null,
+        "max_power_units": null,
+        "name": "cloverleaf_sbatch",
+        "priority": null,
+        "scaling_lower_bound": null,
+        "scaling_upper_bound": null
+      },
+      "application_id": 4,
+      "command": null,
+      "compss_config": null,
+      "exec_time": null,
+      "executable": {
+        "application_id": 4,
+        "compilation_script": "none",
+        "compilation_type": "SLURM:SBATCH",
+        "executable_file": "/home_nfs/home_dineshkr/CloverLeafMpi/sbatch_bare_MPI.sh",
+        "id": 6,
+        "singularity_app_folder": null,
+        "singularity_image_file": null,
+        "source_code_file": null,
+        "status": "COMPILED"
+      },
+      "executable_id": 6,
+      "execution_type": "SLURM:SBATCH",
+      "executions": [
+        {
+          "execution_configuration_id": 21,
+          "execution_type": "SLURM:SBATCH",
+          "id": 186,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 7079,
+          "status": "COMPLETED"
+        },
+        {
+          "execution_configuration_id": 21,
+          "execution_type": "SLURM:SBATCH",
+          "id": 188,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 7080,
+          "status": "COMPLETED"
+        },
+        {
+          "execution_configuration_id": 21,
+          "execution_type": "SLURM:SBATCH",
+          "id": 192,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 7082,
+          "status": "FAILED"
+        },
+        {
+          "execution_configuration_id": 21,
+          "execution_type": "SLURM:SBATCH",
+          "id": 210,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 7091,
+          "status": "COMPLETED"
+        },
+        {
+          "execution_configuration_id": 21,
+          "execution_type": "SLURM:SBATCH",
+          "id": 220,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 7096,
+          "status": "COMPLETED"
+        },
+        {
+          "execution_configuration_id": 21,
+          "execution_type": "SLURM:SBATCH",
+          "id": 228,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 7100,
+          "status": "COMPLETED"
+        },
+        {
+          "execution_configuration_id": 21,
+          "execution_type": "SLURM:SBATCH",
+          "id": 230,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 7101,
+          "status": "COMPLETED"
+        },
+        {
+          "execution_configuration_id": 21,
+          "execution_type": "SLURM:SBATCH",
+          "id": 232,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 7102,
+          "status": "COMPLETED"
+        },
+        {
+          "execution_configuration_id": 21,
+          "execution_type": "SLURM:SBATCH",
+          "id": 234,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 7105,
+          "status": "FAILED"
+        },
+        {
+          "execution_configuration_id": 21,
+          "execution_type": "SLURM:SBATCH",
+          "id": 236,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 7106,
+          "status": "COMPLETED"
+        },
+        {
+          "execution_configuration_id": 21,
+          "execution_type": "SLURM:SBATCH",
+          "id": 238,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 7108,
+          "status": "COMPLETED"
+        },
+        {
+          "execution_configuration_id": 21,
+          "execution_type": "SLURM:SBATCH",
+          "id": 240,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 7109,
+          "status": "COMPLETED"
+        },
+        {
+          "execution_configuration_id": 21,
+          "execution_type": "SLURM:SBATCH",
+          "id": 244,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 7111,
+          "status": "COMPLETED"
+        },
+        {
+          "execution_configuration_id": 21,
+          "execution_type": "SLURM:SBATCH",
+          "id": 250,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 7114,
+          "status": "COMPLETED"
+        },
+        {
+          "execution_configuration_id": 21,
+          "execution_type": "SLURM:SBATCH",
+          "id": 266,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 7122,
+          "status": "COMPLETED"
+        },
+        {
+          "execution_configuration_id": 21,
+          "execution_type": "SLURM:SBATCH",
+          "id": 268,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 7123,
+          "status": "FAILED"
+        },
+        {
+          "execution_configuration_id": 21,
+          "execution_type": "SLURM:SBATCH",
+          "id": 270,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 7124,
+          "status": "FAILED"
+        },
+        {
+          "execution_configuration_id": 21,
+          "execution_type": "SLURM:SBATCH",
+          "id": 370,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 7317,
+          "status": "CANCELLED"
+        },
+        {
+          "execution_configuration_id": 21,
+          "execution_type": "SLURM:SBATCH",
+          "id": 372,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 7318,
+          "status": "UNKNOWN"
+        },
+        {
+          "execution_configuration_id": 21,
+          "execution_type": "SLURM:SBATCH",
+          "id": 382,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 7322,
+          "status": "CANCELLED"
+        }
+      ],
+      "id": 21,
+      "num_cpus_per_node": null,
+      "num_gpus_per_node": null,
+      "num_nodes": null,
+      "profile_file": null,
+      "srun_config": null,
+      "testbed": {
+        "category": "SLURM",
+        "endpoint": "",
+        "extra_config": {
+          "enqueue_compss_sc_cfg": "nova.cfg",
+          "enqueue_env_file": "/home_nfs/home_ejarquej/installations/2.2.6/COMPSs/compssenv"
+        },
+        "id": 1,
+        "name": "nova2",
+        "on_line": true,
+        "package_formats": [
+          "SINGULARITY"
+        ],
+        "protocol": "LOCAL"
+      },
+      "testbed_id": 1
+    },
+    {
+      "application": {
+        "application_type": null,
+        "deadline": null,
+        "id": 4,
+        "max_energy": null,
+        "max_energy_units": null,
+        "max_power": null,
+        "max_power_units": null,
+        "name": "cloverleaf_sbatch",
+        "priority": null,
+        "scaling_lower_bound": null,
+        "scaling_upper_bound": null
+      },
+      "application_id": 4,
+      "command": null,
+      "compss_config": null,
+      "exec_time": null,
+      "executable": {
+        "application_id": 4,
+        "compilation_script": "none",
+        "compilation_type": "SLURM:SBATCH",
+        "executable_file": "/home_nfs/home_dineshkr/CloverLeafMpi/sbatch_bare_Cuda.sh",
+        "id": 7,
+        "singularity_app_folder": null,
+        "singularity_image_file": null,
+        "source_code_file": null,
+        "status": "COMPILED"
+      },
+      "executable_id": 7,
+      "execution_type": "SLURM:SBATCH",
+      "executions": [
+        {
+          "execution_configuration_id": 22,
+          "execution_type": "SLURM:SBATCH",
+          "id": 190,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 7081,
+          "status": "FAILED"
+        },
+        {
+          "execution_configuration_id": 22,
+          "execution_type": "SLURM:SBATCH",
+          "id": 212,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 7092,
+          "status": "FAILED"
+        },
+        {
+          "execution_configuration_id": 22,
+          "execution_type": "SLURM:SBATCH",
+          "id": 214,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 7093,
+          "status": "FAILED"
+        },
+        {
+          "execution_configuration_id": 22,
+          "execution_type": "SLURM:SBATCH",
+          "id": 216,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 7094,
+          "status": "FAILED"
+        },
+        {
+          "execution_configuration_id": 22,
+          "execution_type": "SLURM:SBATCH",
+          "id": 218,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 7095,
+          "status": "FAILED"
+        },
+        {
+          "execution_configuration_id": 22,
+          "execution_type": "SLURM:SBATCH",
+          "id": 226,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 7099,
+          "status": "FAILED"
+        },
+        {
+          "execution_configuration_id": 22,
+          "execution_type": "SLURM:SBATCH",
+          "id": 246,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 7112,
+          "status": "FAILED"
+        },
+        {
+          "execution_configuration_id": 22,
+          "execution_type": "SLURM:SBATCH",
+          "id": 248,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 7113,
+          "status": "FAILED"
+        },
+        {
+          "execution_configuration_id": 22,
+          "execution_type": "SLURM:SBATCH",
+          "id": 252,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 7115,
+          "status": "FAILED"
+        },
+        {
+          "execution_configuration_id": 22,
+          "execution_type": "SLURM:SBATCH",
+          "id": 258,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 7118,
+          "status": "COMPLETED"
+        },
+        {
+          "execution_configuration_id": 22,
+          "execution_type": "SLURM:SBATCH",
+          "id": 262,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 7120,
+          "status": "COMPLETED"
+        },
+        {
+          "execution_configuration_id": 22,
+          "execution_type": "SLURM:SBATCH",
+          "id": 264,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 7121,
+          "status": "COMPLETED"
+        },
+        {
+          "execution_configuration_id": 22,
+          "execution_type": "SLURM:SBATCH",
+          "id": 272,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 7125,
+          "status": "COMPLETED"
+        },
+        {
+          "execution_configuration_id": 22,
+          "execution_type": "SLURM:SBATCH",
+          "id": 284,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 7178,
+          "status": "COMPLETED"
+        },
+        {
+          "execution_configuration_id": 22,
+          "execution_type": "SLURM:SBATCH",
+          "id": 286,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 7179,
+          "status": "COMPLETED"
+        }
+      ],
+      "id": 22,
+      "num_cpus_per_node": null,
+      "num_gpus_per_node": null,
+      "num_nodes": null,
+      "profile_file": null,
+      "srun_config": null,
+      "testbed": {
+        "category": "SLURM",
+        "endpoint": "",
+        "extra_config": {
+          "enqueue_compss_sc_cfg": "nova.cfg",
+          "enqueue_env_file": "/home_nfs/home_ejarquej/installations/2.2.6/COMPSs/compssenv"
+        },
+        "id": 1,
+        "name": "nova2",
+        "on_line": true,
+        "package_formats": [
+          "SINGULARITY"
+        ],
+        "protocol": "LOCAL"
+      },
+      "testbed_id": 1
+    },
+    {
+      "application": {
+        "application_type": null,
+        "deadline": null,
+        "id": 2,
+        "max_energy": null,
+        "max_energy_units": null,
+        "max_power": null,
+        "max_power_units": null,
+        "name": "Matmul",
+        "priority": null,
+        "scaling_lower_bound": null,
+        "scaling_upper_bound": null
+      },
+      "application_id": 2,
+      "command": "/apps/application/master/Matmul 8 1024 12.34 /fslustre/tango/matmul/data/run/cpu_gpu",
+      "compss_config": "--worker_in_master_cpus=12 --worker_in_master_memory=24000 --worker_working_dir=/fslustre/tango/matmul/working_dir/ --master_working_dir=/fslustre/tango/matmul/log_dir/ --base_log_dir=/fslustre/tango/matmul/log_dir/ --elasticity=2 --enable_external_adaptation=true --cpu_affinity=\"0-11\" --container_opts=\\\"-B /fslustre:/fslustre -B /usr/local/cuda-8.0:/usr/local/cuda-8.0/ -B /usr/lib64/nvidia:/usr/lib64/nvidia\\\" --monitoring=1000 -d --lang=c --library_path=/usr/local/cuda-8.0/lib64/",
+      "exec_time": 60,
+      "executable": {
+        "application_id": null,
+        "compilation_script": "compss_build_app Matmul",
+        "compilation_type": "SINGULARIY:PM",
+        "executable_file": null,
+        "id": 3,
+        "singularity_app_folder": "/apps/matmul_files_gpu/",
+        "singularity_image_file": "/home_nfs/home_ejarquej/matmul-cuda8-y3.img",
+        "source_code_file": "/home_nfs/home_ejarquej/matmul.zip/",
+        "status": "COMPILED"
+      },
+      "executable_id": 3,
+      "execution_type": "SINGULARITY:PM",
+      "executions": [
+        {
+          "execution_configuration_id": 23,
+          "execution_type": "SINGULARITY:PM",
+          "id": 300,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 7202,
+          "status": "COMPLETED"
+        }
+      ],
+      "id": 23,
+      "num_cpus_per_node": 12,
+      "num_gpus_per_node": 1,
+      "num_nodes": 1,
+      "profile_file": "/home_nfs/home_garciad/alde/profiles/6602f6e3-76cc-458b-8bdb-4a3de8c86f24.profile",
+      "srun_config": null,
+      "testbed": {
+        "category": "SLURM",
+        "endpoint": "",
+        "extra_config": {
+          "enqueue_compss_sc_cfg": "nova.cfg",
+          "enqueue_env_file": "/home_nfs/home_ejarquej/installations/2.2.6/COMPSs/compssenv"
+        },
+        "id": 1,
+        "name": "nova2",
+        "on_line": true,
+        "package_formats": [
+          "SINGULARITY"
+        ],
+        "protocol": "LOCAL"
+      },
+      "testbed_id": 1
+    },
+    {
+      "application": {
+        "application_type": null,
+        "deadline": null,
+        "id": 2,
+        "max_energy": null,
+        "max_energy_units": null,
+        "max_power": null,
+        "max_power_units": null,
+        "name": "Matmul",
+        "priority": null,
+        "scaling_lower_bound": null,
+        "scaling_upper_bound": null
+      },
+      "application_id": 2,
+      "command": "/apps/application/master/Matmul 8 1024 12.34 /fslustre/tango/matmul/data/run/cpu_gpu",
+      "compss_config": "--worker_in_master_cpus=12 --worker_in_master_memory=24000 --worker_working_dir=/fslustre/tango/matmul/working_dir/ --master_working_dir=/fslustre/tango/matmul/log_dir/ --base_log_dir=/fslustre/tango/matmul/log_dir/ --elasticity=2 --enable_external_adaptation=true --cpu_affinity=\"0-11\" --container_opts=\\\"-B /fslustre:/fslustre -B /usr/local/cuda-8.0:/usr/local/cuda-8.0/ -B /usr/lib64/nvidia:/usr/lib64/nvidia\\\" --monitoring=1000 -d --lang=c --library_path=/usr/local/cuda-8.0/lib64/",
+      "exec_time": 60,
+      "executable": {
+        "application_id": null,
+        "compilation_script": "compss_build_app Matmul",
+        "compilation_type": "SINGULARIY:PM",
+        "executable_file": null,
+        "id": 3,
+        "singularity_app_folder": "/apps/matmul_files_gpu/",
+        "singularity_image_file": "/home_nfs/home_ejarquej/matmul-cuda8-y3.img",
+        "source_code_file": "/home_nfs/home_ejarquej/matmul.zip/",
+        "status": "COMPILED"
+      },
+      "executable_id": 3,
+      "execution_type": "SINGULARITY:PM",
+      "executions": [
+        {
+          "execution_configuration_id": 24,
+          "execution_type": "SINGULARITY:PM",
+          "id": 302,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 7203,
+          "status": "FAILED"
+        }
+      ],
+      "id": 24,
+      "num_cpus_per_node": 12,
+      "num_gpus_per_node": 0,
+      "num_nodes": 1,
+      "profile_file": "/home_nfs/home_garciad/alde/profiles/97fff8fa-9df6-43f6-be0e-86681ef8300f.profile",
+      "srun_config": null,
+      "testbed": {
+        "category": "SLURM",
+        "endpoint": "",
+        "extra_config": {
+          "enqueue_compss_sc_cfg": "nova.cfg",
+          "enqueue_env_file": "/home_nfs/home_ejarquej/installations/2.2.6/COMPSs/compssenv"
+        },
+        "id": 1,
+        "name": "nova2",
+        "on_line": true,
+        "package_formats": [
+          "SINGULARITY"
+        ],
+        "protocol": "LOCAL"
+      },
+      "testbed_id": 1
+    },
+    {
+      "application": {
+        "application_type": null,
+        "deadline": null,
+        "id": 2,
+        "max_energy": null,
+        "max_energy_units": null,
+        "max_power": null,
+        "max_power_units": null,
+        "name": "Matmul",
+        "priority": null,
+        "scaling_lower_bound": null,
+        "scaling_upper_bound": null
+      },
+      "application_id": 2,
+      "command": "/apps/application/master/Matmul 8 1024 12.34 /fslustre/tango/matmul/data/run/cpu_gpu",
+      "compss_config": "--worker_in_master_cpus=12 --worker_in_master_memory=24000 --worker_working_dir=/fslustre/tango/matmul/working_dir/ --master_working_dir=/fslustre/tango/matmul/log_dir/ --base_log_dir=/fslustre/tango/matmul/log_dir/ --elasticity=2 --enable_external_adaptation=true --cpu_affinity=\"0-11\" --container_opts=\\\"-B /fslustre:/fslustre\\\" --monitoring=1000 -d --lang=c --library_path=/usr/local/cuda-8.0/lib64/",
+      "exec_time": 60,
+      "executable": {
+        "application_id": null,
+        "compilation_script": "compss_build_app Matmul",
+        "compilation_type": "SINGULARIY:PM",
+        "executable_file": null,
+        "id": 3,
+        "singularity_app_folder": "/apps/matmul_files_gpu/",
+        "singularity_image_file": "/home_nfs/home_ejarquej/matmul-cuda8-y3.img",
+        "source_code_file": "/home_nfs/home_ejarquej/matmul.zip/",
+        "status": "COMPILED"
+      },
+      "executable_id": 3,
+      "execution_type": "SINGULARITY:PM",
+      "executions": [
+        {
+          "execution_configuration_id": 25,
+          "execution_type": "SINGULARITY:PM",
+          "id": 304,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 7204,
+          "status": "COMPLETED"
+        }
+      ],
+      "id": 25,
+      "num_cpus_per_node": 12,
+      "num_gpus_per_node": 0,
+      "num_nodes": 1,
+      "profile_file": "/home_nfs/home_garciad/alde/profiles/3b9bdc50-0fd9-4285-b2b8-042d99636b73.profile",
+      "srun_config": null,
+      "testbed": {
+        "category": "SLURM",
+        "endpoint": "",
+        "extra_config": {
+          "enqueue_compss_sc_cfg": "nova.cfg",
+          "enqueue_env_file": "/home_nfs/home_ejarquej/installations/2.2.6/COMPSs/compssenv"
+        },
+        "id": 1,
+        "name": "nova2",
+        "on_line": true,
+        "package_formats": [
+          "SINGULARITY"
+        ],
+        "protocol": "LOCAL"
+      },
+      "testbed_id": 1
+    },
+    {
+      "application": {
+        "application_type": null,
+        "deadline": null,
+        "id": 2,
+        "max_energy": null,
+        "max_energy_units": null,
+        "max_power": null,
+        "max_power_units": null,
+        "name": "Matmul",
+        "priority": null,
+        "scaling_lower_bound": null,
+        "scaling_upper_bound": null
+      },
+      "application_id": 2,
+      "command": "/apps/application/master/Matmul 8 1024 12.34 /fslustre/tango/matmul/data/run/cpu_gpu",
+      "compss_config": "--worker_in_master_cpus=12 --worker_in_master_memory=24000 --worker_working_dir=/fslustre/tango/matmul/working_dir/ --master_working_dir=/fslustre/tango/matmul/log_dir/ --base_log_dir=/fslustre/tango/matmul/log_dir/ --elasticity=2 --enable_external_adaptation=true --cpu_affinity=\"0-11\" --container_opts=\\\"-B /fslustre:/fslustre\\\" --monitoring=1000 -d --lang=c --library_path=/usr/local/cuda-8.0/lib64/",
+      "exec_time": 60,
+      "executable": {
+        "application_id": 2,
+        "compilation_script": "compss_build_app Matmul",
+        "compilation_type": "SINGULARIY:PM",
+        "executable_file": null,
+        "id": 8,
+        "singularity_app_folder": "/apps/application/",
+        "singularity_image_file": "/home_nfs/home_ejarquej/matmul-cuda8-y3-cpus.img",
+        "source_code_file": "/home_nfs/home_ejarquej/matmul.zip/",
+        "status": "COMPILED"
+      },
+      "executable_id": 8,
+      "execution_type": "SINGULARITY:PM",
+      "executions": [
+        {
+          "execution_configuration_id": 26,
+          "execution_type": "SINGULARITY:PM",
+          "id": 312,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 7216,
+          "status": "COMPLETED"
+        },
+        {
+          "execution_configuration_id": 26,
+          "execution_type": "SINGULARITY:PM",
+          "id": 320,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 7221,
+          "status": "COMPLETED"
+        },
+        {
+          "execution_configuration_id": 26,
+          "execution_type": "SINGULARITY:PM",
+          "id": 376,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 7320,
+          "status": "COMPLETED"
+        },
+        {
+          "execution_configuration_id": 26,
+          "execution_type": "SINGULARITY:PM",
+          "id": 380,
+          "output": null,
+          "parent_id": null,
+          "slurm_sbatch_id": 7321,
+          "status": "COMPLETED"
+        }
+      ],
+      "id": 26,
+      "num_cpus_per_node": 12,
+      "num_gpus_per_node": 0,
+      "num_nodes": 1,
+      "profile_file": "/home_nfs/home_garciad/alde/profiles/cb80b2c1-05b1-4e23-947e-d4da81f01794.profile",
+      "srun_config": null,
+      "testbed": {
+        "category": "SLURM",
+        "endpoint": "",
+        "extra_config": {
+          "enqueue_compss_sc_cfg": "nova.cfg",
+          "enqueue_env_file": "/home_nfs/home_ejarquej/installations/2.2.6/COMPSs/compssenv"
+        },
+        "id": 1,
+        "name": "nova2",
+        "on_line": true,
+        "package_formats": [
+          "SINGULARITY"
+        ],
+        "protocol": "LOCAL"
+      },
+      "testbed_id": 1
+    }
+  ],
+  "page": 1,
+  "total_pages": 1
+}

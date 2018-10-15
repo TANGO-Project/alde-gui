@@ -203,3 +203,11 @@ h3 {
     background-repeat: no-repeat;
     background-position: right center;
 }
+
+
+.modal_new_testbed {
+    background-image: url("/images/cluster2.png");
+    background-repeat: no-repeat;
+    background-color: #EEEEEE;
+    background-position: left bottom;
+}

@@ -8,63 +8,75 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (ns gui.testbeds.newtestbed
   (:require [restapi.testbeds :as restapi]
-            [gui.globals :as VARS]))
+            [reagent.core :as r]
+            [gui.globals :as VARS]
+            [gui.common.modal :as modal]))
+
+
+;; JSON_NEW_TESTBED
+(def JSON_NEW_TESTBED (r/atom "{
+  \"name\": \"example-testbed\",
+  \"on_line\": true,
+  \"category\": \"SLURM\",
+  \"protocol\": \"SSH\",
+  \"endpoint\": \"ns54\",
+  \"extra_config\": {
+    \"enqueue_compss_sc_cfg\": \"nova.cfg\",
+    \"enqueue_env_file\": \"/home_nfs/home_ejarquej/installations/rc1707/COMPSs/compssenv\"
+  },
+  \"package_formats\": [\"SINGULARITY\"]
+}"))
+
+;; textarea RESPONSE
+(def last-resp (r/atom ""))
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; FUNCTION: change-val
+(defn- change-val ""
+  [val event]
+  (do
+    (reset! val (-> event .-target .-value))
+    (reset! JSON_NEW_TESTBED (-> event .-target .-value))))
+
+
+;; FUNCTION: atom-input-text
+(defn atom-input-text [value]
+  [:textarea.form-control.input-sm.text-left
+    {:type "text" :rows "14" :placeholder "json content" :style {:background-color "#FFFFFC"}
+     :value @value
+     :on-change #(reset! value (-> % .-target .-value))}])
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; WEB CONTENT
 ;; FUNCTION: panel js/myFunction
 (defn panel []
-  [:div.collapse {:id "collapseNew3"}
-    [:div.card.card-body
-      [:div.col-sm-12 {:style {:padding "16px" :border-radius "6px" :text-align "center"}}
+  (reset! last-resp "")
+  [:div {:style {:border-radius "1px" :text-align "center"}}
+  (let [val-json (r/atom @JSON_NEW_TESTBED)]
+    [:div.modal_new_testbed ; {:style {:background-image "./images/tango.png"}} ;.card-body 
+      [:div.col-sm-12
         ;; header
         [:div.row
           [:div.col-sm-12
-            [:h5 {:style {:margin-top "-25px" :text-align "left"}}
+            [:h5 {:style {:margin-top "0px" :text-align "left"}}
               [:span.badge.badge-pill.badge-success "Create new testbed"]]]]
         ;; content
         [:div.row {:style {:margin-top "5px"}}
-          [:label.col-sm-2.control-label.text-right [:b "Name:"]]
-          [:div.col-sm-8
-            [:input.form-control.input-sm.text-left {:type "text" :style {:background-color "#FFFFFF"} :placeholder "Name"
-              :defaultValue "-"}]]]
-        [:div.row {:style {:margin-top "5px"}}
-          [:label.col-sm-2.control-label.text-right [:b "Id:"]]
-          [:div.col-sm-4
-            [:input.form-control.input-sm.text-left {:type "text" :style {:background-color "#FFFFFF"} :placeholder "Id"
-              :defaultValue "-"}]]]
-        [:div.row {:style {:margin-top "5px"}}
-          [:label.col-sm-2.control-label.text-right [:b "Information retrieved?"]]
-          [:div.col-sm-4
-            [:input.form-control.input-sm.text-left {:type "text" :style {:background-color "#FFFFFF"} :placeholder "Information retrieved?"
-              :defaultValue "-"}]]]
-        [:div.row {:style {:margin-top "5px"}}
-          [:label.col-sm-2.control-label.text-right [:b "Testbed Id:"]]
-          [:div.col-sm-4
-            [:input.form-control.input-sm.text-left {:type "text" :style {:background-color "#FFFFFF"} :placeholder "Testbed Id"
-              :defaultValue "-"}]]]
-        [:div.row {:style {:margin-top "5px"}}
-          [:label.col-sm-2.control-label.text-right [:b "cpus:"]]
-          [:div.col-sm-8
-            [:input.form-control.input-sm.text-left {:type "text" :style {:background-color "#FFFFFF"}
-              :defaultValue "-"}]]]
-        [:div.row {:style {:margin-top "5px"}}
-          [:label.col-sm-2.control-label.text-right [:b "gpus:"]]
-          [:div.col-sm-8
-            [:input.form-control.input-sm.text-left {:type "text" :style {:background-color "#FFFFFF"}
-              :defaultValue "-"}]]]
-        ;; footer
+          [:label.col-sm-2.control-label.text-right [:b "Testbed:"]]
+          [:div.col-sm-10
+            [atom-input-text val-json]]]
+        ;; footer buttons
         [:div.row
-          [:div.col-sm-9 " "]
-          [:div.col-sm-3
+          [:div.col-sm-8 " "]
+          [:div.col-sm-4
             [:h5 {:style {:margin-top "5px" :text-align "left"}}
               ;; save node TODO
               [:button.badge.badge-pill.btn-sm.btn-success {:style {:margin-right "5px" :text-align "right"}
                 :data-toggle "tooltip" :data-placement "right" :title "Submit"
-                :on-click #(restapi/add-node-to-testbed (fn[] (- 1 1)) {
-                                                                    :name "node_3",
-                                                                    :information_retrieved false
-                                                                  })} "Submit"]
+                :on-click #(do (restapi/add-testbed @val-json) (modal/close-modal))} "Submit"]
               ;; cancel
               [:button.badge.badge-pill.btn-sm.btn-danger {:title "Cancel operation and close panel"
-                :data-toggle "collapse" :data-target "#collapseNew3" :aria-expanded "false" :aria-controls "collapseNew3"} "cancel"]]]]]]])
+                :on-click #(do (reset! last-resp "") (modal/close-modal))} "Cancel / Close"]]]]]])])

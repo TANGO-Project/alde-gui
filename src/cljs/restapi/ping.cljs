@@ -21,4 +21,4 @@
 ;; FUNCTION: ping-alde
 (defn ping-alde "Ping to ALDE REST API"
   [f-ping]
-  (http/GET (str @VARS/REST_API_URL "testbeds?") {:with-credentials? false} f-ping :status))
+  (http/GETf (str @VARS/REST_API_URL "testbeds?") f-ping))

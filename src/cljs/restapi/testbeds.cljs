@@ -11,39 +11,6 @@
             [gui.globals :as VARS]
             [utils.http_cljs :as http]))
 
-;; ROUTES
-;;    from  https://github.com/TANGO-Project/alde/blob/master/src/main/python/models.py
-;;          https://github.com/TANGO-Project/alde/blob/master/src/main/python/alde.py
-;;
-;;    /api/v1/applications
-;;    /api/v1/testbeds
-;;    /api/v1/deployments
-;;    /api/v1/executables
-;;    /api/v1/executions
-;;    /api/v1/execution_configurations
-;;    /api/v1/memories
-;;    /api/v1/cpus
-;;    /api/v1/gpus
-;;    /api/v1/nodes
-;;    /api/v1/upload ??????????
-;;
-;;
-;;
-;;
-;;
-;;
-;;
-;;
-;;
-;;
-;;
-;;
-
-
-
-
-
-
 
 ;; FUNCTION: execute-periodic-task
 (defn execute-periodic-task "Excecute a periodic task 'f' every 't' seconds. Returns the task's id"
@@ -51,62 +18,62 @@
   (js/setInterval f (* t 1000)))
 
 
-(def port 3001) ; 8080
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; TESTBEDS
 ;; FUNCTION: get-testbeds
 (defn get-testbeds "Gets all the testbeds from ALDE"
   [f]
-  (http/GET "http://localhost:8080/mock-data/testbeds" {:with-credentials? false} f))
-  ;(http/GET (str @VARS/REST_API_URL "testbeds") {:with-credentials? false} f))
+  ;(http/GET "http://localhost:8081/mock-data/testbeds" {:with-credentials? false} f)) ; no-connection / dev tests
+  (http/GET
+    (str @VARS/REST_API_URL "testbeds")
+    {:with-credentials? false}
+    f))
 
 
-;; FUNCTION: get-nodes-from-testbed
-(defn get-nodes-from-testbed "Gets the nodes from a testbed"
-  [f testbed-id]
-  (http/GET "http://localhost:8080/mock-data/testbeds" {:with-credentials? false} f))
-  ;(http/GET (str @VARS/REST_API_URL "testbeds/" testbed-id "/nodes") {:with-credentials? false} f))
+;; add-testbed
+(defn add-testbed "Adds a new testbed to ALDE"
+  [json-params]
+  (http/POST
+    (str @VARS/REST_API_URL "testbeds")
+    #(do (get-testbeds VARS/update-testbeds) (.reload js/location))
+    json-params))
 
 
-;; FUNCTION: get-nodes-from-testbed-node
-(defn get-nodes-from-testbed-node "Gets a testbeds' node info from ALDE"
-  [f testbed-id node-id]
-  (http/GET "http://localhost:8080/mock-data/testbeds" {:with-credentials? false} f))
-  ;(http/GET (str @VARS/REST_API_URL "testbeds/" testbed-id "/nodes/" node-id) {:with-credentials? false} f))
+;; rem-testbed
+(defn rem-testbed "Adds a new testbed to ALDE"
+  [id f]
+  (http/DELETE
+    (str @VARS/REST_API_URL "testbeds/" id)
+    f))
+    ;#(do (get-testbeds VARS/update-testbeds) (.reload js/location))))
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; NODES
 ;; FUNCTION: get-nodes
 (defn get-nodes "Gets all the nodes from ALDE"
   [f]
-  (http/GET "http://localhost:8080/mock-data/nodes" {:with-credentials? false} f))
-  ;(http/GET (str @VARS/REST_API_URL "nodes") {:with-credentials? false} f))
+  ;(http/GET "http://localhost:8081/mock-data/nodes" {:with-credentials? false} f)) ; no-connection / dev tests
+  (http/GET (str @VARS/REST_API_URL "nodes") {:with-credentials? false} f))
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; EXECUTIONS
 ;; FUNCTION: get-execs
 (defn get-execs "Gets all the executions from ALDE"
   [f]
-  (http/GET "http://localhost:8080/mock-data/executions" {:with-credentials? false} f))
-  ;(http/GET (str @VARS/REST_API_URL "applications") {:with-credentials? false} f))
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-;; add-testbed
-;; TODO
-(defn add-testbed "Adds a testbed"
-  [func json-params]
-  ; endpoint func m json-params
-  (http/POST (str @VARS/REST_API_URL "nodes?") func {:with-credentials? false} json-params))
+  ;(http/GET "http://localhost:8081/mock-data/executions" {:with-credentials? false} f)) ; no-connection / dev tests
+  ; ?page=1&results_per_page=10
+  (http/GET (str @VARS/REST_API_URL "executions") {:with-credentials? false} f))
 
 
-;; add-node-to-testbed
-;; TODO
-(defn add-node-to-testbed "Adds a node to testbed"
-  [func json-params]
-  ; endpoint func m json-params
-  (http/POST (str @VARS/REST_API_URL "nodes?") func {:with-credentials? false} json-params))
+;; FUNCTION: get-execs-page
+(defn get-execs-page "Gets all the executions from ALDE"
+  [f p]
+  ;(http/GET "http://localhost:8080/mock-data/executions" {:with-credentials? false} f)) ; no-connection / dev tests
+  ; ?page=1&results_per_page=10
+  (http/GET (str @VARS/REST_API_URL "executions?page=" p "&results_per_page=10") {:with-credentials? false} f))
+
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -115,19 +82,50 @@
 ;; FUNCTION: get-apps
 (defn get-apps "Gets all the apps from ALDE"
   [f]
-  (http/GET "http://localhost:8080/mock-data/applications" {:with-credentials? false} f))
-  ;(http/GET (str @VARS/REST_API_URL "applications") {:with-credentials? false} f))
+  ;(http/GET "http://localhost:8081/mock-data/applications" {:with-credentials? false} f)) ; no-connection / dev tests
+  (http/GET (str @VARS/REST_API_URL "applications") {:with-credentials? false} f))
+
+
+;; rem-application
+(defn rem-application "Adds a new application to ALDE"
+  [id]
+  (http/DELETE
+    (str @VARS/REST_API_URL "applications/" id)
+    #(do (get-apps VARS/update-apps) (.reload js/location))))
 
 
 ;; FUNCTION: new-application
 (defn new-application "Creates a new application"
-  [func json-params]
-  ; endpoint func m json-params
-  (http/POST (str @VARS/REST_API_URL "applications") func {:with-credentials? false} json-params))
+  [json-params]
+  (http/POST
+    (str @VARS/REST_API_URL "applications")
+    #(do (get-apps VARS/update-apps) (.reload js/location))
+    json-params))
 
 
-;; FUNCTION: update-application
-(defn update-application "Updates application"
-  [id func json-params]
-  ; endpoint func m json-params
-  (http/POST (str @VARS/REST_API_URL "upload/" id) func {:with-credentials? false} json-params))
+;; FUNCTION: add-conf
+(defn add-conf "Creates a new execution configuration"
+  [json-params]
+  (http/POST
+    (str @VARS/REST_API_URL "execution_configurations")
+    #(do (get-apps VARS/update-apps) (.reload js/location))
+    json-params))
+
+
+;; FUNCTION: launch-exec
+;; curl -X PATCH -H'Content-type: application/json' http://127.0.0.1:5000/api/v1/execution_configurations/1 -d'{"launch_execution": true}'
+(defn launch-exec "Launch the execution"
+  [id]
+  (http/PATCH
+    (str @VARS/REST_API_URL "execution_configurations/" id)
+    #(do (get-apps VARS/update-apps) (.reload js/location))
+    "{\"launch_execution\": true}"))
+
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; FUNCTION: not-implemented-func
+(defn not-implemented-func ""
+  [param1 param2 param3]
+  {:message "not-implemented"})

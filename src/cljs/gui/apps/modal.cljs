@@ -61,52 +61,52 @@
     [:div.row {:style {:margin-top "5px"}}
       [:label.col-sm-2.control-label.text-right [:b "Id:"]]
       [:div.col-sm-2
-        [:input.form-control.input-sm.text-left {:type "text" :style {:background-color "#FFFFCC"}
+        [:input.form-control.input-sm.text-left {:type "text" :style {:background-color "#FFFFCC"} :placeholder "---" :read-only true
           :defaultValue (@TXT_CONF :id)}]]]
     [:div.row {:style {:margin-top "5px"}}
       [:label.col-sm-2.control-label.text-right [:b "Execution Type:"]]
       [:div.col-sm-8
-        [:input.form-control.input-sm.text-left {:type "text" :style {:background-color "#FFFFFF"}
+        [:input.form-control.input-sm.text-left {:type "text" :style {:background-color "#FFFFFF"} :placeholder "---" :read-only true
           :defaultValue (str (@TXT_CONF :execution_type))}]]]
     [:div.row {:style {:margin-top "5px"}}
       [:label.col-sm-2.control-label.text-right [:b "Command:"]]
       [:div.col-sm-10
-        [:input.form-control.input-sm.text-left {:type "text" :style {:background-color "#FFFFFF"}
+        [:input.form-control.input-sm.text-left {:type "text" :style {:background-color "#FFFFFF"} :placeholder "---" :read-only true
           :defaultValue (str (@TXT_CONF :command))}]]]
     [:div.row {:style {:margin-top "5px"}}
       [:label.col-sm-2.control-label.text-right [:b "COMPSs configuration:"]]
       [:div.col-sm-10
-        [:input.form-control.input-sm.text-left {:type "text" :style {:background-color "#FFFFFF"}
+        [:input.form-control.input-sm.text-left {:type "text" :style {:background-color "#FFFFFF"} :placeholder "---" :read-only true
           :defaultValue (str (@TXT_CONF :compss_config))}]]]
     [:div.row {:style {:margin-top "5px"}}
       [:label.col-sm-2.control-label.text-right [:b "Profile file:"]]
       [:div.col-sm-10
-        [:input.form-control.input-sm.text-left {:type "text" :style {:background-color "#FFFFFF"}
+        [:input.form-control.input-sm.text-left {:type "text" :style {:background-color "#FFFFFF"} :placeholder "---" :read-only true
           :defaultValue (str (@TXT_CONF :profile_file))}]]]
     [:div.row {:style {:margin-top "5px"}}
       [:label.col-sm-2.control-label.text-right [:b "exec time:"]]
       [:div.col-sm-3
-        [:input.form-control.input-sm.text-left {:type "text" :style {:background-color "#FFFFFF"}
+        [:input.form-control.input-sm.text-left {:type "text" :style {:background-color "#FFFFFF"} :placeholder "---" :read-only true
           :defaultValue (str (@TXT_CONF :exec_time))}]]]
     [:div.row {:style {:margin-top "5px"}}
       [:label.col-sm-2.control-label.text-right [:b "cpus per node:"]]
       [:div.col-sm-2
-        [:input.form-control.input-sm.text-left {:type "text" :style {:background-color "#FFFFFF"}
+        [:input.form-control.input-sm.text-left {:type "text" :style {:background-color "#FFFFFF"} :placeholder "---" :read-only true
           :defaultValue (str (@TXT_CONF :num_cpus_per_node))}]]]
     [:div.row {:style {:margin-top "5px"}}
       [:label.col-sm-2.control-label.text-right [:b "gpus per node:"]]
       [:div.col-sm-2
-        [:input.form-control.input-sm.text-left {:type "text" :style {:background-color "#FFFFFF"}
+        [:input.form-control.input-sm.text-left {:type "text" :style {:background-color "#FFFFFF"} :placeholder "---" :read-only true
           :defaultValue (str (@TXT_CONF :num_gpus_per_node))}]]]
     [:div.row {:style {:margin-top "5px"}}
       [:label.col-sm-2.control-label.text-right [:b "num nodes:"]]
       [:div.col-sm-2
-        [:input.form-control.input-sm.text-left {:type "text" :style {:background-color "#FFFFFF"}
+        [:input.form-control.input-sm.text-left {:type "text" :style {:background-color "#FFFFFF"} :placeholder "---" :read-only true
           :defaultValue (str (@TXT_CONF :num_nodes))}]]]
     [:div.row {:style {:margin-top "5px"}}
       [:label.col-sm-2.control-label.text-right [:b "srun config:"]]
       [:div.col-sm-2
-        [:input.form-control.input-sm.text-left {:type "text" :style {:background-color "#FFFFFF"}
+        [:input.form-control.input-sm.text-left {:type "text" :style {:background-color "#FFFFFF"} :placeholder "---" :read-only true
           :defaultValue (str (@TXT_CONF :srun_config))}]]]
 
     [:button {:type "button" :title "Cancel" :class "close" :on-click #(close-modal)
@@ -125,12 +125,12 @@
     [:div.row {:style {:margin-top "5px"}}
       [:label.col-sm-2.control-label.text-right [:b "Id:"]]
       [:div.col-sm-2
-        [:input.form-control.input-sm.text-left {:type "text" :style {:background-color "#FFFFCC"}
+        [:input.form-control.input-sm.text-left {:type "text" :style {:background-color "#FFFFCC"} :placeholder "---" :read-only true
           :defaultValue (@TXT_EXEC :id)}]]]
     [:div.row {:style {:margin-top "5px"}}
       [:label.col-sm-2.control-label.text-right [:b "Satus:"]]
       [:div.col-sm-4
-        [:input.form-control.input-sm.text-left {:type "text" :style
+        [:input.form-control.input-sm.text-left {:type "text" :placeholder "---" :read-only true :style 
           (if (= (@TXT_EXEC :status) "COMPILED")
             {:background-color "#58FA58"}
             (if (= (@TXT_EXEC :status) "NOT_COMPILED")
@@ -140,32 +140,32 @@
     [:div.row {:style {:margin-top "5px"}}
       [:label.col-sm-2.control-label.text-right [:b "Compilation Type:"]]
       [:div.col-sm-8
-        [:input.form-control.input-sm.text-left {:type "text" :style {:background-color "#FFFFFF"}
+        [:input.form-control.input-sm.text-left {:type "text" :style {:background-color "#FFFFFF"} :placeholder "---" :read-only true
           :defaultValue (str (@TXT_EXEC :compilation_type))}]]]
     [:div.row {:style {:margin-top "5px"}}
       [:label.col-sm-2.control-label.text-right [:b "Compilation Script:"]]
       [:div.col-sm-8
-        [:input.form-control.input-sm.text-left {:type "text" :style {:background-color "#FFFFFF"}
+        [:input.form-control.input-sm.text-left {:type "text" :style {:background-color "#FFFFFF"} :placeholder "---" :read-only true
           :defaultValue (str (@TXT_EXEC :compilation_script))}]]]
     [:div.row {:style {:margin-top "5px"}}
       [:label.col-sm-2.control-label.text-right [:b "Executable File:"]]
       [:div.col-sm-8
-        [:input.form-control.input-sm.text-left {:type "text" :style {:background-color "#FFFFFF"}
+        [:input.form-control.input-sm.text-left {:type "text" :style {:background-color "#FFFFFF"} :placeholder "---" :read-only true
           :defaultValue (str (@TXT_EXEC :executable_file))}]]]
     [:div.row {:style {:margin-top "5px"}}
       [:label.col-sm-2.control-label.text-right [:b "Singularity application folder:"]]
       [:div.col-sm-8
-        [:input.form-control.input-sm.text-left {:type "text" :style {:background-color "#FFFFFF"}
+        [:input.form-control.input-sm.text-left {:type "text" :style {:background-color "#FFFFFF"} :placeholder "---" :read-only true
           :defaultValue (str (@TXT_EXEC :singularity_app_folder))}]]]
     [:div.row {:style {:margin-top "5px"}}
       [:label.col-sm-2.control-label.text-right [:b "Singularity image file:"]]
       [:div.col-sm-8
-        [:input.form-control.input-sm.text-left {:type "text" :style {:background-color "#FFFFFF"}
+        [:input.form-control.input-sm.text-left {:type "text" :style {:background-color "#FFFFFF"} :placeholder "---" :read-only true
           :defaultValue (str (@TXT_EXEC :singularity_image_file))}]]]
     [:div.row {:style {:margin-top "5px"}}
       [:label.col-sm-2.control-label.text-right [:b "Source code file:"]]
       [:div.col-sm-8
-        [:input.form-control.input-sm.text-left {:type "text" :style {:background-color "#FFFFFF"}
+        [:input.form-control.input-sm.text-left {:type "text" :style {:background-color "#FFFFFF"} :placeholder "---" :read-only true
           :defaultValue (str (@TXT_EXEC :source_code_file))}]]]
 
     [:button {:type "button" :title "Cancel" :class "close" :on-click #(close-modal)
@@ -184,22 +184,22 @@
     [:div.row {:style {:margin-top "5px"}}
       [:label.col-sm-2.control-label.text-right [:b "Id:"]]
       [:div.col-sm-2
-        [:input.form-control.input-sm.text-left {:type "text" :style {:background-color "#FFFFCC"} :placeholder "Id"
+        [:input.form-control.input-sm.text-left {:type "text" :style {:background-color "#FFFFCC"} :placeholder "---" :read-only true
           :defaultValue (@TXT_APP :id)}]]]
     [:div.row {:style {:margin-top "5px"}}
       [:label.col-sm-2.control-label.text-right [:b "Name:"]]
       [:div.col-sm-8
-        [:input.form-control.input-sm.text-left {:type "text" :style {:background-color "#FFFFFF"} :placeholder "Name"
+        [:input.form-control.input-sm.text-left {:type "text" :style {:background-color "#FFFFFF"} :placeholder "---" :read-only true
           :defaultValue (@TXT_APP :name)}]]]
     [:div.row {:style {:margin-top "5px"}}
       [:label.col-sm-2.control-label.text-right [:b "Executables:"]]
       [:div.col-sm-2
-        [:input.form-control.input-sm.text-left {:type "text" :style {:background-color "#FFFFFF"}
+        [:input.form-control.input-sm.text-left {:type "text" :style {:background-color "#FFFFFF"} :placeholder "---" :read-only true
           :defaultValue (str (count (@TXT_APP :executables)))}]]]
     [:div.row {:style {:margin-top "5px"}}
       [:label.col-sm-2.control-label.text-right [:b "Execution Configurations:"]]
       [:div.col-sm-2
-        [:input.form-control.input-sm.text-left {:type "text" :style {:background-color "#FFFFFF"}
+        [:input.form-control.input-sm.text-left {:type "text" :style {:background-color "#FFFFFF"} :placeholder "---" :read-only true
           :defaultValue (str (count (@TXT_APP :execution_configurations)))}]]]
 
     [:button {:type "button" :title "Cancel" :class "close" :on-click #(close-modal)

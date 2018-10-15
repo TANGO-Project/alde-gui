@@ -18,11 +18,11 @@
 
 ;; f-ping
 (defn- f-ping "Ping to testbed"
-  [res]
-  (logs/debug "ping to alde...")
+  [status res]
+  (logs/debug "ping to alde... [status=" status "]")
   (if (nil? res)
     (logs/error "res is NIL!")
-    (if (= (compare res 200) 0)
+    (if (= (compare status 200) 0)
       (re-frame/dispatch [::events/is-rest-api-online? true])
       (re-frame/dispatch [::events/is-rest-api-online? false]))))
 
@@ -43,15 +43,17 @@
         [:b " ATOS 2018 "] [:i " All right reserved"]]
       [:small.text-right {:style {:margin-left "75px"}}
         (if @is-rest-api-online?
-          [:a {:href @VARS/REST_API_URL :title "online"
+          [:a {:href (str @VARS/REST_API_URL "testbeds") :title "online"
                :target "_blank"}
               [:i.fa.fa-flag {:style {:color "green"}}]]
-          [:a {:href @VARS/REST_API_URL :title "offline"
+          [:a {:href (str @VARS/REST_API_URL "testbeds") :title "offline"
                :target "_blank"}
               [:i.fa.fa-flag {:style {:color "red"}}]])
-        [:span.label.label-muted {:style {:margin-left "10px"}} " ALDE REST-API "]]]))
+        [:span.label.label-muted {:style {:margin-left "10px"}}
+          " ALDE REST-API "  [:i {:style {:color "blue" :margin-left "25px"}} @VARS/REST_API_URL]]]]))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; INIT
-(ping/execute-periodic-task #(ping/ping-alde f-ping) 30)
+(ping/ping-alde f-ping)
+(ping/execute-periodic-task #(ping/ping-alde f-ping) 300)

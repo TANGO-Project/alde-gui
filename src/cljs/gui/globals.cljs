@@ -8,9 +8,10 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (ns gui.globals
   (:require [reagent.core :as r]
-            [utils.http_cljs :as http]
             [utils.logs :as logs]
-            [gui.CONFIG :as CONFIG]))
+            [gui.CONFIG :as CONFIG]
+            [re-frame.core :as re-frame]
+            [gui.events :as events]))
 
 ;; REST API
 (def REST_API_URL (r/atom (get-in CONFIG/CONFIGURATIONS [:app :alde-rest-api-url])))
@@ -63,6 +64,7 @@
   [res]
   (logs/info "Updating Testbeds content ...")
   (reset! ALDE_TESTBEDS (update-testbeds-vector (res :objects)))
+  (re-frame/dispatch [::events/set-total-testbeds (count @ALDE_TESTBEDS)])
   (logs/info "Total Testbeds: " (count @ALDE_TESTBEDS)))
 
 ;; FUNCTION: get-total-testbeds
@@ -118,24 +120,28 @@
             ;; add main node to map
             (assoc m :nodes nodes)))))))
 
-;; FUNCTION: update-nodes
-(defn update-nodes "Updates the nodes vector"
-  [res]
-  (logs/info "Updating Nodes content ...")
-  (reset! ALDE_NODES (update-nodes-vector (res :objects)))
-  (logs/info "Total Nodes: " (count @ALDE_NODES)))
 
 ;; FUNCTION: get-total-nodes
 (defn get-total-nodes "returns the the total nodes in all testbeds"
   []
   (apply + (for [x @ALDE_TESTBEDS] (- (count (x :nodes)) 1))))
 
+
+;; FUNCTION: update-nodes
+(defn update-nodes "Updates the nodes vector"
+  [res]
+  (logs/info "Updating Nodes content ...")
+  (reset! ALDE_NODES (update-nodes-vector (res :objects)))
+  (re-frame/dispatch [::events/set-total-nodes (get-total-nodes)])
+  (logs/info "Total Nodes: " (count @ALDE_NODES)))
+
+
 ;; FUNCTION: get-node-by-id
 (defn get-node-by-id ""
   [id-node]
   (when-not (and (nil? id-node) (not (int? id-node)))
     (let [res (filter #(= (% :id) (js/parseInt id-node)) @ALDE_NODES)]
-      (logs/info "Total nodes retrieved: " (count res))
+      ;(logs/info "Total nodes retrieved: " (count res))
       (when-not (or (nil? res) (<= (count res) 0))
         (first res)))))
 
@@ -178,6 +184,7 @@
   [res]
   (logs/info "Updating Applications content ...")
   (reset! ALDE_APPS (res :objects)) ;(update-apps-vector (res :objects)))
+  (re-frame/dispatch [::events/set-total-apps (count @ALDE_APPS)])
   (logs/info "Total Applications: " (count @ALDE_APPS)))
 
 

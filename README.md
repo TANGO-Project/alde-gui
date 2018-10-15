@@ -74,6 +74,8 @@ java -jar target/alde-gui.jar 8080
 }
 ```
 
+- The ALDE REST API URL can also be modified in the configuration section of the ALDE GUI.
+
 -----------------------
 
 ### Relation to other TANGO components

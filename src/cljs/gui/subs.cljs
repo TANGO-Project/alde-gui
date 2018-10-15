@@ -53,6 +53,12 @@
  (fn [db]
    (:selected-cluster-node db)))
 
+;; SELECTED NODE -NAME-
+(re-frame/reg-sub
+ ::selected-node-name
+ (fn [db]
+   (:selected-node-name db)))
+
 (re-frame/reg-sub
  ::selected-cluster-name
  (fn [db]
@@ -87,6 +93,24 @@
   ::testbeds
   (fn [db _]
     (:testbeds db)))
+
+;; :total-testbeds
+(re-frame/reg-sub
+  ::total-testbeds
+  (fn [db _]
+    (:total-testbeds db)))
+
+;; :total-nodes
+(re-frame/reg-sub
+  ::total-nodes
+  (fn [db _]
+    (:total-nodes db)))
+
+;; :total-apps
+(re-frame/reg-sub
+  ::total-apps
+  (fn [db _]
+    (:total-apps db)))
 
 ;; :executions
 (re-frame/reg-sub

@@ -42,7 +42,5 @@
     (re-frame/dispatch [::events/set-active-panel :config-panel]))
   (defroute "/testbeds" []
     (re-frame/dispatch [::events/set-active-panel :testbeds-panel]))
-  (defroute "/monitoring" []
-    (re-frame/dispatch [::events/set-active-panel :monitoring-panel]))
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;
   (hook-browser-navigation!))

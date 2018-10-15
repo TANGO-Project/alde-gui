@@ -7,13 +7,19 @@
 ;; LICENSE.TXT file for more information
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (ns gui.apps.vcontent
-  (:require [gui.apps.vapps :as apps]))
+  (:require [gui.apps.vapps :as apps]
+            [re-frame.core :as re-frame]
+            [gui.subs :as subs]))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; WEB CONTENT
 ;; FUNCTION: panel js/myFunction
 (defn panel []
-  [:div.col-12.text-left
-    [:div.col-sm-12 {:id "apps-content" :style {:margin-bottom "40px"}}
-      [apps/panel]]])
+  (let [t-apps      (re-frame/subscribe [::subs/total-apps])]
+    [:div.col-12.text-left
+      (if  (> @t-apps 0)
+        [:div.col-sm-12 {:id "apps-content" :style {:margin-bottom "40px"}}
+          [apps/panel]]
+        [:div.col-12.text-left [:img {:src "images/loader.gif" :width "24px" :height "24px"}]
+                               [:b "Getting information from applications and executions..."]])]))

@@ -38,6 +38,16 @@
   (GET  "/mock-data/execution_configurations" []  (response (json/read-str (slurp (.getPath (clojure.java.io/resource "data/mock_up_execution_configurations.json"))))))
   (GET  "/mock-data/executions"   []  (response (json/read-str (slurp (.getPath (clojure.java.io/resource "data/mock_up_executions.json"))))))
 
+
+  (context "/tests" []
+    (GET "/json"  {headers :headers}  (do
+                                        (logs/info "> GET /tests/json")
+                                        (response (json/read-str "{}"))))
+    (POST "/json" {body :body}        (do
+                                        (logs/info "> POST /tests/json")
+                                        (logs/info "> body:" body)
+                                        (response body))))
+
   (resources "/"))
 
 

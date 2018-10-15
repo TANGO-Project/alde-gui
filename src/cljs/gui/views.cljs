@@ -14,7 +14,6 @@
             [gui.footer.vcontent :as vfooter]
             [gui.home.vcontent :as vhome]
             [gui.config.vcontent :as vconfig]
-            [gui.monitoring.vcontent :as vmonitoring]
             [gui.apps.vcontent :as vapps]
             [gui.testbeds.vcontent :as vtestbeds]))
 
@@ -42,9 +41,6 @@
 ;; apps-panel
 (defn- apps-panel [] (vapps/panel))
 
-;; monitoring-panel
-(defn- monitoring-panel [] (vmonitoring/panel))
-
 ;; default
 (defn- default-panel []
   [:div "This is the Default Page..."
@@ -57,7 +53,6 @@
     :testbeds-panel   [testbeds-panel]
     :apps-panel       [apps-panel]
     :config-panel     [config-panel]
-    :monitoring-panel [monitoring-panel]
     :default-panel    [default-panel]
     [home-panel]))
 

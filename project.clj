@@ -12,20 +12,15 @@
   :url "-"
   :dependencies [[org.clojure/clojure "1.9.0"]
                  [org.clojure/clojurescript "1.10.238"]
-                 [reagent "0.7.0"]
-                 [re-frame "0.10.2"]
-                 [secretary "1.2.3"]
-                 [compojure "1.5.0"]
-                 [yogthos/config "0.8"]
+                 [reagent "0.7.0"]                      ; MIT License ; https://github.com/reagent-project/reagent
+                 [re-frame "0.10.2"]                    ; MIT License ; https://github.com/Day8/re-frame
+                 [secretary "1.2.3"]                    ; Eclipse Public License ; https://github.com/gf3/secretary
+                 [compojure "1.5.0"]                    ; Eclipse Public License ; https://github.com/weavejester/compojure
                  [org.clojure/data.json "0.2.6"]        ; Eclipse Public License 1.0 https://github.com/clojure/data.json
                  ;; dom
                  [prismatic/dommy "1.1.0"]              ; Eclipse Public License https://github.com/plumatic/dommy
                  ;; chesire
                  [cheshire "5.8.0"]                     ; MIT License   https://github.com/dakrone/cheshire
-                 ;; security
-                 [clj-ssh "0.5.14"]                     ; Eclipse Public License 1.0; https://github.com/hugoduncan/clj-ssh
-                 [clj-jwt "0.1.1"]                      ; ==> "0.1.1" https://github.com/liquidz/clj-jwt
-                 [lock-key "1.4.1"]                     ; Eclipse Public License 1.0; ==> "1.4.1" https://github.com/clavoie/lock-key
                  ;; http clients for CLJ and CLJS
                  [cljs-http "0.1.44"]                   ; Eclipse Public License https://github.com/r0man/cljs-http
                  ;; JS libraries
@@ -53,7 +48,7 @@
   ;; SERVER options
   :figwheel {:css-dirs        ["resources/public/css"]
              :ring-handler    gui.handler/handler
-             :server-port     8080          ;; default is 3449
+             :server-port     8081          ;; default is 3449
              ;:server-ip       "0.0.0.0"     ;; default is "localhost"
              ;; if you need to watch files with polling instead of FS events
              ;:hawk-options {:watcher :polling}
@@ -94,12 +89,12 @@
 
   :aot [gui.server]
 
-  :uberjar-name "alde-gui.jar"
+  :uberjar-name "alde-gui-0.1.1.jar"
 
   ;; NOTE: tasks executed with 'uberjar'
   :prep-tasks [["cljsbuild" "once" "dev"] "compile"]
 
   ;; NOTE: compile and package up your project for deployment with `lein package`
-  :aliases {"gen-jar"       ["do" ["clean"] ["uberjar"]]
-            "start"         ["do" ["clean"] ["figwheel" "dev"]]
-            "package"       ["do" "clean" ["cljsbuild" "once" "min"] "uberjar"]})
+  :aliases {"gen-jar"   ["do" ["clean"] ["uberjar"]]
+            "start"     ["do" ["clean"] ["figwheel" "dev"]]
+            "package"   ["do" "clean" ["cljsbuild" "once" "min"] "uberjar"]})

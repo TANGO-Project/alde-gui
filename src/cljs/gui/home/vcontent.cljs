@@ -7,8 +7,7 @@
 ;; LICENSE.TXT file for more information
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (ns gui.home.vcontent
-  (:require [restapi.testbeds :as restapi]
-            [re-frame.core :as re-frame]
+  (:require [re-frame.core :as re-frame]
             [gui.events :as events]
             [gui.globals :as VARS]
             [gui.subs :as subs]
@@ -19,11 +18,6 @@
 ;; f-testbeds
 (defn- f-testbeds "Parse testbeds result"
   [res]
-  ;(logs/info "-------------------------")
-  ;(logs/info res)
-  ;(logs/info (type res))
-  ;(logs/info (res "objects"))
-  ;(logs/info (res :objects))
   (if (nil? res)
     (logs/error "res is NIL!")
     (let [res-testbeds (into [] (concat (res :objects) @VARS/ALDE_TESTBEDS))]
@@ -50,14 +44,17 @@
 
 ;; PANEL / CONTENT
 (defn panel []
-  (let [l-testbeds  (re-frame/subscribe [::subs/testbeds])]
+  (let [l-testbeds  (re-frame/subscribe [::subs/testbeds])
+        t-testbeds  (re-frame/subscribe [::subs/total-testbeds])
+        t-nodes     (re-frame/subscribe [::subs/total-nodes])
+        t-apps      (re-frame/subscribe [::subs/total-apps])]
     [:div.container.col-md-12 {:style {:margin-bottom "15px"}}
         [:div.row.col-md-12.text-center
           [:div.col-sm-4
             [:div.card.text-center
               [:img.card-img-top {:src "images/network_mini.png" :alt "Testbeds managed by ALDE"}]
               [:div.card-body
-                [:h4.card-title "Testbeds " "[" [:b (str (VARS/get-total-testbeds))] "]"]]
+                [:h4.card-title "Testbeds " "[" [:b (str @t-testbeds)] "]"]]
               [:div.card-footer
                 [:a.btn.btn-primary {:style {:width "100%"} :href "#/testbeds"} "View testbeds"]]]]
 
@@ -65,7 +62,7 @@
             [:div.card.text-center.text-white.bg-warning.mb-3
               [:img.card-img-top {:src "images/node3_mini.png" :alt "Nodes managed by ALDE"}]
               [:div.card-body
-                [:h4.card-title "Nodes " "[" [:b (str (VARS/get-total-nodes))] "]"]]
+                [:h4.card-title "Nodes " "[" [:b (str @t-nodes)] "]"]]
               [:div.card-footer
                 [:a.btn.btn-primary {:style {:width "100%"} :href "#/testbeds"} "View nodes"]]]]
 
@@ -73,39 +70,6 @@
             [:div.card.text-white.bg-primary.mb-3
               [:img.card-img-top {:src "images/apps_mini.png" :alt "Applications managed by ALDE"}]
               [:div.card-body
-                [:h4.card-title "Applications " "[" [:b (str (VARS/get-total-apps))] "]"]]
+                [:h4.card-title "Applications " "[" [:b (str @t-apps)] "]"]]
               [:div.card-footer
-                [:a.btn.btn-info {:style {:width "100%"} :href "#/apps"} "View applications"]]]]]
-
-      [:hr.col-md-4]
-
-      [:div {:style {:font-size "1.125em" :margin-bottom "15px" :text-align "center"}}
-        [:a {:title "Show all testbeds" :href "#/home" :on-click #(restapi/get-testbeds f-testbeds) :style {:margin-right "10px"}
-             :data-toggle "collapse" :data-target "#collapseListTestbeds" :aria-expanded "false" :aria-controls "collapseListTestbeds"}
-          [:span.badge.badge-pill.badge-primary {:style {:font-weight "bold"}} "all testbeds"]]
-        [:a {:title "Show online testbeds" :href "#/home" :on-click #(restapi/get-testbeds f-testbeds) :style {:margin-right "10px"}
-             :data-toggle "collapse" :data-target "#collapseListTestbeds" :aria-expanded "false" :aria-controls "collapseListTestbeds"}
-          [:span.badge.badge-pill.badge-success {:style {:font-weight "bold"}} "online testbeds"]]
-        [:a {:title "Show offline testbeds" :href "#/home" :on-click #(restapi/get-testbeds f-testbeds) :style {:margin-right "10px"}
-             :data-toggle "collapse" :data-target "#collapseListTestbeds" :aria-expanded "false" :aria-controls "collapseListTestbeds"}
-          [:span.badge.badge-pill.badge-danger {:style {:font-weight "bold"}} "offline testbeds"]]]
-
-      [:div.collapse {:id "collapseListTestbeds"}
-        [:div.card.card-body
-          [:div.col-sm-12 {:style {:padding "16px" :border-radius "6px" :text-align "left"}}
-            [:ul.list-group
-              @l-testbeds]]]]
-    ]))
-
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; INIT
-(do
-  (logs/info "- INIT")
-  (logs/info " Getting testbeds from ALDE ...")
-  (restapi/get-testbeds VARS/update-testbeds)
-  (restapi/get-nodes VARS/update-nodes)
-  (restapi/get-apps VARS/update-apps)
-  (restapi/execute-periodic-task #(restapi/get-testbeds VARS/update-testbeds) 90)
-  (restapi/execute-periodic-task #(restapi/get-nodes VARS/update-nodes) 95)
-  (restapi/execute-periodic-task #(restapi/get-apps VARS/update-apps) 30))
+                [:a.btn.btn-info {:style {:width "100%"} :href "#/apps"} "View applications"]]]]]]))
