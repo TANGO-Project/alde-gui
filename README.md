@@ -8,6 +8,8 @@ ALDE-GUI is distributed under a Apache License, version 2.0.
 
 -----------------------
 
+[LICENSE](#license)
+
 [Description](#description)
 
 [Installation Guide](#installation-guide)
@@ -29,7 +31,7 @@ This web component offers a Graphical User Interface to the [Application Lifecyc
 ##### 1. Requirements
 
 - Java 8
-- [Leiningen]() 2.0.0 or above installed.
+- [Leiningen](https://leiningen.org/) 2.0.0 or above installed.
 
 ##### 2. Install ALDE-GUI
 
@@ -81,3 +83,25 @@ java -jar target/alde-gui.jar 8080
 ### Relation to other TANGO components
 
 This component connects to the **ALDE** REST API interface in order to execute the operations.
+
+-----------------------
+
+### LICENSE
+
+Alde-gui is licensed under [Apache License, version 2.0](LICENSE).
+
+This project depends on a set of libraries licensed under the [Eclipse Public License v1](https://www.eclipse.org/legal/epl-v10.html) and the [Eclipse Public License v2](https://www.eclipse.org/legal/epl-v20.html). These libraries are imported through [leiningen](https://leiningen.org/) or [maven](https://maven.apache.org/), and they don't belong to the distribution of this project. This means that the original source code of these libraries was not modified. These libraries are the following:
+
+
+| Library                    | Version               | Project URL                            |
+|----------------------------|-----------------------|----------------------------------------|
+| org.clojure/clojurescript  | 1.10.238              | https://github.com/clojure/clojurescript |
+| secretary                  | 1.2.3                 | https://github.com/gf3/secretary |
+| compojure                  | 1.5.0                 | https://github.com/weavejester/compojure |
+| org.clojure/data.json      | 0.2.6                 | https://github.com/clojure/data.json |
+| prismatic/dommy            | 1.1.0                 | https://github.com/plumatic/dommy |
+| cljs-http                  | 0.1.44                | https://github.com/r0man/cljs-http |
+| com.taoensso/timbre        | 4.10.0                | https://github.com/ptaoussanis/timbre |
+| ring-cors/ring-cors        | 0.1.11                | https://github.com/r0man/ring-cors |
+| lein-cljsbuild             | 1.1.7                 | https://github.com/emezeske/lein-cljsbuild |
+| lein-figwheel              | 0.5.14                | https://github.com/bhauman/lein-figwheel |

@@ -33,10 +33,7 @@
                  [ring "1.5.1"]]
 
   :plugins [[lein-cljsbuild "1.1.7"
-              :exclusions [[org.clojure/clojure]]]
-            [lein-cloverage "1.0.9"]                      ; Eclipse Public License - Version 1.0  https://github.com/cloverage/cloverage ; https://github.com/codecov/example-clojure
-            [jonase/eastwood "0.2.4"]                     ; Eclipse Public License "lein eastwood" https://github.com/jonase/eastwood
-            [lein-kibit "0.1.5"]]                         ; Eclipse Public License "lein kibit" "lein kibit --replace --interactive"   https://github.com/jonase/kibit]
+              :exclusions [[org.clojure/clojure]]]]     
 
   :min-lein-version "2.5.3"
 
