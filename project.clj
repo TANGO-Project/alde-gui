@@ -3,8 +3,8 @@
 ;;
 ;; Copyright: Roi Sucasas Font, Atos Research and Innovation, 2018.
 ;;
-;; This code is licensed under an Apache 2.0 license. Please, refer to the
-;; LICENSE.TXT file for more information
+;; This code is licensed under a GNU General Public License, version 3 license.
+;; Please, refer to the LICENSE.TXT file for more information
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (defproject uni-gui "0.1.1-SNAPSHOT"
@@ -33,7 +33,7 @@
                  [ring "1.5.1"]]
 
   :plugins [[lein-cljsbuild "1.1.7"
-              :exclusions [[org.clojure/clojure]]]]     
+              :exclusions [[org.clojure/clojure]]]]
 
   :min-lein-version "2.5.3"
 

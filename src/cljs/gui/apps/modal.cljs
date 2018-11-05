@@ -3,8 +3,8 @@
 ;;
 ;; Copyright: Roi Sucasas Font, Atos Research and Innovation, 2018.
 ;;
-;; This code is licensed under an Apache 2.0 license. Please, refer to the
-;; LICENSE.TXT file for more information
+;; This code is licensed under a GNU General Public License, version 3 license.
+;; Please, refer to the LICENSE.TXT file for more information
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (ns gui.apps.modal
   (:require [re-frame.core :refer [dispatch subscribe]]
@@ -130,7 +130,7 @@
     [:div.row {:style {:margin-top "5px"}}
       [:label.col-sm-2.control-label.text-right [:b "Satus:"]]
       [:div.col-sm-4
-        [:input.form-control.input-sm.text-left {:type "text" :placeholder "---" :read-only true :style 
+        [:input.form-control.input-sm.text-left {:type "text" :placeholder "---" :read-only true :style
           (if (= (@TXT_EXEC :status) "COMPILED")
             {:background-color "#58FA58"}
             (if (= (@TXT_EXEC :status) "NOT_COMPILED")

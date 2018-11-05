@@ -2,9 +2,9 @@
 
 &copy; Atos Spain S.A. 2018
 
-The ALDE Graphical User Interface is a component of the European Project TANGO (http://tango-project.eu ).
+[![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0.txt)
 
-ALDE-GUI is distributed under a Apache License, version 2.0.
+The ALDE Graphical User Interface is a component of the European Project TANGO (http://tango-project.eu ).
 
 -----------------------
 
@@ -88,7 +88,7 @@ This component connects to the **ALDE** REST API interface in order to execute t
 
 ### LICENSE
 
-Alde-gui is licensed under [Apache License, version 2.0](LICENSE).
+Alde-gui is licensed under a [GNU General Public License, version 3](LICENSE.TXT).
 
 This project depends on a set of libraries licensed under the [Eclipse Public License v1](https://www.eclipse.org/legal/epl-v10.html) and the [Eclipse Public License v2](https://www.eclipse.org/legal/epl-v20.html). These libraries are imported through [leiningen](https://leiningen.org/) or [maven](https://maven.apache.org/), and they don't belong to the distribution of this project. This means that the original source code of these libraries was not modified. These libraries are the following:
 
