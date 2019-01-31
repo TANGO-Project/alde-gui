@@ -3,8 +3,8 @@
 ;;
 ;; Copyright: Roi Sucasas Font, Atos Research and Innovation, 2018.
 ;;
-;; This code is licensed under a GNU General Public License, version 3 license.
-;; Please, refer to the LICENSE.TXT file for more information
+;; This code is licensed under an Apache 2.0 license. Please, refer to the
+;; LICENSE.TXT file for more information
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (ns gui.events
   (:require [re-frame.core :as re-frame]
@@ -100,13 +100,53 @@
   (fn [db [_ total-apps]]
     (assoc db :total-apps total-apps)))
 
+;; :total-execs
+(re-frame/reg-event-db
+  ::set-total-execs
+  (fn [db [_ total-execs]]
+    (assoc db :total-execs total-execs)))
 
+;; :total-execs-completed
+(re-frame/reg-event-db
+  ::set-total-execs-completed
+  (fn [db [_ total-execs-completed]]
+    (assoc db :total-execs-completed total-execs-completed)))
+
+;; :total-execs-running
+(re-frame/reg-event-db
+  ::set-total-execs-running
+  (fn [db [_ total-execs-running]]
+    (assoc db :total-execs-running total-execs-running)))
+
+;; :total-execs-failed
+(re-frame/reg-event-db
+  ::set-total-execs-failed
+  (fn [db [_ total-execs-failed]]
+    (assoc db :total-execs-failed total-execs-failed)))
 
 ;; :executions
 (re-frame/reg-event-db
   ::set-executions
   (fn [db [_ executions]]
     (assoc db :executions executions)))
+
+;; :exec-times
+(re-frame/reg-event-db
+  ::set-exec-times
+  (fn [db [_ exec-times]]
+    (assoc db :exec-times exec-times)))
+
+;; :exec-running
+(re-frame/reg-event-db
+  ::set-exec-running
+  (fn [db [_ exec-running]]
+    (assoc db :exec-running exec-running)))
+
+;; :exec-tr
+(re-frame/reg-event-db
+  ::set-exec-tr
+  (fn [db [_ exec-tr]]
+    (assoc db :exec-tr exec-tr)))
 
 ;; :loading
 (re-frame/reg-event-db
@@ -126,6 +166,94 @@
     (assoc db :selected-app selected-app)))
 
 (re-frame/reg-event-db
+  ::set-selected-execution
+  (fn [db [_ selected-execution]]
+    (assoc db :selected-execution selected-execution)))
+
+(re-frame/reg-event-db
   ::set-selected-app-type
   (fn [db [_ selected-app-type]]
     (assoc db :selected-app-type selected-app-type)))
+
+
+(re-frame/reg-event-db
+  ::set-selected-exec-app-id
+  (fn [db [_ selected-exec-app-id]]
+    (assoc db :selected-exec-app-id selected-exec-app-id)))
+
+(re-frame/reg-event-db
+  ::set-selected-exec-app
+  (fn [db [_ selected-exec-app]]
+    (assoc db :selected-exec-app selected-exec-app)))
+
+(re-frame/reg-event-db
+  ::set-selected-exec-exec-id
+  (fn [db [_ selected-exec-exec-id]]
+    (assoc db :selected-exec-exec-id selected-exec-exec-id)))
+
+(re-frame/reg-event-db
+  ::set-selected-execution-id
+  (fn [db [_ selected-execution-id]]
+    (assoc db :selected-execution-id selected-execution-id)))
+
+(re-frame/reg-event-db
+  ::set-selected-exec-conf-id
+  (fn [db [_ selected-exec-conf-id]]
+    (assoc db :selected-exec-conf-id selected-exec-conf-id)))
+
+(re-frame/reg-event-db
+  ::set-selected-exec-app-type
+  (fn [db [_ selected-exec-app-type]]
+    (assoc db :selected-exec-app-type selected-exec-app-type)))
+
+;; CFG EXECS RESULTS:
+(re-frame/reg-event-db
+  ::set-exec_cfg_execs_total
+  (fn [db [_ exec_cfg_execs_total]]
+    (assoc db :exec_cfg_execs_total exec_cfg_execs_total)))
+
+(re-frame/reg-event-db
+  ::set-exec_cfg_execs_completed
+  (fn [db [_ exec_cfg_execs_completed]]
+    (assoc db :exec_cfg_execs_completed exec_cfg_execs_completed)))
+
+(re-frame/reg-event-db
+  ::set-exec_cfg_execs_failed
+  (fn [db [_ exec_cfg_execs_failed]]
+    (assoc db :exec_cfg_execs_failed exec_cfg_execs_failed)))
+
+(re-frame/reg-event-db
+  ::set-exec_cfg_execs_running
+  (fn [db [_ exec_cfg_execs_running]]
+    (assoc db :exec_cfg_execs_running exec_cfg_execs_running)))
+
+(re-frame/reg-event-db
+  ::set-exec_cfg_execs_cancelled
+  (fn [db [_ exec_cfg_execs_cancelled]]
+    (assoc db :exec_cfg_execs_cancelled exec_cfg_execs_cancelled)))
+
+(re-frame/reg-event-db
+  ::set-exec_cfg_execs_restart
+  (fn [db [_ exec_cfg_execs_restart]]
+    (assoc db :exec_cfg_execs_restart exec_cfg_execs_restart)))
+
+(re-frame/reg-event-db
+  ::set-exec_cfg_execs_timeout
+  (fn [db [_ exec_cfg_execs_timeout]]
+    (assoc db :exec_cfg_execs_timeout exec_cfg_execs_timeout)))
+
+(re-frame/reg-event-db
+  ::set-exec_cfg_execs_unknown
+  (fn [db [_ exec_cfg_execs_unknown]]
+    (assoc db :exec_cfg_execs_unknown exec_cfg_execs_unknown)))
+
+;; Responses / logs
+(re-frame/reg-event-db
+  ::set-resp-executions
+  (fn [db [_ resp-executions]]
+    (assoc db :resp-executions resp-executions)))
+
+(re-frame/reg-event-db
+  ::set-requ-executions
+  (fn [db [_ requ-executions]]
+    (assoc db :requ-executions requ-executions)))

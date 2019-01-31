@@ -3,8 +3,8 @@
 ;;
 ;; Copyright: Roi Sucasas Font, Atos Research and Innovation, 2018.
 ;;
-;; This code is licensed under a GNU General Public License, version 3 license.
-;; Please, refer to the LICENSE.TXT file for more information
+;; This code is licensed under an Apache 2.0 license. Please, refer to the
+;; LICENSE.TXT file for more information
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (ns gui.breadcrumb.vcontent
   (:require [re-frame.core :as re-frame]
@@ -25,6 +25,7 @@
           (case @active-panel
             :home-panel         [:li.breadcrumb-item.active "Home - Dashboard"]
             :testbeds-panel     [:li.breadcrumb-item.active "Testbeds & Nodes"]
-            :apps-panel         [:li.breadcrumb-item.active "Applications & Executions"]
+            :apps-panel         [:li.breadcrumb-item.active "Applications & Executables"]
+            :execs-panel        [:li.breadcrumb-item.active "Executions"]
             :config-panel       [:li.breadcrumb-item.active "Configuration"]
             [:li.breadcrumb-item.active (str "not-defined" @active-panel)])]]))

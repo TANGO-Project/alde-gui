@@ -3,8 +3,8 @@
 ;;
 ;; Copyright: Roi Sucasas Font, Atos Research and Innovation, 2018.
 ;;
-;; This code is licensed under a GNU General Public License, version 3 license.
-;; Please, refer to the LICENSE.TXT file for more information
+;; This code is licensed under an Apache 2.0 license. Please, refer to the
+;; LICENSE.TXT file for more information
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (ns gui.routes
   (:require-macros [secretary.core :refer [defroute]])
@@ -38,6 +38,8 @@
     (re-frame/dispatch [::events/set-active-panel :home-panel]))
   (defroute "/apps" []
     (re-frame/dispatch [::events/set-active-panel :apps-panel]))
+  (defroute "/execs" []
+    (re-frame/dispatch [::events/set-active-panel :execs-panel]))
   (defroute "/config" []
     (re-frame/dispatch [::events/set-active-panel :config-panel]))
   (defroute "/testbeds" []

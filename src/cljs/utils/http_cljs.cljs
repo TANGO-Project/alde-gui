@@ -3,13 +3,15 @@
 ;;
 ;; Copyright: Roi Sucasas Font, Atos Research and Innovation, 2018.
 ;;
-;; This code is licensed under a GNU General Public License, version 3 license.
-;; Please, refer to the LICENSE.TXT file for more information
+;; This code is licensed under an Apache 2.0 license. Please, refer to the
+;; LICENSE.TXT file for more information
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (ns utils.http_cljs
   (:require-macros [cljs.core.async.macros :refer [go]])
   (:require [cljs-http.client :as http]
             [cljs.core.async :refer [<!]]
+            [gui.events :as events]
+            [re-frame.core :as re-frame]
             [utils.logs :as logs]))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -61,27 +63,43 @@
 (defn POST ""
   ([endpoint json-params]
     (go (let [response (<! (http/post endpoint {:json-params json-params}))]
-          (logs/debug "status: " (:status response) ", body: " (:body response)))))
+          (logs/debug "POST [1] status: " (:status response) ", body: " (:body response)))))
   ([endpoint func json-params]
     (go (let [response (<! (http/post endpoint {:with-credentials? false, :json-params (.parse js/JSON json-params)}))]
-          (logs/debug "POST [2] response: " response)
-          (logs/debug "POST [2] status: " (:status response) ", body: " (:body response))
+          ;(logs/debug "POST [2] response: " response)
+          ;(logs/debug "POST [2] status: " (:status response) ", body: " (:body response))
           (func)))))
-          ;(func (:body response))))))
 
+(defn POST-EXECUTIONS ""
+  [endpoint func json-params]
+  (logs/debug "POST-EXECUTIONS [1] endpoint: " endpoint)
+  (go (let [response (<! (http/post endpoint {:with-credentials? false, :json-params (.parse js/JSON json-params)}))]
+        ;(logs/debug "POST-EXECUTIONS [1] response: " response)
+        ;(logs/debug "POST-EXECUTIONS [1] status: " (:status response) ", body: " (:body response))
+        (re-frame/dispatch [::events/set-requ-executions (str "POST " endpoint " \n(BODY=" json-params ")")])
+        (re-frame/dispatch [::events/set-resp-executions (str response)])
+        (func))))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; PATCH
 (defn PATCH ""
   ([endpoint json-params]
     (go (let [response (<! (http/patch endpoint {:json-params json-params}))]
-          (logs/debug "status: " (:status response) ", body: " (:body response)))))
+          (logs/debug "PATCH [1] status: " (:status response) ", body: " (:body response)))))
   ([endpoint func json-params]
     (go (let [response (<! (http/patch endpoint {:with-credentials? false, :json-params (.parse js/JSON json-params)}))]
-          (logs/debug "PATCH [2] response: " response)
-          (logs/debug "PATCH [2] status: " (:status response) ", body: " (:body response))
+          ;(logs/debug "PATCH [2] response: " response)
+          ;(logs/debug "PATCH [2] status: " (:status response) ", body: " (:body response))
           (func)))))
 
+(defn PATCH-EXECUTIONS ""
+  [endpoint func json-params]
+  (go (let [response (<! (http/patch endpoint {:with-credentials? false, :json-params (.parse js/JSON json-params)}))]
+        ;(logs/debug "PATCH-EXECUTIONS [1] response: " response)
+        ;(logs/debug "PATCH-EXECUTIONS [1] status: " (:status response) ", body: " (:body response))
+        (re-frame/dispatch [::events/set-requ-executions (str "PATCH " endpoint " \n(BODY=" json-params ")")])
+        (re-frame/dispatch [::events/set-resp-executions (str response)])
+        (func))))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; PUT

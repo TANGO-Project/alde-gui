@@ -6,8 +6,8 @@
 ;;
 ;; Copyright: Roi Sucasas Font, Atos Research and Innovation, 2018.
 ;;
-;; This code is licensed under a GNU General Public License, version 3 license.
-;; Please, refer to the LICENSE.TXT file for more information
+;; This code is licensed under an Apache 2.0 license. Please, refer to the
+;; LICENSE.TXT file for more information
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (ns gui.handler
   (:use [compojure.core]
@@ -37,7 +37,10 @@
   (GET  "/mock-data/executables"  []  (response (json/read-str (slurp (.getPath (clojure.java.io/resource "data/mock_up_executables.json"))))))
   (GET  "/mock-data/execution_configurations" []  (response (json/read-str (slurp (.getPath (clojure.java.io/resource "data/mock_up_execution_configurations.json"))))))
   (GET  "/mock-data/executions"   []  (response (json/read-str (slurp (.getPath (clojure.java.io/resource "data/mock_up_executions.json"))))))
-
+  (GET  "/mock-data/execution_configurations/x" []  (response (json/read-str (slurp (.getPath (clojure.java.io/resource "data/mock_up_execution_configuration_x.json"))))))
+  (GET  "/mock-data/executions_completed"   []  (response (json/read-str (slurp (.getPath (clojure.java.io/resource "data/mock_up_executions_completed.json"))))))
+  (GET  "/mock-data/executions_running"   []  (response (json/read-str (slurp (.getPath (clojure.java.io/resource "data/mock_up_executions_running.json"))))))
+  (GET  "/mock-data/executions_failed"   []  (response (json/read-str (slurp (.getPath (clojure.java.io/resource "data/mock_up_executions_failed.json"))))))
 
   (context "/tests" []
     (GET "/json"  {headers :headers}  (do

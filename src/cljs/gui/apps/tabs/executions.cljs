@@ -3,191 +3,155 @@
 ;;
 ;; Copyright: Roi Sucasas Font, Atos Research and Innovation, 2018.
 ;;
-;; This code is licensed under a GNU General Public License, version 3 license.
-;; Please, refer to the LICENSE.TXT file for more information
+;; This code is licensed under an Apache 2.0 license. Please, refer to the
+;; LICENSE.TXT file for more information
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (ns gui.apps.tabs.executions
   (:require [restapi.testbeds :as restapi]
-            [reagent.core :as r]
             [re-frame.core :as re-frame]
-            [gui.events :as events]
             [gui.subs :as subs]
             [gui.globals :as VARS]
-            [utils.logs :as logs]))
-
-
-(def EXECUTIONS_LOADED (r/atom false))
-(def EXECUTIONS (r/atom [:tr]))
-(def TOTAL_EXECUTIONS (r/atom 0))
-(def TOTAL_SHOWN (r/atom 0))
-(def SHOW (r/atom "ALL")) ;COMPLETED"))
-(def SHOW_EXEC_TYPE (r/atom "ALL"))
-(def SHOW_TESTBED (r/atom "ALL"))
-(def SHOW_ALL (r/atom false))
-
-
-;; FUNCTION: draw-row
-(defn- draw-row ""
-  [x]
-  (when-not (and (not @SHOW_ALL) (nil? (x :execution_configuration)))
-    (swap! TOTAL_SHOWN inc)
-    ^{:key (str "k-exec-" (random-uuid))}
-    [:tr
-      [:th.table-dark {:scope "row"} (str (x :id))]
-      (if-not (nil? (x :execution_configuration))
-        [:td (str ((x :execution_configuration) :testbed_id))]
-        [:td "-"])
-      [:td
-        (if (= (x :status) "COMPLETED")
-          {:class "table-success"}
-          (if (= (x :status) "FAILED")
-            {:class "table-danger"}
-            {:class ""}))
-        (str (x :status))]
-      [:td (str (x :execution_type))]
-      (if-not (nil? (x :execution_configuration))
-        [:td
-          [:table.table-sm.table-hover ;.table-dark
-            [:tbody
-              [:tr
-                [:td [:b "COMPSS config."]]
-                [:td (str ((x :execution_configuration) :compss_config))]]
-              [:tr
-                [:td [:b "Command"]]
-                [:td (str ((x :execution_configuration) :command))]]
-              [:tr
-                [:td [:b "Profile file"]]
-                [:td (str ((x :execution_configuration) :profile_file))]]]]]
-        [:td "-"])]))
-
-
-;; FUNCTION: f-execs
-(defn- f-execs "Parse execs result"
-  [res]
-  (when-not @EXECUTIONS_LOADED
-    (do
-      (reset! VARS/TAB_LOADING true)
-      (logs/info "Executing f-execs [EXECUTIONS_LOADED="  @EXECUTIONS_LOADED "]...")
-      (reset! TOTAL_SHOWN 0)
-      (if (and (or (= @SHOW "ALL") (nil? @SHOW) (= @SHOW "")) (or (= @SHOW_EXEC_TYPE "ALL") (nil? @SHOW_EXEC_TYPE) (= @SHOW_EXEC_TYPE "")))
-        ; SHOW ALL
-        (re-frame/dispatch [::events/set-executions (doall (for [x (res :objects)] (draw-row x)))])
-        (if (or (= @SHOW_EXEC_TYPE "ALL") (nil? @SHOW_EXEC_TYPE) (= @SHOW_EXEC_TYPE ""))
-          ; SHOW BY STATUS
-          (re-frame/dispatch [::events/set-executions (doall (for [x (res :objects)]
-                                                        (when (= (x :status) @SHOW)
-                                                          (draw-row x))))])
-          ; SHOW BY EXECUTION TYPE
-          (if (or (= @SHOW "ALL") (nil? @SHOW) (= @SHOW ""))
-            (re-frame/dispatch [::events/set-executions (doall (for [x (res :objects)]
-                                                          (when (= (x :execution_type) @SHOW_EXEC_TYPE)
-                                                            (draw-row x))))])
-          ; SHOW BY STATUS AND EXECUTION TYPE
-          (re-frame/dispatch [::events/set-executions (doall (for [x (res :objects)]
-                                                        (when (and (= (x :status) @SHOW) (= (x :execution_type) @SHOW_EXEC_TYPE))
-                                                          (draw-row x))))]))))
-      (reset! TOTAL_EXECUTIONS (res :num_results))))
-  (reset! VARS/TAB_LOADING false)
-  (reset! EXECUTIONS_LOADED true))
-
-
-
-;; FUNCTION: show-by-testbed
-(defn- show-by-testbed [t]
-  (reset! EXECUTIONS_LOADED false)
-  (reset! SHOW_TESTBED t)
-  (reset! VARS/TAB_LOADING true)
-  (restapi/get-execs f-execs))
-
-
-;; FUNCTION: show-by-status
-(defn- show-by-status [status]
-  (reset! EXECUTIONS_LOADED false)
-  (reset! SHOW status)
-  (reset! VARS/TAB_LOADING true)
-  (restapi/get-execs f-execs))
-
-
-;; FUNCTION: show-by-exec-type
-(defn- show-by-exec-type [exec-type]
-  (reset! EXECUTIONS_LOADED false)
-  (reset! SHOW_EXEC_TYPE exec-type)
-  (reset! VARS/TAB_LOADING true)
-  (restapi/get-execs f-execs))
+            [gui.apps.newp :as panel-new]
+            [gui.apps.updatep :as panel-update]))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:;;;;;;;;;;;;;;;;;;;;
 ;; WEB CONTENT
 ;; FUNCTION:
 (defn panel-component []
-  (let [res-execs   (do (logs/info "Call to f-execs (panel-component)") (restapi/get-execs f-execs))
-        t-execs     (re-frame/subscribe [::subs/executions])]
-    [:div
-      [:div.row {:style {:margin-top "-640px"}}
-        [:div.col-sm-3
-          [:h5
-            [:span.badge.badge-pill.badge-primary "Total executions: "]
-            [:span.badge.badge-pill.badge-secondary (str @TOTAL_EXECUTIONS)]]]
-        [:div.col-sm-9
-          [:div.form-check
-            [:input.form-check-input {:type "checkbox" :id "chkShowAll" :checked @SHOW_ALL
-                :on-click #(do (reset! SHOW_ALL (not @SHOW_ALL)) (reset! VARS/TAB_LOADING true) (reset! EXECUTIONS_LOADED false) (restapi/get-execs f-execs))}]
-            [:label.form-check-label {:for "chkShowAll"} "Show executions with empty 'execution_configuration'"]]]]
-
-      [:div.row {:style {:margin-top "-10px"}}
-        [:div.col-sm-7
-          [:span.badge.badge-pill.badge-primary "Showing... "]
-          [:span.badge.badge-pill.badge-secondary (str @TOTAL_SHOWN)]
-          " "
-          [:span.badge.badge-pill.badge-dark "testbeds"]
-          [:span.badge.badge-pill.badge-secondary @SHOW_TESTBED]
-          " "
-          [:span.badge.badge-pill.badge-dark "status"]
-          [:span.badge.badge-pill.badge-secondary @SHOW]
-          " "
-          [:span.badge.badge-pill.badge-dark "execution type"]
-          [:span.badge.badge-pill.badge-secondary @SHOW_EXEC_TYPE]]
-        [:div.col-sm-1
-          [:span.badge.badge-pill.badge-primary "Filters:"]]]
-
-      [:div.row {:style {:margin-bottom "5px"}}
-        [:div.col-sm-7 ]
-        [:div.col-sm-1
-          [:div.dropdown.show
-            [:a.badge.badge-pill.badge-dark.dropdown-toggle {:href "#" :role "button" :id "dropdownMenuLink"
-                :data-toggle "dropdown" :aria-haspopup "true" :aria-expanded "false"} "Testbeds"]
-            [:div.dropdown-menu {:aria-labelledby "dropdownMenuLink"}
-              [:a.dropdown-item {:href "#/apps" :on-click #(show-by-testbed "ALL")} "ALL"]
-              ;(for [x @VARS/ALDE_TESTBEDS]
-              ;  ^{:key (str "k-testbed-" (random-uuid))}
-              ;  [:a.dropdown-item {:href "#/apps" :on-click #(show-by-testbed (x :id))} (x :id)])
-              ]]]
-        [:div.col-sm-1
-          [:div.dropdown.show
-            [:a.badge.badge-pill.badge-dark.dropdown-toggle {:href "#" :role "button" :id "dropdownMenuLink"
-                :data-toggle "dropdown" :aria-haspopup "true" :aria-expanded "false"} "Status"]
-            [:div.dropdown-menu {:aria-labelledby "dropdownMenuLink"}
-              [:a.dropdown-item {:href "#/apps" :on-click #(show-by-status "ALL")} "ALL"]
-              [:a.dropdown-item {:href "#/apps" :on-click #(show-by-status "COMPLETED")} "COMPLETED"]
-              [:a.dropdown-item {:href "#/apps" :on-click #(show-by-status "FAILED")} "FAILED"]
-              [:a.dropdown-item {:href "#/apps" :on-click #(show-by-status "SUBMITTED")} "SUBMITTED"]]]]
-        [:div.col-sm-2
-          [:div.dropdown.show
-            [:a.badge.badge-pill.badge-dark.dropdown-toggle {:href "#" :role "button" :id "dropdownMenuLink2"
-                :data-toggle "dropdown" :aria-haspopup "true" :aria-expanded "false"} "Execution type"]
-            [:div.dropdown-menu {:aria-labelledby "dropdownMenuLink2"}
-              [:a.dropdown-item {:href "#/apps" :on-click #(show-by-exec-type "ALL")} "ALL"]
-              [:a.dropdown-item {:href "#/apps" :on-click #(show-by-exec-type "SINGULARITY:PM")} "SINGULARITY:PM"]
-              [:a.dropdown-item {:href "#/apps" :on-click #(show-by-exec-type "SLURM:SBATCH")} "SLURM:SBATCH"]]]]]
-
+  (let [selected-exec-app     (re-frame/subscribe [::subs/selected-exec-app])
+        selected-exec-app-id  (re-frame/subscribe [::subs/selected-exec-app-id])
+        selected-exec-conf-id (re-frame/subscribe [::subs/selected-exec-conf-id])
+        selected-exec-exec-id (re-frame/subscribe [::subs/selected-exec-exec-id])
+        selected-execution-id (re-frame/subscribe [::subs/selected-execution-id])
+        selected-execution    (re-frame/subscribe [::subs/selected-execution])
+        total-execs           (re-frame/subscribe [::subs/total-execs])
+        selected-app          (re-frame/subscribe [::subs/selected-app])
+        exec_cfg_execs_total          (re-frame/subscribe [::subs/exec_cfg_execs_total])
+        exec_cfg_execs_completed      (re-frame/subscribe [::subs/exec_cfg_execs_completed])
+        exec_cfg_execs_failed         (re-frame/subscribe [::subs/exec_cfg_execs_failed])
+        exec_cfg_execs_running        (re-frame/subscribe [::subs/exec_cfg_execs_running])
+        exec_cfg_execs_cancelled      (re-frame/subscribe [::subs/exec_cfg_execs_cancelled])
+        exec_cfg_execs_restart        (re-frame/subscribe [::subs/exec_cfg_execs_restart])
+        exec_cfg_execs_timeout        (re-frame/subscribe [::subs/exec_cfg_execs_timeout])
+        exec_cfg_execs_unknown        (re-frame/subscribe [::subs/exec_cfg_execs_unknown])
+        resp-executions       (re-frame/subscribe [::subs/resp-executions])
+        requ-executions       (re-frame/subscribe [::subs/requ-executions])]
+    (fn []
       [:div
-        [:table.table.table-sm.table-hover ;.table-bordered
-          [:thead.thead-dark
-            [:tr
-              [:th {:scope "col"} "#"]
-              [:th {:scope "col"} "TESTBED"]
-              [:th {:scope "col"} "STATUS"]
-              [:th {:scope "col"} "EXEC TYPE"]
-              [:th {:scope "col"} "EXECUTION CONFIG"]]]
-          [:tbody
-            @t-execs]]]]))
+        [:div.row
+          [:div.col-sm-12
+            [:h5
+              [:span.badge.badge-pill.badge-primary "Applications: " (str (VARS/get-total-apps))]
+              " "
+              [:span.badge.badge-pill.badge-primary "Executions: " (str @total-execs)]]]]
+
+        ;; APPS
+        [:div.row {:style {:width "auto"}}
+          [:div {:style {:width "50%"}}
+            [:h6
+              [:span.badge.badge-pill.badge-primary "Applications"] " "
+              [:span.badge.badge-pill.badge-secondary {:style {:color "#ffff99"}} (@selected-exec-app :name)] " "
+              [:span.badge.badge-pill.badge-secondary {:style {:color "#ffff99"}} (@selected-exec-app :id)] " "
+              [:button.badge.badge-pill.btn-sm.btn-success {:title "add a new application"
+                :on-click #(re-frame/dispatch [:modal { :show? true
+                                                        :child [panel-new/panel]
+                                                        :size :large}])} "new"]
+              (when-not (= @selected-exec-app {})
+                ;; delete node TODO
+                [:button.badge.badge-pill.btn-sm.btn-danger {
+                  :on-click #(when (.confirm js/window (str "Are you sure you want to delete the application [" @selected-exec-app-id " - " (@selected-app :name) "]?"))
+                              (restapi/rem-application @selected-exec-app-id))} "delete"])]]
+
+          ;; EXECS CONFS
+          [:div {:style {:width "50%"}}
+            [:h6
+              [:span.badge.badge-pill.badge-primary "Conf. / Executables"] " "
+              [:span.badge.badge-pill.badge-secondary {:style {:color "#ffff99"}} (@selected-exec-app :name)] " "
+
+              (when-not (= @selected-exec-exec-id "-")
+                [:span.badge.badge-pill.badge-secondary {:style {:color "#CED8F6"}} @selected-exec-exec-id])
+
+              (when-not (= @selected-exec-conf-id "-")
+                [:span.badge.badge-pill.badge-secondary {:style {:color "#ffbb19"}} @selected-exec-conf-id])
+
+              " "
+              [:button.badge.badge-pill.btn-sm.btn-success {:title "add a new executable"
+                :on-click #(re-frame/dispatch [:modal { :show? true
+                                                        :child [panel-update/panel]
+                                                        :size :large}])} "new executable"]
+
+              (when-not (= @selected-exec-exec-id "-") " ")
+              (when-not (= @selected-exec-exec-id "-")
+                [:button.badge.badge-pill.btn-sm.btn-warning {:title "add a new execution configuration"
+                  :on-click #(re-frame/dispatch [:modal { :show? true
+                                                          :child [panel-update/panel]
+                                                          :size :large}])} "new configuration"])
+
+              (when-not (= @selected-exec-conf-id "-") " ")
+              (when-not (= @selected-exec-conf-id "-")
+                [:button.badge.badge-pill.btn-sm.btn-danger {:title "launch new execution"
+                  :on-click #(when (.confirm js/window (str "Are you sure you want to launch the selected [" @selected-exec-conf-id " - " (subs @selected-exec-conf-id 5) "] execution configuration?"))
+                              (restapi/launch-exec (subs @selected-exec-conf-id 5)))} "launch execution"])
+          ]]]
+
+        [:div.row {:style {:width "auto"}}
+          [:div {:id "apps-graph2" :style {:width "50%" :height "350px" :border "1px solid black"
+                 :background-color "#888888"}}]
+          [:div {:id "apps-graph3" :style {:width "50%" :height "350px" :border "1px solid black"
+                 :background-color "#aaaaaa"}}]]
+
+        (when @VARS/TAB_EXECUTIONS_LOADING
+          [:div.row [:img {:src "images/loader.gif" :width "24px" :height "24px"}] [:b "Loading executions..."]])
+
+        [:div.row {:style {:width "auto" :margin-top "5px"}}
+          [:div {:style {:width "100%"}}
+            [:h6
+              [:span.badge.badge-pill.badge-primary "Executions"] " "
+              [:span.badge.badge-pill.badge-secondary {:style {:color "#ffff99"}} (@selected-exec-app :name)]
+              [:span.badge.badge-pill.badge-secondary {:style {:color "#ffbb19"}} (str @selected-exec-conf-id)] " "
+              [:span.badge.badge-pill.badge-info "Total: " (str @exec_cfg_execs_total)] " "
+              [:span.badge.badge-pill.badge-info {:style {:color "darkgreen"}} "Completed: " (str @exec_cfg_execs_completed)] " "
+              [:span.badge.badge-pill.badge-info {:style {:color "darkred"}} "Failed: " (str @exec_cfg_execs_failed)] " "
+              [:span.badge.badge-pill.badge-info {:style {:color "darkblue"}} "Running: " (str @exec_cfg_execs_running)] " "
+              [:span.badge.badge-pill.badge-info "Cancelled: " (str @exec_cfg_execs_cancelled)] " "
+              [:span.badge.badge-pill.badge-info "Restart: " (str @exec_cfg_execs_restart)] " "
+              [:span.badge.badge-pill.badge-info "Timeout: " (str @exec_cfg_execs_timeout)] " "
+              [:span.badge.badge-pill.badge-info "Unknown: " (str @exec_cfg_execs_unknown)] " "
+            ]]]
+
+        [:div.row {:style {:width "auto" :margin-top "5px"}}
+          [:div {:style {:width "100%"}}
+            [:h6
+              (when-not (= @selected-execution-id "-")
+                [:span.badge.badge-pill.badge-secondary {:style {:color "#CED8F6"}} @selected-execution-id])
+              " "
+              (when-not (= @selected-execution-id "-")
+                [:button.badge.badge-pill.btn-sm.btn-primary {:title "stop" :on-click #(when (.confirm js/window (str "Are you sure you want to stop the selected [" @selected-execution-id "] execution?"))
+                            (restapi/stop-execution @selected-execution-id))} "stop"])
+              " "
+              (when-not (= @selected-execution-id "-")
+                [:button.badge.badge-pill.btn-sm.btn-danger {:title "cancel" :on-click #(when (.confirm js/window (str "Are you sure you want to cancel the selected [" @selected-execution-id "] execution?"))
+                            (restapi/cancel-execution @selected-execution-id))} "cancel"])
+              " "
+              (when-not (= @selected-execution-id "-")
+                [:button.badge.badge-pill.btn-sm.btn-success {:title "restart" :on-click #(when (.confirm js/window (str "Are you sure you want to restart the selected [" @selected-execution-id "] execution?"))
+                            (restapi/restart-execution @selected-execution-id))} "restart"])
+            ]]]
+
+        (when-not (= @selected-exec-app-id "")
+          [:div.row {:style {:width "auto"}}
+            [:div {:id "apps-graph4" :style {:width "100%" :height "650px" :border "1px solid black"
+                   :background-color "#cccccc"}}]])
+
+        [:div.row {:style {:width "auto" :margin-top "250px"}}
+          [:div.col-sm-12
+            [:textarea.form-control.input-sm.text-left
+              {:type "text" :rows "2" :placeholder "json content" :style {:background-color "black" :color "yellow"} :readonly true
+               :value @requ-executions}]]]
+        [:div.row {:style {:width "auto" :margin-top "1px"}}
+          [:div.col-sm-12
+            [:textarea.form-control.input-sm.text-left
+              {:type "text" :rows "4" :placeholder "json content" :style {:background-color "black" :color "white"} :readonly true
+               :value @resp-executions}]]]
+        ])))

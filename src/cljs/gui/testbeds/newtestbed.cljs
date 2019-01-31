@@ -3,8 +3,8 @@
 ;;
 ;; Copyright: Roi Sucasas Font, Atos Research and Innovation, 2018.
 ;;
-;; This code is licensed under a GNU General Public License, version 3 license.
-;; Please, refer to the LICENSE.TXT file for more information
+;; This code is licensed under an Apache 2.0 license. Please, refer to the
+;; LICENSE.TXT file for more information
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (ns gui.testbeds.newtestbed
   (:require [restapi.testbeds :as restapi]
@@ -56,7 +56,7 @@
   (reset! last-resp "")
   [:div {:style {:border-radius "1px" :text-align "center"}}
   (let [val-json (r/atom @JSON_NEW_TESTBED)]
-    [:div.modal_new_testbed ; {:style {:background-image "./images/tango.png"}} ;.card-body
+    [:div.modal_new_testbed ; {:style {:background-image "./images/tango.png"}} ;.card-body 
       [:div.col-sm-12
         ;; header
         [:div.row

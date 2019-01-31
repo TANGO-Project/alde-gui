@@ -3,8 +3,8 @@
 ;;
 ;; Copyright: Roi Sucasas Font, Atos Research and Innovation, 2018.
 ;;
-;; This code is licensed under a GNU General Public License, version 3 license.
-;; Please, refer to the LICENSE.TXT file for more information
+;; This code is licensed under an Apache 2.0 license. Please, refer to the
+;; LICENSE.TXT file for more information
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (ns gui.testbeds.vclusters
   (:require [gui.testbeds.graphs :as graphs]
@@ -93,28 +93,27 @@
         [:div.row
           [:div.col-sm-4
             [:h5 {:style {:margin-top "-5px"}}
-              [:span.badge.badge-pill.badge-primary
-                {:style {:color "#ffff99"}} "Testbeds: " (str @totaltestbeds)]
+              [:span.badge.badge-pill.badge-primary "Testbeds: " (str @totaltestbeds)]
               " "
               [:span.badge.badge-pill.badge-secondary
                 {:style {:color "#ffff99"}} (str @na-testbed " " (get-sel-testbed-info @id-testbed))]]]
           [:div.col-sm-8 (when (or (= @na-testbed "-") (nil? @na-testbed)) {:style {:display "none"}})
             [:h5 {:style {:margin-top "-5px"}}
-              [:span.badge.badge-pill.badge-primary {:style {:color "#ffff99"}} "Total nodes: " (str (get-total-nodes @id-testbed))]
+              [:span.badge.badge-pill.badge-primary "Nodes: " (str (get-total-nodes @id-testbed))]
               " "
-              [:span.badge.badge-pill.badge-secondary {:style {:color "#ffff99"}} " Selected node: " (get-node-name @sel-node) ]]]]
+              [:span.badge.badge-pill.badge-secondary {:style {:color "#ffff99"}} (get-node-name @sel-node) ]]]]
 
         ;; TESTBEDS
         [:div.row
           [:div.col-sm-4 {:id "clusters-graph-parent" :style {:width "auto"}}
             [:div {:id "clusters-graph"
-                   :style {:width "auto" :height "300px" :border "1px solid lightgray" :background-color "#555555" :color "white"}}]]
+                   :style {:width "auto" :height "325px" :border "1px solid lightgray" :background-color "#555555" :color "white"}}]]
           ;; NODES
           [:div.col-sm-8
           (when (or (= @na-testbed "-") (nil? @na-testbed)) {:style {:display "none"}})
             [:div {:id "nodes-graph-parent" :style {:width "auto"}}
               [:div {:id "nodes-graph"
-                     :style {:width "auto" :height "300px" :border "1px solid lightgray" :background-color "#666666"}}]]]]
+                     :style {:width "auto" :height "325px" :border "1px solid lightgray" :background-color "#666666"}}]]]]
 
         ;; 'FOOTER' (TESTBEDS and NODEs)
         [:div.row
@@ -148,7 +147,18 @@
           [:div.row
             [:div.col-sm-12
               [:h5 {:style {:margin-top "15px"}}
+                [:span.badge.badge-pill.badge-info {:style {:color "#FFFFFF"}} "Node: "]
                 [:span.badge.badge-pill.badge-secondary {:style {:color "#ffff99"}} " " (get-node-name @sel-node) ]
+                " "
+                [:span.badge.badge-pill.badge-info {:style {:color "#FFFFFF"}} "Status: "]
+                (if (or (nil? (@sel-node :state)) (clojure.string/blank? (@sel-node :state)) (= (@sel-node :state) "IDLE"))
+                  [:span.badge.badge-pill.badge-secondary
+                    {:style {:color "#FFFFFF"}} (@sel-node :state)]
+                  (if (= (@sel-node :state) "ALLOCATED")
+                    [:span.badge.badge-pill.badge-secondary
+                      {:style {:color "#A9BCF5"}} (@sel-node :state)]
+                    [:span.badge.badge-pill.badge-secondary
+                      {:style {:color "#FAAC58"}} (@sel-node :state)]))
                 " "
                 [:span.badge.badge-pill.badge-primary
                   {:style {:color "#ffff99"}} "CPUs: " (str (count (@sel-node :cpus)))]

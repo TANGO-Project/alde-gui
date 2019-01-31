@@ -3,13 +3,16 @@
 ;;
 ;; Copyright: Roi Sucasas Font, Atos Research and Innovation, 2018.
 ;;
-;; This code is licensed under a GNU General Public License, version 3 license.
-;; Please, refer to the LICENSE.TXT file for more information
+;; This code is licensed under an Apache 2.0 license. Please, refer to the
+;; LICENSE.TXT file for more information
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (ns restapi.testbeds
-  (:require [utils.logs :as logs]
-            [gui.globals :as VARS]
-            [utils.http_cljs :as http]))
+  (:require [gui.globals :as VARS]
+            [utils.logs :as logs]
+            [utils.http_cljs :as http]
+            [gui.apps.graphs2 :as graphs2-executions]
+            [re-frame.core :as re-frame]
+            [gui.subs :as subs]))
 
 
 ;; FUNCTION: execute-periodic-task
@@ -87,7 +90,7 @@
 
 
 ;; rem-application
-(defn rem-application "Adds a new application to ALDE"
+(defn rem-application "Deletes application from ALDE"
   [id]
   (http/DELETE
     (str @VARS/REST_API_URL "applications/" id)
@@ -106,22 +109,97 @@
 ;; FUNCTION: add-conf
 (defn add-conf "Creates a new execution configuration"
   [json-params]
-  (http/POST
-    (str @VARS/REST_API_URL "execution_configurations")
-    #(do (get-apps VARS/update-apps) (.reload js/location))
-    json-params))
+  (let [selected-exec-app     (re-frame/subscribe [::subs/selected-exec-app])]
+    (logs/info "Call to: POST " (str @VARS/REST_API_URL "execution_configurations : " (@selected-exec-app :id)))
+    (http/POST-EXECUTIONS
+      (str @VARS/REST_API_URL "execution_configurations")
+      ;#(do (get-apps VARS/update-apps) (graphs2-executions/reload-app (@selected-exec-app :id)))
+      #(graphs2-executions/reload-app (@selected-exec-app :id))
+      json-params)))
 
 
 ;; FUNCTION: launch-exec
 ;; curl -X PATCH -H'Content-type: application/json' http://127.0.0.1:5000/api/v1/execution_configurations/1 -d'{"launch_execution": true}'
-(defn launch-exec "Launch the execution"
+(defn launch-exec "Launch new execution"
   [id]
-  (http/PATCH
+  (reset! VARS/TAB_EXECUTIONS_LOADING true)
+  ;(logs/info "Call to: PATCH " (str @VARS/REST_API_URL "execution_configurations/" id))
+  (http/PATCH-EXECUTIONS
     (str @VARS/REST_API_URL "execution_configurations/" id)
-    #(do (get-apps VARS/update-apps) (.reload js/location))
+    ;#(do (get-apps VARS/update-apps) (graphs2-executions/reload-executions (str "conf_" id)))
+    #(graphs2-executions/reload-executions (str "conf_" id))
     "{\"launch_execution\": true}"))
 
 
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; EXECUTIONS:
+
+
+(defn get-executions-completed ""
+  [f]
+  ;(http/GET "http://localhost:8081/mock-data/executions_completed" {:with-credentials? false} f))
+  (http/GET
+    (str @VARS/REST_API_URL "executions?q={\"filters\":[{\"val\":\"COMPLETED\",\"op\":\"like\",\"name\":\"status\"}]}")
+    {:with-credentials? false}
+    f))
+
+
+(defn get-executions-running ""
+  [f]
+  ;(http/GET "http://localhost:8081/mock-data/executions_running" {:with-credentials? false} f))
+  (http/GET
+    (str @VARS/REST_API_URL "executions?q={\"filters\":[{\"val\":\"RUNNING\",\"op\":\"like\",\"name\":\"status\"}]}")
+    {:with-credentials? false}
+    f))
+
+
+(defn get-executions-failed ""
+  [f]
+  ;(http/GET "http://localhost:8081/mock-data/executions_failed" {:with-credentials? false} f))
+  (http/GET
+    (str @VARS/REST_API_URL "executions?q={\"filters\":[{\"val\":\"FAILED\",\"op\":\"like\",\"name\":\"status\"}]}")
+    {:with-credentials? false}
+    f))
+
+
+;; FUNCTION: get-apps
+(defn get-execs-from-conf "Gets all executions from exec_conf"
+  [conf-id f]
+  ;(logs/info "Call to: GET " (str @VARS/REST_API_URL "execution_configurations/" conf-id))
+  ;(http/GET "http://localhost:8081/mock-data/execution_configurations/x" {:with-credentials? false} f)) ; no-connection / dev tests
+  (http/GET (str @VARS/REST_API_URL "execution_configurations/" conf-id) {:with-credentials? false} f))
+
+
+;; stop-execution
+(defn stop-execution ""
+  [id]
+  (reset! VARS/TAB_EXECUTIONS_LOADING true)
+  (let [selected-exec-conf-id (re-frame/subscribe [::subs/selected-exec-conf-id])]
+    (http/PATCH-EXECUTIONS
+      (str @VARS/REST_API_URL "executions/" id)
+      #(graphs2-executions/reload-executions @selected-exec-conf-id)
+      "{\"status\": \"STOP\"}")))
+
+;; cancel-execution
+(defn cancel-execution ""
+  [id]
+  (reset! VARS/TAB_EXECUTIONS_LOADING true)
+  (let [selected-exec-conf-id (re-frame/subscribe [::subs/selected-exec-conf-id])]
+    (http/PATCH-EXECUTIONS
+      (str @VARS/REST_API_URL "executions/" id)
+      #(graphs2-executions/reload-executions @selected-exec-conf-id)
+      "{\"status\": \"CANCEL\"}")))
+
+;; restart-execution
+(defn restart-execution ""
+  [id]
+  (reset! VARS/TAB_EXECUTIONS_LOADING true)
+  (let [selected-exec-conf-id (re-frame/subscribe [::subs/selected-exec-conf-id])]
+    (http/PATCH-EXECUTIONS
+      (str @VARS/REST_API_URL "executions/" id)
+      #(graphs2-executions/reload-executions @selected-exec-conf-id)
+      "{\"status\": \"RESTART\"}")))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 

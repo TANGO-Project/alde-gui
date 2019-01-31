@@ -3,8 +3,8 @@
 ;;
 ;; Copyright: Roi Sucasas Font, Atos Research and Innovation, 2018.
 ;;
-;; This code is licensed under a GNU General Public License, version 3 license.
-;; Please, refer to the LICENSE.TXT file for more information
+;; This code is licensed under an Apache 2.0 license. Please, refer to the
+;; LICENSE.TXT file for more information
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (ns gui.config.config_restapi
     (:require [reagent.core :as reagent]
@@ -29,24 +29,12 @@
       (re-frame/dispatch [::events/is-rest-api-online? false]))))
 
 
-;; FUNCTION: change-url
-(defn- change-url ""
-  [url event]
-  (do
-    (reset! url (-> event .-target .-value))
-    (swap! VARS/REST_API_URL assoc-in [:rest-api :url] (-> event .-target .-value))
-    (ping/ping-alde f-ping)))
-
-
 ;; https://reagent-project.github.io/
 (defn atom-input-text [value]
   [:input.form-control.input-sm.text-left
     {:type "text" :placeholder "URL / Endpoint"  :style {:margin-top "10px"}
      :value @value
      :on-change #(reset! value (-> % .-target .-value))}])
-
-; [:input.form-control.input-sm.text-left {:type "text" :style {:background-color "#FFFFFF"} :placeholder "URL / Endpoint"
-;    :value val-url}]
 
 
 ;; FUNCTION: panel
@@ -90,7 +78,9 @@
                     ;; save node
                     [:button.badge.badge-pill.btn-sm.btn-success {:style {:margin-right "5px" :text-align "right"}
                       :data-toggle "tooltip" :data-placement "right" :title "Submit"
-                      :on-click #(do (reset! VARS/REST_API_URL @val-url) (ping/ping-alde f-ping))} "Submit"]
+                      :on-click #(do (reset! VARS/REST_API_URL @val-url)
+                                     (VARS/set-item! "REST_API_URL" @val-url)
+                                     (ping/ping-alde f-ping))} "Submit"]
                     ;; cancel
                     [:button.badge.badge-pill.btn-sm.btn-danger {:title "Cancel operation and close panel"
                       :data-toggle "collapse" :data-target "#collapseEndpoint" :aria-expanded "false" :aria-controls "collapseEndpoint"

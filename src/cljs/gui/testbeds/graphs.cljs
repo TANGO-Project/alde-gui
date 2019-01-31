@@ -3,8 +3,8 @@
 ;;
 ;; Copyright: Roi Sucasas Font, Atos Research and Innovation, 2018.
 ;;
-;; This code is licensed under a GNU General Public License, version 3 license.
-;; Please, refer to the LICENSE.TXT file for more information
+;; This code is licensed under an Apache 2.0 license. Please, refer to the
+;; LICENSE.TXT file for more information
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (ns gui.testbeds.graphs
   (:require [cljsjs.vis]
@@ -308,14 +308,23 @@
                                 "label"   (str "<b>" (x :name) "</b>\n"
                                             "cpus:" (count (node-info :cpus)) "\n"
                                             "gpus:" (count (node-info :gpus)))
-                                "title"   (str "<div><b>NODE ID:</b> " (str (x :id)) "<br/> <b>NAME:</b> " (x :name) "</div>")
+                                "title"   (str "<div><b>NODE:</b> " (x :name)
+                                               "<br/> <b>ID:</b> " (str (x :id))
+                                               "<br/>" (x :state) "</div>")
                                 "image"   "images/node.png"
-                                "color"  (js-obj  "background" "white"
-                                                  "border" "black"
-                                                  "highlight" (js-obj "background" "#F3F781"
+
+                                "color"   (js-obj  "background"
+                                                      (if (or (nil? (x :state)) (clojure.string/blank? (x :state)) (= (x :state) "IDLE"))
+                                                        "#FFFFFF"
+                                                        (if (= (x :state) "ALLOCATED")
+                                                          "#A9BCF5"
+                                                          "#FAAC58"))
+                                                   "border" "black"
+                                                   "highlight" (js-obj "background" "#F3F781"
                                                                       "border" "black")
-                                                  "hover" (js-obj "background" "#ffffcc"
+                                                   "hover" (js-obj "background" "#ffffcc"
                                                                   "border" "black"))
+
                                 "shape"   "circularImage"))))
           (catch js/Error e
             (.push n (js-obj  "id"      (str (x :id))
@@ -398,7 +407,7 @@
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; CLUSTERS:
+;; TEST:
 ;; FUNCTION: fnodes-clusters
 (defn- fnodes-clusters "Create nodes elements"
   []
@@ -440,13 +449,3 @@
                                  (js-obj "nodes" nodes "edges" edges)
                                  GRAPH-OPTIONS)]
     (.on grph "click" #(on-click-testbed %)))) ;; on-click event:
-
-
-;function removeNode() {
-;    try {
-;        nodes.remove({id: document.getElementById('node-id').value});
-;    }
-;    catch (err) {
-;        alert(err);
-;    }
-;}

@@ -3,11 +3,12 @@
 ;;
 ;; Copyright: Roi Sucasas Font, Atos Research and Innovation, 2018.
 ;;
-;; This code is licensed under a GNU General Public License, version 3 license.
-;; Please, refer to the LICENSE.TXT file for more information
+;; This code is licensed under an Apache 2.0 license. Please, refer to the
+;; LICENSE.TXT file for more information
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (ns gui.apps.vapps
   (:require [gui.apps.graphs :as graphs]
+            [gui.apps.graphs2 :as graphs2]
             [reagent.core :as r]
             [gui.subs :as subs]
             [gui.events :as events]
@@ -38,7 +39,17 @@
 ;; execs-tab
 (defn- do-func3 ""
   []
-  ;(reset! GLOBALS/TAB_LOADING true)
+  (re-frame/dispatch [::events/set-selected-exec-app-id ""])
+  (re-frame/dispatch [::events/set-selected-exec-conf-id "-"])
+  (re-frame/dispatch [::events/set-selected-exec-exec-id "-"])
+  (re-frame/dispatch [::events/set-exec_cfg_execs_completed 0])
+  (re-frame/dispatch [::events/set-exec_cfg_execs_failed 0])
+  (re-frame/dispatch [::events/set-exec_cfg_execs_running 0])
+  (re-frame/dispatch [::events/set-exec_cfg_execs_total 0])
+  (re-frame/dispatch [::events/set-exec_cfg_execs_cancelled 0])
+  (re-frame/dispatch [::events/set-exec_cfg_execs_restart 0])
+  (re-frame/dispatch [::events/set-exec_cfg_execs_timeout 0])
+  (re-frame/dispatch [::events/set-exec_cfg_execs_unknown 0])
   (dom/remove-class! (sel1 :#tab-apps) :active)
   (dom/remove-class! (sel1 :#tab-apps) :show)
   (dom/add-class! (sel1 :#tab-execs) :show)
@@ -60,24 +71,28 @@
 
       [modal/modal]
       ;; TABS
-      [:ul.nav.nav-tabs {:id "myTab" :role "tablist"}
+      [:ul.nav.nav-tabs {:id "myTab1" :role "tablist"}
         [:li.nav-item
           [:a.nav-link.active {:id "apps-tab" :data-toggle "tab" :href "" :role "tab"
            :on-click #(do-func2)
-           :aria-controls "apps" :aria-selected "true"} "Applications"]]
+           :aria-controls "apps" :aria-selected "true"}
+           [:i.fa.fa-fw.fa-sitemap {:style {:color "gray"}}] " Main View"]]
         [:li.nav-item
           [:a.nav-link {:id "execs-tab" :data-toggle "tab" :href "" :role "tab"
            :on-click #(do-func3)
-           :aria-controls "execs" :aria-selected "true"} "Executions"]]]
+           :aria-controls "execs" :aria-selected "true"}
+           [:i.fa.fa-fw.fa-cogs {:style {:color "gray"}}] " Conf. / Executables / Executions"]]
+      ]
 
       ;; CONTENT
       [:div.rowtab-content {:style {:margin-top "5px"}}
         ;; APPS
-        [:div.tab-pane.fade.show.active {:id "tab-apps" :role "tabpanel" :aria-labelledby "apps-tab"}
-          [tabs-applications/panel-component]]
+        [:div.tab-pane {:id "tab-apps" :role "tabpanel" :aria-labelledby "apps-tab"}
+          (when @TAB_APPS [tabs-applications/panel-component])]
         ;; EXECUTIONS
         [:div.tab-pane.fade {:id "tab-execs" :role "tabpanel" :aria-labelledby "execs-tab"}
-          (when @TAB_EXECUTIONS [tabs-executions/panel-component])]]]))
+          (when @TAB_EXECUTIONS [tabs-executions/panel-component])]
+      ]]))
 
 
 ;; FUNCTION:
@@ -85,10 +100,10 @@
   (reagent/create-class  ;; <-- expects a map of functions
     {;; Mounting
      ;:component-will-mount    #(println "component-will-mount")
-     :component-did-mount     #(do (graphs/gen-data-nodes))
+     :component-did-mount     #(if  @TAB_APPS (graphs/gen-data-nodes) (graphs2/gen-data-nodes))
      ;; Updating
      ;:component-will-update   #(println "component-will-update")
-     ;:component-did-update    #(println "component-did-update")
+     :component-did-update    #(if  @TAB_APPS (graphs/gen-data-nodes) (graphs2/gen-data-nodes))
      ;; Unmounting
      ;:component-will-unmount  #(println "component-will-unmount")
      ;; Class Properties

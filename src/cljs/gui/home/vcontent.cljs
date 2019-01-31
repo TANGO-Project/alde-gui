@@ -3,8 +3,8 @@
 ;;
 ;; Copyright: Roi Sucasas Font, Atos Research and Innovation, 2018.
 ;;
-;; This code is licensed under a GNU General Public License, version 3 license.
-;; Please, refer to the LICENSE.TXT file for more information
+;; This code is licensed under an Apache 2.0 license. Please, refer to the
+;; LICENSE.TXT file for more information
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (ns gui.home.vcontent
   (:require [re-frame.core :as re-frame]
@@ -47,29 +47,32 @@
   (let [l-testbeds  (re-frame/subscribe [::subs/testbeds])
         t-testbeds  (re-frame/subscribe [::subs/total-testbeds])
         t-nodes     (re-frame/subscribe [::subs/total-nodes])
-        t-apps      (re-frame/subscribe [::subs/total-apps])]
+        t-apps      (re-frame/subscribe [::subs/total-apps])
+        t-execs     (re-frame/subscribe [::subs/total-execs])]
     [:div.container.col-md-12 {:style {:margin-bottom "15px"}}
         [:div.row.col-md-12.text-center
           [:div.col-sm-4
-            [:div.card.text-center
-              [:img.card-img-top {:src "images/network_mini.png" :alt "Testbeds managed by ALDE"}]
+            [:div.card.text-center.mb-3 {:style {:background-color "#BDBDBD"}}
+              [:img.card-img-top {:src "images/node3_mini.png" :alt "Testbeds managed by ALDE"}]
               [:div.card-body
-                [:h4.card-title "Testbeds " "[" [:b (str @t-testbeds)] "]"]]
+                [:h4.card-title "Testbeds " "[" [:b (str @t-testbeds)] "]; " "Nodes " "[" [:b (str @t-nodes)] "]"]]
               [:div.card-footer
-                [:a.btn.btn-primary {:style {:width "100%"} :href "#/testbeds"} "View testbeds"]]]]
+                [:a.btn.btn-primary {:style {:width "100%"} :href "#/testbeds"} "View testbeds and nodes"]]]]
 
           [:div.col-sm-4
-            [:div.card.text-center.text-white.bg-warning.mb-3
-              [:img.card-img-top {:src "images/node3_mini.png" :alt "Nodes managed by ALDE"}]
-              [:div.card-body
-                [:h4.card-title "Nodes " "[" [:b (str @t-nodes)] "]"]]
-              [:div.card-footer
-                [:a.btn.btn-primary {:style {:width "100%"} :href "#/testbeds"} "View nodes"]]]]
-
-          [:div.col-sm-4
-            [:div.card.text-white.bg-primary.mb-3
-              [:img.card-img-top {:src "images/apps_mini.png" :alt "Applications managed by ALDE"}]
+            [:div.card.text-center.mb-3  {:style {:background-color "#CED8F6"}}
+              [:img.card-img-top {:src "images/executable_mini.png" :alt "Applications managed by ALDE"}]
               [:div.card-body
                 [:h4.card-title "Applications " "[" [:b (str @t-apps)] "]"]]
               [:div.card-footer
-                [:a.btn.btn-info {:style {:width "100%"} :href "#/apps"} "View applications"]]]]]]))
+                [:a.btn.btn-primary {:style {:width "100%"} :href "#/apps"} "View applications"]]]]
+
+          [:div.col-sm-4
+            [:div.card.text-center.mb-3 {:style {:background-color "#D8D8D8"}}
+              [:img.card-img-top {:src "images/apps_mini.png" :alt "Executions"}]
+              [:div.card-body
+                [:h4.card-title "Executions " "[" [:b (str @t-execs)] "]"]]
+              [:div.card-footer
+                [:a.btn.btn-primary {:style {:width "100%"} :href "#/execs"} "View executions"]]]]
+
+          ]]))

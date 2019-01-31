@@ -3,18 +3,21 @@
 ;;
 ;; Copyright: Roi Sucasas Font, Atos Research and Innovation, 2018.
 ;;
-;; This code is licensed under a GNU General Public License, version 3 license.
-;; Please, refer to the LICENSE.TXT file for more information
+;; This code is licensed under an Apache 2.0 license. Please, refer to the
+;; LICENSE.TXT file for more information
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (ns gui.apps.modal
   (:require [re-frame.core :refer [dispatch subscribe]]
             [utils.logs :as logs]
-            [reagent.core :as r]))
+            [cljs.pprint :as pprint]
+            [reagent.core :as r]
+            [cljs.pprint :as pprint]))
 
 
 (def TXT_APP (r/atom {:id "-not-defined-" :name "-not-defined-"}))
 (def TXT_EXEC (r/atom {:id "-not-defined-" :name "-not-defined-"}))
 (def TXT_CONF (r/atom {:id "-not-defined-" :name "-not-defined-"}))
+(def TXT_EXECUTION (r/atom {:id "-not-defined-" :name "-not-defined-"}))
 
 
 ;; COMPONENT: modal-panel
@@ -83,6 +86,11 @@
       [:div.col-sm-10
         [:input.form-control.input-sm.text-left {:type "text" :style {:background-color "#FFFFFF"} :placeholder "---" :read-only true
           :defaultValue (str (@TXT_CONF :profile_file))}]]]
+    [:div.row {:style {:margin-top "5px"}}
+      [:label.col-sm-2.control-label.text-right [:b "executable_id:"]]
+      [:div.col-sm-3
+        [:input.form-control.input-sm.text-left {:type "text" :style {:background-color "#FFFFFF"} :placeholder "---" :read-only true
+          :defaultValue (str (@TXT_CONF :executable_id))}]]]
     [:div.row {:style {:margin-top "5px"}}
       [:label.col-sm-2.control-label.text-right [:b "exec time:"]]
       [:div.col-sm-3
@@ -201,6 +209,64 @@
       [:div.col-sm-2
         [:input.form-control.input-sm.text-left {:type "text" :style {:background-color "#FFFFFF"} :placeholder "---" :read-only true
           :defaultValue (str (count (@TXT_APP :execution_configurations)))}]]]
+
+    [:button {:type "button" :title "Cancel" :class "close" :on-click #(close-modal)
+              :style {:margin-bottom "35px" :margin-top "-15px"}} "Close"]])
+
+
+;;
+(defn- execution []
+  [:div.modal_exec {:style {:padding "16px" :border-radius "6px" :text-align "center"}}
+    ;; header
+    [:div.row
+      [:div.col-sm-12
+        [:h5 {:style {:margin-top "-5px" :text-align "left"}}
+          [:span.badge.badge-pill.badge-primary "Execution"]
+          [:span.badge.badge-pill.badge-secondary {:style {:color "#ffff99"}} "exe"]]]]
+    ;; content
+    [:div.row {:style {:margin-top "5px"}}
+      [:label.col-sm-2.control-label.text-right [:b "Id:"]]
+      [:div.col-sm-2
+        [:input.form-control.input-sm.text-left {:type "text" :style {:background-color "#FFFFCC"} :placeholder "---" :read-only true
+          :defaultValue (@TXT_EXECUTION :id)}]]]
+    [:div.row {:style {:margin-top "5px"}}
+      [:label.col-sm-2.control-label.text-right [:b "Status:"]]
+      [:div.col-sm-8
+        [:input.form-control.input-sm.text-left {:type "text" :style {:background-color "#FFFFFF"} :placeholder "---" :read-only true
+          :defaultValue (@TXT_EXECUTION :status)}]]]
+    (if (= (@TXT_EXECUTION :status) "COMPLETED")
+      [:div.row {:style {:margin-top "5px"}}
+        [:label.col-sm-2.control-label.text-right [:b "energy output:"]]
+        [:div.col-sm-8
+          [:input.form-control.input-sm.text-left {:type "text" :style {:background-color "#FFFFFF"} :placeholder "---" :read-only true
+            :defaultValue (str (@TXT_EXECUTION :energy_output) " J")}]]]
+      [:div.row {:style {:margin-top "5px"}}
+        [:label.col-sm-2.control-label.text-right [:b "energy output:"]]
+        [:div.col-sm-8
+          [:input.form-control.input-sm.text-left {:type "text" :style {:background-color "#FFFFFF"} :placeholder "---" :read-only true
+            :defaultValue "-"}]]])
+    (if (= (@TXT_EXECUTION :status) "COMPLETED")
+      [:div.row {:style {:margin-top "5px"}}
+        [:label.col-sm-2.control-label.text-right [:b "runtime output:"]]
+        [:div.col-sm-8
+          [:input.form-control.input-sm.text-left {:type "text" :style {:background-color "#FFFFFF"} :placeholder "---" :read-only true
+            :defaultValue (str (@TXT_EXECUTION :runtime_output) " s")}]]]
+      [:div.row {:style {:margin-top "5px"}}
+        [:label.col-sm-2.control-label.text-right [:b "runtime output:"]]
+        [:div.col-sm-8
+          [:input.form-control.input-sm.text-left {:type "text" :style {:background-color "#FFFFFF"} :placeholder "---" :read-only true
+            :defaultValue "-"}]]])
+    (if (= (@TXT_EXECUTION :status) "COMPLETED")
+      [:div.row {:style {:margin-top "5px"}}
+        [:label.col-sm-2.control-label.text-right [:b "watts:"]]
+        [:div.col-sm-8
+          [:input.form-control.input-sm.text-left {:type "text" :style {:background-color "#FFFFFF"} :placeholder "---" :read-only true
+            :defaultValue (str (pprint/cl-format nil  "~,4f" (/ (@TXT_EXECUTION :energy_output) (@TXT_EXECUTION :runtime_output))) " W")}]]]
+      [:div.row {:style {:margin-top "5px"}}
+        [:label.col-sm-2.control-label.text-right [:b "watts:"]]
+        [:div.col-sm-8
+          [:input.form-control.input-sm.text-left {:type "text" :style {:background-color "#FFFFFF"} :placeholder "---" :read-only true
+            :defaultValue "-"}]]])
 
     [:button {:type "button" :title "Cancel" :class "close" :on-click #(close-modal)
               :style {:margin-bottom "35px" :margin-top "-15px"}} "Close"]])

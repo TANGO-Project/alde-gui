@@ -3,8 +3,8 @@
 ;;
 ;; Copyright: Roi Sucasas Font, Atos Research and Innovation, 2018.
 ;;
-;; This code is licensed under a GNU General Public License, version 3 license.
-;; Please, refer to the LICENSE.TXT file for more information
+;; This code is licensed under an Apache 2.0 license. Please, refer to the
+;; LICENSE.TXT file for more information
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (ns gui.apps.newp
   (:require [dommy.core :refer-macros [sel sel1] :as dom]
@@ -56,7 +56,7 @@
               ;; save node
               [:button.badge.badge-pill.btn-sm.btn-success {:style {:margin-right "5px" :text-align "right"}
                 :data-toggle "tooltip" :data-placement "right" :title "Submit"
-                :on-click #(restapi/new-application (str "{\"name\": \"" @val "\"}"))} "Submit"]
+                :on-click #(do (restapi/new-application (str "{\"name\": \"" @val "\"}")) (modal/close-modal))} "Submit"]
               ;; reset
               [:button.badge.badge-pill.btn-sm.btn-secondary {:style {:margin-right "5px" :text-align "right"}
                 :title "Reset fields" :on-click #(reset! val "")} "Reset"]

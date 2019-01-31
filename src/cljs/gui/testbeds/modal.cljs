@@ -3,8 +3,8 @@
 ;;
 ;; Copyright: Roi Sucasas Font, Atos Research and Innovation, 2018.
 ;;
-;; This code is licensed under a GNU General Public License, version 3 license.
-;; Please, refer to the LICENSE.TXT file for more information
+;; This code is licensed under an Apache 2.0 license. Please, refer to the
+;; LICENSE.TXT file for more information
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (ns gui.testbeds.modal
   (:require [re-frame.core :refer [dispatch subscribe]]
@@ -69,6 +69,11 @@
       [:div.col-sm-4
         [:input.form-control.input-sm.text-left {:type "text" :style {:background-color "#FFFFFF"} :placeholder "---" :read-only true
           :defaultValue (@TXT_NODE :name)}]]]
+    [:div.row {:style {:margin-top "5px"}}
+      [:label.col-sm-2.control-label.text-right [:b "State:"]]
+      [:div.col-sm-2
+        [:input.form-control.input-sm.text-left {:type "text" :style {:background-color "#FFFFCC"} :placeholder "---" :read-only true
+          :defaultValue (@TXT_NODE :state)}]]]
     [:div.row {:style {:margin-top "5px"}}
       [:label.col-sm-2.control-label.text-right [:b "Information retrieved?"]]
       [:div.col-sm-2

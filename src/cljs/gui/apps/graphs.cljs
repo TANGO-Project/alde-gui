@@ -29,7 +29,7 @@
                                                                           "size"  18)
                                                           "size"  25)
                                   "physics"       (js-obj "enabled"     true
-                                                          "barnesHut"   (js-obj "gravitationalConstant"   -2000
+                                                          "barnesHut"   (js-obj "gravitationalConstant"   -2500
                                                                                 "centralGravity"          0.5))
                                   "edges"         (js-obj "width" 1 "shadow" true)
                                   "layout"        (js-obj "randomSeed" 4)))
@@ -210,24 +210,24 @@
                                           "image"   "images/tango_mini.png"
                                           "shape"   "image"))
                 "main"  (.push n (js-obj  "id"      (str (x :id))
-                                          "font"    (js-obj "multi" true)
+                                          "font"    (js-obj "multi" true "color" "darkblue")
                                           "label"   (str "<b>" (x :name) "</b>")
                                           "title"   (str "<div><b>" (x :name) "</b> <i>(application)</i></div>")
                                           "image"   "images/apps_mini.png"
                                           "color"   (js-obj "background" "white"
-                                                            "border" "black"
+                                                            "border" "lightblue"
                                                             "highlight" (js-obj "background" "#F3F781"
                                                                                 "border" "black")
                                                             "hover" (js-obj "background" "#ffffcc"
                                                                             "border" "black"))
-                                          "shape"   "circularImage"))
+                                          "shape"   "image"))
                 "exec"  (.push n (js-obj  "id"      (str (x :id))
-                                          "font"    (js-obj "multi" true)
+                                          "font"    (js-obj "multi" true "color" "black")
                                           "label"   (str "<b>" (x :name) "</b>")
                                           "title"   (str "<div>Executable: <b>" (x :name) "</b></div>")
                                           "image"   "images/executable.png"
                                           "color"   (js-obj "background" "white"
-                                                            "border" "black"
+                                                            "border" "lightgray"
                                                             "highlight" (js-obj "background" "#F3F781"
                                                                                 "border" "black")
                                                             "hover" (js-obj "background" "#ffffcc"
@@ -237,9 +237,9 @@
                                           "font"    (js-obj "multi" true)
                                           "label"   (str "<b>" (x :name) "</b>")
                                           "title"   (str "<div>Execution configuration: <b>" (x :name) "</b></div>")
-                                          "image"   "images/configuration.png"
+                                          "image"   "images/configuration2.png"
                                           "color"   (js-obj "background" "white"
-                                                            "border" "black"
+                                                            "border" "white"
                                                             "highlight" (js-obj "background" "#F3F781"
                                                                                 "border" "black")
                                                             "hover" (js-obj "background" "#ffffcc"
@@ -270,12 +270,12 @@
         (.push n (js-obj  "from"    (str (x :from))
                           "to"      (x :to)
                           "dashes"  false
-                          "color"   "#336BFF"))
+                          "color"   "#000000"))
         (.push n (js-obj  "from"    (str (x :from))
                           "to"      (x :to)
                           "dashes"  true
                           "title"   "no executable found!"
-                          "color"   "#FF5733"))))
+                          "color"   "red"))))
     n))
 
 
