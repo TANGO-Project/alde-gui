@@ -3,7 +3,7 @@
 ;;
 ;; Copyright: Roi Sucasas Font, Atos Research and Innovation, 2018.
 ;;
-;; This code is licensed under an Apache 2.0 license. Please, refer to the
+;; This code is licensed under a GNU General Public License, version 3 license. Please, refer to the
 ;; LICENSE.TXT file for more information
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (ns gui.CONFIG)
